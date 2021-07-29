@@ -11,4 +11,5 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+/* eslint-disable no-console */
 reportWebVitals(console.log);
