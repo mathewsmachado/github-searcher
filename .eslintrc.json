@@ -13,5 +13,15 @@
   "rules": {
     "import/prefer-default-export": "off",
     "react/react-in-jsx-scope": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/stories.*"],
+      "rules": {
+        "import/no-anonymous-default-export": "off",
+        "react/jsx-props-no-spreading": "off",
+        "import/no-extraneous-dependencies": "off"
+      }
+    }
+  ]
 }
