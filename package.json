@@ -33,7 +33,7 @@
     "test:watch": "react-scripts test --maxWorkers=25%",
     "test": "yarn test:watch --watchAll=false --maxWorkers=50% --coverage",
     "typo": "cspell --no-progress",
-    "format": "prettier --write .",
+    "format": "prettier --write . --ignore-path .gitignore",
     "lint": "eslint src --fix",
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006 -s public",
