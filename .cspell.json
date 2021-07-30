@@ -9,5 +9,5 @@
     "package*",
     "src/reportWebVitals.ts"
   ],
-  "words": ["webfonts"]
+  "words": ["webfonts", "commitlint"]
 }
