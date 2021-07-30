@@ -22,17 +22,16 @@
       "!src/reportWebVitals.ts"
     ],
     "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.ts(x)?",
-      "<rootDir>/src/**/*.{spec,test}.ts(x)?",
       "<rootDir>/src/**/test(s)?.ts(x)?"
     ]
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "test": "react-scripts test --watchAll=false --maxWorkers=50%",
     "test:watch": "react-scripts test --maxWorkers=25%",
-    "test": "yarn test:watch --watchAll=false --maxWorkers=50% --coverage",
-    "typo": "cspell --no-progress",
+    "test:coverage": "yarn test --coverage",
+    "spellcheck": "cspell",
     "format": "prettier --write . --ignore-path .gitignore",
     "lint": "eslint src --fix",
     "prepare": "husky install",

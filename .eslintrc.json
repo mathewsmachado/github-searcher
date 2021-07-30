@@ -16,10 +16,15 @@
   },
   "overrides": [
     {
-      "files": ["**/stories.*"],
+      "files": ["src/stories.tsx"],
       "rules": {
         "import/no-anonymous-default-export": "off",
-        "react/jsx-props-no-spreading": "off",
+        "react/jsx-props-no-spreading": "off"
+      }
+    },
+    {
+      "files": ["src/stories.tsx", "src/test(s)?.ts(x)?", "src/setupTests.ts"],
+      "rules": {
         "import/no-extraneous-dependencies": "off"
       }
     }

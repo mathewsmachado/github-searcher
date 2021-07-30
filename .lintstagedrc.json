@@ -1,4 +1,4 @@
 {
-  "*": ["yarn typo --no-must-find-files", "yarn format --ignore-unknown"],
-  "*.{js,jsx,ts,tsx}": ["yarn lint", "yarn test --passWithNoTests"]
+  "*": ["yarn spellcheck --no-must-find-files", "yarn format --ignore-unknown"],
+  "*.{ts,tsx}": ["yarn lint", "yarn test --passWithNoTests"]
 }
