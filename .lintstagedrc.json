@@ -1,4 +1,0 @@
-{
-  "*": ["yarn spellcheck --no-must-find-files", "yarn format --ignore-unknown"],
-  "*.{ts,tsx}": ["yarn lint", "yarn test --passWithNoTests"]
-}
