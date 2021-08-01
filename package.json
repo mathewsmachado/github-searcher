@@ -36,6 +36,7 @@
     "lint": "eslint src --fix",
     "commit:pre": "yarn lint-staged --relative",
     "commit:msg": "yarn commitlint --edit $1",
+    "typecheck": "tsc",
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
