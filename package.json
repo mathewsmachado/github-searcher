@@ -16,30 +16,30 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.ts(x)?",
-      "!src/**/*.d.ts",
-      "!src/index.tsx",
-      "!src/reportWebVitals.ts"
+      "<rootDir>/src/**/*.ts(x)?",
+      "!<rootDir>/src/**/*.d.ts",
+      "!<rootDir>/src/index.tsx",
+      "!<rootDir>/src/reportWebVitals.ts"
     ],
     "testMatch": [
       "<rootDir>/src/**/test(s)?.ts(x)?"
     ]
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --watchAll=false --maxWorkers=50%",
-    "test:watch": "react-scripts test --maxWorkers=25%",
-    "test:coverage": "yarn test --coverage",
-    "spellcheck": "cspell",
+    "build-storybook": "build-storybook -s public",
+    "commit:msg": "yarn commitlint --edit $1",
+    "commit:pre": "yarn lint-staged --relative",
     "format": "prettier --write . --ignore-path .gitignore",
     "lint": "eslint src --fix",
-    "commit:pre": "yarn lint-staged --relative",
-    "commit:msg": "yarn commitlint --edit $1",
-    "typecheck": "tsc",
     "prepare": "husky install",
+    "spellcheck": "cspell",
+    "start": "react-scripts start",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "test": "react-scripts test --watchAll=false --maxWorkers=50%",
+    "test:coverage": "yarn test --coverage",
+    "test:watch": "react-scripts test --maxWorkers=25%",
+    "typecheck": "tsc"
   },
   "dependencies": {
     "react": "^17.0.2",

@@ -23,7 +23,11 @@
       }
     },
     {
-      "files": ["src/stories.tsx", "src/test(s)?.ts(x)?", "src/setupTests.ts"],
+      "files": [
+        "src/**/stories.tsx",
+        "src/**/test?(s).ts?(x)",
+        "src/setupTests.ts"
+      ],
       "rules": {
         "import/no-extraneous-dependencies": "off"
       }

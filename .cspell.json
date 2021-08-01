@@ -2,12 +2,6 @@
   "language": "en",
   "minWordLength": 2,
   "files": ["**/*"],
-  "ignorePaths": [
-    "build",
-    "coverage",
-    ".husky",
-    "package*",
-    "src/reportWebVitals.ts"
-  ],
-  "words": ["webfonts", "commitlint"]
+  "ignorePaths": ["build", "coverage", "package*", "src/reportWebVitals.ts"],
+  "words": ["webfonts"]
 }
