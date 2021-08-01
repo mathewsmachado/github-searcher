@@ -33,6 +33,7 @@
     "format": "prettier --write . --ignore-path .gitignore",
     "lint": "eslint src --fix",
     "prepare": "husky install",
+    "push:pre": "yarn typecheck; yarn test:coverage",
     "spellcheck": "cspell",
     "start": "react-scripts start",
     "storybook": "start-storybook -p 6006 -s public",
