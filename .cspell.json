@@ -17,6 +17,9 @@
     "xxsmall",
     "xlarge",
     "xxlarge",
-    "xhuge"
+    "xhuge",
+    "preconnect",
+    "img",
+    "ol"
   ]
 }
