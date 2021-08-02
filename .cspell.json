@@ -3,5 +3,20 @@
   "minWordLength": 2,
   "files": ["**/*"],
   "ignorePaths": ["build", "coverage", "package*", "src/reportWebVitals.ts"],
-  "words": ["webfonts", "vw", "vh"]
+  "words": [
+    "webfonts",
+    "vw",
+    "vh",
+    "Raleway",
+    "Segoe",
+    "Roboto",
+    "Cantarell",
+    "Neue",
+    "xbold",
+    "xsmall",
+    "xxsmall",
+    "xlarge",
+    "xxlarge",
+    "xhuge"
+  ]
 }
