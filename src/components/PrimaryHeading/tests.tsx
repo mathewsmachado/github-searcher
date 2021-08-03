@@ -14,25 +14,25 @@ describe('<PrimaryHeading />', () => {
   it('should render a black title by default', () => {
     render(<PrimaryHeading>{title}</PrimaryHeading>);
 
-    expect(screen.getByRole('heading')).toHaveStyle(
-      `color: ${theme.color.primary}`
-    );
+    expect(screen.getByRole('heading')).toHaveStyle({
+      color: theme.color.primary,
+    });
   });
 
   it('should render a pink title', () => {
     render(<PrimaryHeading color='accent'>{title}</PrimaryHeading>);
 
-    expect(screen.getByRole('heading')).toHaveStyle(
-      `color: ${theme.color.accent}`
-    );
+    expect(screen.getByRole('heading')).toHaveStyle({
+      color: theme.color.accent,
+    });
   });
 
   it('should render a white title with a black border', async () => {
     render(<PrimaryHeading unfilled>{title}</PrimaryHeading>);
 
-    expect(screen.getByRole('heading')).toHaveStyle(
-      `color: ${theme.color.secondary}`
-    );
+    expect(screen.getByRole('heading')).toHaveStyle({
+      color: theme.color.secondary,
+    });
   });
 
   it('should ignore the "color" prop when the "unfilled" prop is passed', () => {
@@ -42,8 +42,8 @@ describe('<PrimaryHeading />', () => {
       </PrimaryHeading>
     );
 
-    expect(screen.getByRole('heading')).toHaveStyle(
-      `color: ${theme.color.secondary}`
-    );
+    expect(screen.getByRole('heading')).toHaveStyle({
+      color: theme.color.secondary,
+    });
   });
 });
