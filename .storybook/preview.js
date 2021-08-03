@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { StyleProvider } from 'styles/StyleProvider.tsx';
+
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
@@ -12,9 +14,8 @@ export const parameters = {
 
 export const decorators = [
   (Story) => (
-    <>
-      <span>Revolve this with Global Contexts/Providers</span>
+    <StyleProvider>
       <Story />
-    </>
+    </StyleProvider>
   ),
 ];
