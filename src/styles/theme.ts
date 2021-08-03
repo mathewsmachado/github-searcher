@@ -43,7 +43,7 @@ export const theme = {
       xlarge: '2.0rem',
       xxlarge: '2.8rem',
       huge: '5.2rem',
-      xhuge: '12rem',
+      xhuge: '6rem',
     },
   },
   grid: {
