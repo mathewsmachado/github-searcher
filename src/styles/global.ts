@@ -30,28 +30,7 @@ ${({ theme }) => css`
 
   a {
     text-decoration: none;
-    position: relative;
-    color: ${theme.color.primary};
-    transition: ${theme.transition.fast};
-  }
-
-  a:hover {
-    color: ${theme.color.accent};
-  }
-
-  a:after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    bottom: -10%;
-    left: 1%;
-    right: 1%;
-    background-color: ${theme.color.accent};
-    transition: ${theme.transition.fast};
-  }
-
-  a:hover:after {
-    margin-bottom: 20%;
+    color: inherit;
   }
 `}
 `;
