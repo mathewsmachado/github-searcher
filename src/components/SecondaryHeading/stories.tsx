@@ -1,6 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { title } from './mock';
 import { SecondaryHeading } from '.';
 
 export default {
@@ -14,7 +13,7 @@ const Template: ComponentStory<typeof SecondaryHeading> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  children: title,
+  children: 'Look for people',
   size: 'huge',
   thin: false,
 };

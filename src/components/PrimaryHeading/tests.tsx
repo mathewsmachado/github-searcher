@@ -1,18 +1,17 @@
 import { theme } from 'styles/theme';
 import { render, screen } from 'utils/tests';
 
-import { title } from './mock';
 import { PrimaryHeading } from '.';
 
 describe('<PrimaryHeading />', () => {
   it('should render the passed children', () => {
-    render(<PrimaryHeading>{title}</PrimaryHeading>);
+    render(<PrimaryHeading>GitHub Searcher</PrimaryHeading>);
 
-    expect(screen.getByText(title)).toHaveTextContent(title);
+    expect(screen.getByRole('heading')).toHaveTextContent(/github searcher/i);
   });
 
   it('should render a black title by default', () => {
-    render(<PrimaryHeading>{title}</PrimaryHeading>);
+    render(<PrimaryHeading>GitHub Searcher</PrimaryHeading>);
 
     expect(screen.getByRole('heading')).toHaveStyle({
       color: theme.color.primary,
@@ -20,7 +19,7 @@ describe('<PrimaryHeading />', () => {
   });
 
   it('should render a pink title', () => {
-    render(<PrimaryHeading color='accent'>{title}</PrimaryHeading>);
+    render(<PrimaryHeading color='accent'>GitHub Searcher</PrimaryHeading>);
 
     expect(screen.getByRole('heading')).toHaveStyle({
       color: theme.color.accent,
@@ -28,7 +27,7 @@ describe('<PrimaryHeading />', () => {
   });
 
   it('should render a white title with a black border', async () => {
-    render(<PrimaryHeading unfilled>{title}</PrimaryHeading>);
+    render(<PrimaryHeading unfilled>GitHub Searcher</PrimaryHeading>);
 
     expect(screen.getByRole('heading')).toHaveStyle({
       color: theme.color.secondary,
@@ -38,7 +37,7 @@ describe('<PrimaryHeading />', () => {
   it('should ignore the "color" prop when the "unfilled" prop is passed', () => {
     render(
       <PrimaryHeading color='accent' unfilled>
-        {title}
+        GitHub Searcher
       </PrimaryHeading>
     );
 

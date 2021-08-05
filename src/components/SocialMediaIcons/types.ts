@@ -1,10 +1,7 @@
 import { IconType } from 'react-icons';
 
 type AllowedSocialMedias = 'github' | 'linkedin' | 'twitter';
-type Usernames = Partial<Record<AllowedSocialMedias, string>>;
-
 type AllowedSizes = 'medium' | 'xlarge';
-type IconsSizes = Partial<Record<AllowedSizes, number>>;
 
 export type SocialMedia = {
   name: AllowedSocialMedias;
@@ -13,12 +10,12 @@ export type SocialMedia = {
 };
 
 export type ComponentData = {
-  iconsSizes: IconsSizes;
+  iconsSizes: Partial<Record<AllowedSizes, number>>;
   socialMedias: SocialMedia[];
 };
 
 export type SocialMediaIconsProps = {
-  usernames: Usernames;
+  usernames: Partial<Record<AllowedSocialMedias, string>>;
   label?: string;
   size?: AllowedSizes;
 };

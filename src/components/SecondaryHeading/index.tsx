@@ -6,9 +6,9 @@ export function SecondaryHeading({
   size = 'huge',
   thin = false,
 }: SecondaryHeadingProps) {
-  if (thin) {
-    return <S.Wrapper thin={thin}>{children}</S.Wrapper>;
-  }
-
-  return <S.Wrapper size={size}>{children}</S.Wrapper>;
+  return (
+    <S.Wrapper size={size} thin={thin}>
+      {children}
+    </S.Wrapper>
+  );
 }

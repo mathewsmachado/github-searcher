@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import * as mock from './mock';
+import { usernames } from './mock';
 import { SocialMediaIcons } from '.';
 
 export default {
@@ -22,16 +22,16 @@ const Template: ComponentStory<typeof SocialMediaIcons> = (args) => (
 
 export const OneIcon = Template.bind({});
 OneIcon.args = {
-  label: mock.label,
-  usernames: mock.usernames.one,
+  label: 'check it on',
+  usernames: usernames.one,
 };
 
 export const TwoIcons = Template.bind({});
 TwoIcons.args = {
-  usernames: mock.usernames.two,
+  usernames: usernames.two,
 };
 
 export const ThreeIcons = Template.bind({});
 ThreeIcons.args = {
-  usernames: mock.usernames.three,
+  usernames: usernames.three,
 };

@@ -1,6 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { title } from './mock';
 import { PrimaryHeading } from '.';
 
 export default {
@@ -14,7 +13,7 @@ const Template: ComponentStory<typeof PrimaryHeading> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  children: title,
+  children: 'Github Searcher',
   color: 'primary',
   unfilled: false,
 };

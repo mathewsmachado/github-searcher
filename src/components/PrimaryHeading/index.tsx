@@ -6,10 +6,9 @@ export function PrimaryHeading({
   color = 'primary',
   unfilled = false,
 }: PrimaryHeadingProps) {
-  // this makes the properties exclusionary
-  if (unfilled) {
-    return <S.Wrapper unfilled={unfilled}>{children}</S.Wrapper>;
-  }
-
-  return <S.Wrapper color={color}>{children}</S.Wrapper>;
+  return (
+    <S.Wrapper color={color} unfilled={unfilled}>
+      {children}
+    </S.Wrapper>
+  );
 }

@@ -1,5 +1,3 @@
-export const label = 'check it on';
-
 export const usernames = {
   one: {
     twitter: 'mathews',
