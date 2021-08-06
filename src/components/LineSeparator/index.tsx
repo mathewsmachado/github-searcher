@@ -1,12 +1,16 @@
 import styled, { css } from 'styled-components';
 
 type LineSeparatorProps = {
+  color?: 'primary' | 'accent';
   orientation?: 'horizontal' | 'vertical';
-  thickness?: 'thin' | 'regular';
+  thickness?: 'thin' | 'regular' | 'bold';
 };
 
 const modifiers = {
   thin: () => css`
+    height: 0.1rem;
+  `,
+  regular: () => css`
     height: 0.4rem;
   `,
   vertical: () => css`
@@ -15,11 +19,16 @@ const modifiers = {
 };
 
 export const LineSeparator = styled.div<LineSeparatorProps>`
-  ${({ theme, orientation = 'horizontal', thickness = 'regular' }) => css`
+  ${({
+    theme,
+    color = 'accent',
+    orientation = 'horizontal',
+    thickness = 'bold',
+  }) => css`
     height: 0.6rem;
-    background-color: ${theme.color.accent};
+    background-color: ${theme.color[color!]};
 
     ${orientation === 'vertical' && modifiers.vertical()}
-    ${thickness === 'thin' && modifiers.thin()}
+    ${thickness !== 'bold' && modifiers[thickness]()}
   `};
 `;

@@ -2,14 +2,23 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { LineSeparator } from '.';
 
+const disable = { table: { disable: true } };
+const disabledComponents = {
+  as: disable,
+  forwardedAs: disable,
+  ref: disable,
+  theme: disable,
+};
+
 export default {
   title: 'LineSeparator',
   component: LineSeparator,
   argTypes: {
-    as: { table: { disable: true } },
-    forwardedAs: { table: { disable: true } },
-    ref: { table: { disable: true } },
-    theme: { table: { disable: true } },
+    ...disabledComponents,
+    color: {
+      control: { type: 'radio' },
+      options: ['primary', 'accent'],
+    },
   },
 } as ComponentMeta<typeof LineSeparator>;
 
@@ -19,6 +28,7 @@ const Template: ComponentStory<typeof LineSeparator> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
+  color: 'accent',
   orientation: 'horizontal',
   thickness: 'regular',
 };
