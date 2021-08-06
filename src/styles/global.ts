@@ -22,15 +22,13 @@ ${({ theme }) => css`
     list-style: none;
   }
 
-  a:focus,
-  input:focus,
-  button:focus {
-    outline: 0.1rem solid ${theme.color.accent};
-  }
-
   a {
     text-decoration: none;
     color: inherit;
+  }
+
+  button {
+    cursor: pointer;
   }
 `}
 `;
