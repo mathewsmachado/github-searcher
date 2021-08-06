@@ -30,8 +30,9 @@
     "build-storybook": "build-storybook -s public",
     "commit:msg": "yarn commitlint --edit $1",
     "commit:pre": "yarn lint-staged --relative",
-    "format": "prettier --write . --ignore-path .gitignore",
+    "format": "prettier --write .",
     "lint": "eslint src --fix",
+    "plop": "plop --plopfile .plop/plopfile.js",
     "prepare": "husky install",
     "push:pre": "yarn typecheck; yarn test:coverage",
     "spellcheck": "cspell",
@@ -76,6 +77,7 @@
     "husky": ">=6",
     "jest-styled-components": "^7.0.5",
     "lint-staged": ">=10",
+    "plop": "^2.7.4",
     "prettier": "^2.3.2",
     "typescript": "^4.1.2"
   }

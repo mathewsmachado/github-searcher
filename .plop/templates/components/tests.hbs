@@ -1,0 +1,16 @@
+import { theme } from 'styles/theme';
+import { render, screen } from 'utils/tests';
+
+import { {{pascalCase name}} } from '.';
+
+describe('<{{pascalCase name}} />', () => {
+  it('should render a black version by default', () => {
+    render(<{{pascalCase name}}>Github Searcher</{{pascalCase name}}>);
+
+    expect(screen.getByText(/github searcher/i)).toHaveStyle({
+      color: theme.color.primary
+    });
+  });
+
+  it.skip('should ', () => {});
+});
