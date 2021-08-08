@@ -2,7 +2,13 @@
   "language": "en",
   "minWordLength": 2,
   "files": ["**/*"],
-  "ignorePaths": ["build", "coverage", "package*", "src/reportWebVitals.ts"],
+  "ignorePaths": [
+    "build",
+    "coverage",
+    "package*",
+    "src/reportWebVitals.ts",
+    "**/*.svg"
+  ],
   "words": [
     "webfonts",
     "vw",
