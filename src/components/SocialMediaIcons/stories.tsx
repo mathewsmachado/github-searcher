@@ -1,5 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+import { removeArgType } from 'utils/storybook';
+
 import { usernames } from './mock';
 import { SocialMediaIcons } from '.';
 
@@ -10,7 +12,7 @@ export default {
     backgrounds: { default: 'dark' },
   },
   argTypes: {
-    usernames: { table: { disable: true } },
+    ...removeArgType('usernames'),
   },
 } as ComponentMeta<typeof SocialMediaIcons>;
 
