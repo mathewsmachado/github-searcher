@@ -11,8 +11,6 @@ export default {
   },
   argTypes: {
     usernames: { table: { disable: true } },
-    label: { defaultValue: '' },
-    size: { defaultValue: 'xlarge' },
   },
 } as ComponentMeta<typeof SocialMediaIcons>;
 
@@ -24,14 +22,19 @@ export const OneIcon = Template.bind({});
 OneIcon.args = {
   label: 'check it on',
   usernames: usernames.one,
+  size: 'xlarge',
 };
 
 export const TwoIcons = Template.bind({});
 TwoIcons.args = {
+  label: '',
   usernames: usernames.two,
+  size: 'xlarge',
 };
 
 export const ThreeIcons = Template.bind({});
 ThreeIcons.args = {
+  label: '',
   usernames: usernames.three,
+  size: 'xlarge',
 };
