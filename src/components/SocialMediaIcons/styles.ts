@@ -2,17 +2,10 @@ import styled, { css, DefaultTheme } from 'styled-components';
 
 import { WrapperProps, IconsWrapperProps } from './types';
 
-const modifiers = {
-  wrapper: {
-    medium: (theme: DefaultTheme) => css`
-      font-size: ${theme.font.size.xsmall};
-    `,
-  },
-  iconsWrapper: {
-    hasMultipleIcons: () => css`
-      justify-content: space-between;
-    `,
-  },
+const wrapperModifiers = {
+  medium: (theme: DefaultTheme) => css`
+    font-size: ${theme.font.size.xsmall};
+  `,
 };
 
 export const Wrapper = styled.div<WrapperProps>`
@@ -21,16 +14,22 @@ export const Wrapper = styled.div<WrapperProps>`
     font-size: ${theme.font.size.small};
     color: ${theme.color.secondary};
 
-    ${size === 'medium' && modifiers.wrapper.medium(theme)}
+    ${size === 'medium' && wrapperModifiers.medium(theme)}
   `};
 `;
+
+const iconsWrapperModifiers = {
+  hasMultipleIcons: () => css`
+    justify-content: space-between;
+  `,
+};
 
 export const IconsWrapper = styled.div<IconsWrapperProps>`
   ${({ hasMultipleIcons }) => css`
     display: flex;
     justify-content: center;
 
-    ${hasMultipleIcons && modifiers.iconsWrapper.hasMultipleIcons()};
+    ${hasMultipleIcons && iconsWrapperModifiers.hasMultipleIcons()};
   `};
 `;
 
