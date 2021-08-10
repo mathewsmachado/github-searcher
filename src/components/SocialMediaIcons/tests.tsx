@@ -45,13 +45,16 @@ describe('<SocialMediaIcons />', () => {
   it('should render multiple icons', () => {
     render(<SocialMediaIcons usernames={usernames.three} />);
 
-    const [twitter, linkedin, github] = screen.getAllByRole(
-      'link'
-    ) as HTMLAnchorElement[];
+    const github = screen.getByRole('link', { name: /github/i });
+    const twitter = screen.getByRole('link', { name: /twitter/i });
+    const linkedin = screen.getByRole('link', { name: /linkedin/i });
 
-    expect(github.href).toMatch(new RegExp(usernames.three.github, 'gi'));
-    expect(linkedin.href).toMatch(new RegExp(usernames.three.linkedin, 'gi'));
-    expect(twitter.href).toMatch(new RegExp(usernames.three.twitter, 'gi'));
+    expect(twitter).toHaveAttribute('href', 'https://www.twitter.com/mathews');
+    expect(github).toHaveAttribute('href', 'https://www.github.com/machado');
+    expect(linkedin).toHaveAttribute(
+      'href',
+      'https://www.linkedin.com/in/amorim'
+    );
   });
 
   it('should render a centralized icon if there is only one and spaced-between otherwise', () => {

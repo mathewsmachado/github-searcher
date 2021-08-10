@@ -1,18 +1,19 @@
 import { IconType } from 'react-icons';
 
-type AllowedSocialMedias = 'github' | 'linkedin' | 'twitter';
+export type AllowedSocialMedias = 'github' | 'linkedin' | 'twitter';
 type AllowedSizes = 'medium' | 'xlarge';
 
-export type SocialMedia = {
-  name: AllowedSocialMedias;
+export type IconsSizeMapper = Record<AllowedSizes, number>;
+
+type SocialMediaMapperItem = {
   baseUrl: string;
   Icon: IconType;
 };
 
-export type ComponentData = {
-  iconsSizes: Partial<Record<AllowedSizes, number>>;
-  socialMedias: SocialMedia[];
-};
+export type SocialMediaMapper = Record<
+  AllowedSocialMedias,
+  SocialMediaMapperItem
+>;
 
 export type SocialMediaIconsProps = {
   usernames: Partial<Record<AllowedSocialMedias, string>>;

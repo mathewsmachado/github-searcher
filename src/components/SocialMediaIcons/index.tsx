@@ -2,30 +2,19 @@ import { FaLinkedinIn } from 'react-icons/fa';
 import { AiFillGithub, AiOutlineTwitter } from 'react-icons/ai';
 
 import * as S from './styles';
-import { ComponentData, SocialMedia, SocialMediaIconsProps } from './types';
+import {
+  AllowedSocialMedias,
+  IconsSizeMapper,
+  SocialMediaMapper,
+  SocialMediaIconsProps,
+} from './types';
 
-const COMPONENT_DATA: ComponentData = {
-  iconsSizes: {
-    medium: 20,
-    xlarge: 40,
-  },
-  socialMedias: [
-    {
-      name: 'twitter',
-      baseUrl: 'https://twitter.com',
-      Icon: AiOutlineTwitter,
-    },
-    {
-      name: 'linkedin',
-      baseUrl: 'https://www.linkedin.com/in',
-      Icon: FaLinkedinIn,
-    },
-    {
-      name: 'github',
-      baseUrl: 'https://www.github.com',
-      Icon: AiFillGithub,
-    },
-  ],
+const iconsSizesMapper: IconsSizeMapper = { medium: 20, xlarge: 40 };
+
+const socialMediaMapper: SocialMediaMapper = {
+  twitter: { baseUrl: 'https://www.twitter.com', Icon: AiOutlineTwitter },
+  linkedin: { baseUrl: 'https://www.linkedin.com/in', Icon: FaLinkedinIn },
+  github: { baseUrl: 'https://www.github.com', Icon: AiFillGithub },
 };
 
 export function SocialMediaIcons({
@@ -33,10 +22,17 @@ export function SocialMediaIcons({
   label,
   size = 'xlarge',
 }: SocialMediaIconsProps) {
-  const iconSize = COMPONENT_DATA.iconsSizes[size];
-  const socialMedias = COMPONENT_DATA.socialMedias
-    .map((media) => usernames[media.name] && media)
-    .filter(Boolean) as SocialMedia[];
+  const socialMedias = Object.entries(usernames).map(
+    ([socialMedia, username]) => {
+      const { baseUrl, Icon } =
+        socialMediaMapper[socialMedia as AllowedSocialMedias];
+      const link = `${baseUrl}/${username}`;
+      const title = `${socialMedia} icon`;
+
+      return { Icon, link, title };
+    }
+  );
+
   const hasMultipleIcons = socialMedias.length > 1;
 
   return (
@@ -44,16 +40,11 @@ export function SocialMediaIcons({
       {!!label && <S.Label>{label}</S.Label>}
 
       <S.IconsWrapper hasMultipleIcons={hasMultipleIcons}>
-        {socialMedias.map(({ name, baseUrl, Icon }) => {
-          const link = `${baseUrl}/${usernames[name]}`;
-          const title = `${name} icon`;
-
-          return (
-            <S.IconWrapper key={baseUrl} href={link}>
-              <Icon title={title} size={iconSize} />
-            </S.IconWrapper>
-          );
-        })}
+        {socialMedias.map(({ link, title, Icon }) => (
+          <S.IconWrapper key={link} href={link}>
+            <Icon title={title} size={iconsSizesMapper[size]} />
+          </S.IconWrapper>
+        ))}
       </S.IconsWrapper>
     </S.Wrapper>
   );
