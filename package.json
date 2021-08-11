@@ -18,6 +18,8 @@
     "collectCoverageFrom": [
       "<rootDir>/src/**/*.ts(x)?",
       "!<rootDir>/src/**/*.d.ts",
+      "!<rootDir>/src/**/stories.tsx",
+      "!<rootDir>/src/**/types.ts",
       "!<rootDir>/src/index.tsx",
       "!<rootDir>/src/reportWebVitals.ts"
     ],
