@@ -5,7 +5,6 @@ import { theme } from 'styles/theme';
 import * as S from './styles';
 import { LogoProps } from './types';
 
-// spell-checker:ignore zm
 export function Logo({ size = 'small', githubColor = 'primary' }: LogoProps) {
   return (
     <S.Wrapper size={size}>
