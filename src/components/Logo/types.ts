@@ -1,12 +1,6 @@
-type AllowedColors = 'primary' | 'secondary';
-
-type SvgMapperItem = { src: string; alt: string };
-
-export type SvgMapper = Record<AllowedColors, SvgMapperItem>;
-
 export type LogoProps = {
   size?: 'small' | 'medium' | 'large';
-  githubColor?: AllowedColors;
+  githubColor?: 'primary' | 'secondary';
 };
 
 export type ComponentsProps = Pick<LogoProps, 'size'>;

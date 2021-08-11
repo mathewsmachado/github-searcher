@@ -36,7 +36,7 @@ export const Wrapper = styled.div<ComponentsProps>`
   `};
 `;
 
-const svgModifiers = {
+const githubModifiers = {
   medium: () => css`
     max-width: 15rem;
   `,
@@ -45,10 +45,10 @@ const svgModifiers = {
   `,
 };
 
-export const Svg = styled.img<ComponentsProps>`
+export const Github = styled.svg<ComponentsProps>`
   ${({ size }) => css`
     max-width: 7.5rem;
 
-    ${size !== 'small' && svgModifiers[size!]()}
+    ${size !== 'small' && githubModifiers[size!]()};
   `}
 `;
