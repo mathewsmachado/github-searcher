@@ -4,6 +4,9 @@ export type ButtonProps = {
   onClick: () => void;
   color?: 'primary' | 'accent';
   size?: 'small' | 'medium' | 'large';
+  minimal?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export type WrapperProps = Pick<ButtonProps, 'color' | 'size'>;
+export type WrapperProps = {
+  isChildrenText: boolean;
+} & ButtonProps;
