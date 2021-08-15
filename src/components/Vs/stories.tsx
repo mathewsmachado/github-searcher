@@ -1,13 +1,13 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+import { darkBackground } from 'utils/storybook';
+
 import { Vs } from '.';
 
 export default {
   title: 'Vs',
   component: Vs,
-  parameters: {
-    backgrounds: { default: 'dark' },
-  },
+  ...darkBackground(),
 } as ComponentMeta<typeof Vs>;
 
 const Template: ComponentStory<typeof Vs> = (args) => <Vs {...args} />;

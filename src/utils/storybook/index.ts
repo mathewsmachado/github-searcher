@@ -11,4 +11,14 @@ function removeArgType(...propNames: string[]): RemoveArgTypeReturn {
   );
 }
 
+type DarkBackground =
+  | { parameters: { backgrounds: { default: 'dark' } } }
+  | { backgrounds: { default: 'dark' } };
+
+export function darkBackground(topLevel = true): DarkBackground {
+  const DARK_BACKGROUND: DarkBackground = { backgrounds: { default: 'dark' } };
+
+  return topLevel ? { parameters: DARK_BACKGROUND } : DARK_BACKGROUND;
+}
+
 export { removeArgType };

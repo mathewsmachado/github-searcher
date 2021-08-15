@@ -1,6 +1,7 @@
+/* eslint-disable  */
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { removeArgType } from 'utils/storybook';
+import { darkBackground, removeArgType } from 'utils/storybook';
 
 import mock from './mock.jpg';
 import { Avatar } from '.';
@@ -8,9 +9,7 @@ import { Avatar } from '.';
 export default {
   title: 'Avatar',
   component: Avatar,
-  parameters: {
-    backgrounds: { default: 'dark' },
-  },
+  ...darkBackground(),
   argTypes: { ...removeArgType('pictureUrl', 'type', 'as') },
 } as ComponentMeta<typeof Avatar>;
 

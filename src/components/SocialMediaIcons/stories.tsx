@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { removeArgType } from 'utils/storybook';
+import { darkBackground, removeArgType } from 'utils/storybook';
 
 import { usernames } from './mock';
 import { SocialMediaIcons } from '.';
@@ -8,9 +8,7 @@ import { SocialMediaIcons } from '.';
 export default {
   title: 'SocialMediaIcons',
   component: SocialMediaIcons,
-  parameters: {
-    backgrounds: { default: 'dark' },
-  },
+  ...darkBackground(),
   argTypes: {
     ...removeArgType('usernames'),
   },

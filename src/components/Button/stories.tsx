@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { removeArgType } from 'utils/storybook';
+import { darkBackground, removeArgType } from 'utils/storybook';
 import { Vs } from 'components/Vs';
 
 import { Button } from '.';
@@ -8,9 +8,7 @@ import { Button } from '.';
 export default {
   title: 'Button',
   component: Button,
-  parameters: {
-    backgrounds: { default: 'dark' },
-  },
+  ...darkBackground(),
   argTypes: {
     ...removeArgType('children', 'onClick'),
   },

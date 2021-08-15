@@ -1,4 +1,4 @@
-import { removeArgType } from '.';
+import { darkBackground, removeArgType } from '.';
 
 describe('removeArgTypeFromControls', () => {
   it('should return an object with the keys being the passed arguments', () => {
@@ -21,6 +21,18 @@ describe('removeArgTypeFromControls', () => {
       as: { table: { disable: true } },
       ref: { table: { disable: true } },
       theme: { table: { disable: true } },
+    });
+  });
+});
+
+describe('darkBackground', () => {
+  it('should return match the expected object', () => {
+    expect(darkBackground()).toMatchObject({
+      parameters: { backgrounds: { default: 'dark' } },
+    });
+
+    expect(darkBackground(false)).toMatchObject({
+      backgrounds: { default: 'dark' },
     });
   });
 });
