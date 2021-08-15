@@ -1,23 +1,24 @@
-import { darkBackground, removeArgType } from '.';
+import { darkBackground, disableArgTypes } from '.';
 
-describe('removeArgTypeFromControls', () => {
-  it('should return an object with the keys being the passed arguments', () => {
-    expect(removeArgType('as')).toHaveProperty('as');
+describe('disableArgType', () => {
+  it('should match the expected object', () => {
+    expect(disableArgTypes(['as'])).toMatchObject({
+      argTypes: { as: { table: { disable: true } } },
+    });
 
-    const result = removeArgType('as', 'ref', 'theme');
+    expect(disableArgTypes(['as', 'ref', 'theme'])).toMatchObject({
+      argTypes: {
+        as: { table: { disable: true } },
+        ref: { table: { disable: true } },
+        theme: { table: { disable: true } },
+      },
+    });
 
-    expect(result).toHaveProperty('as');
-    expect(result).toHaveProperty('ref');
-    expect(result).toHaveProperty('theme');
-  });
-
-  it(`should return an object with each value being
-  '{ table: { disable: true } }'`, () => {
-    expect(removeArgType('as')).toMatchObject({
+    expect(disableArgTypes(['as'], false)).toMatchObject({
       as: { table: { disable: true } },
     });
 
-    expect(removeArgType('as', 'ref', 'theme')).toMatchObject({
+    expect(disableArgTypes(['as', 'ref', 'theme'], false)).toMatchObject({
       as: { table: { disable: true } },
       ref: { table: { disable: true } },
       theme: { table: { disable: true } },
@@ -26,7 +27,7 @@ describe('removeArgTypeFromControls', () => {
 });
 
 describe('darkBackground', () => {
-  it('should return match the expected object', () => {
+  it('should match the expected object', () => {
     expect(darkBackground()).toMatchObject({
       parameters: { backgrounds: { default: 'dark' } },
     });

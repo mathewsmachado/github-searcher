@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { darkBackground, removeArgType } from 'utils/storybook';
+import { darkBackground, disableArgTypes } from 'utils/storybook';
 import { Vs } from 'components/Vs';
 
 import { Button } from '.';
@@ -9,9 +9,7 @@ export default {
   title: 'Button',
   component: Button,
   ...darkBackground(),
-  argTypes: {
-    ...removeArgType('children', 'onClick'),
-  },
+  ...disableArgTypes(['children', 'onClick']),
 } as ComponentMeta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;

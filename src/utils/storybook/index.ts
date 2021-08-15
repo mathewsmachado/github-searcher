@@ -1,14 +1,20 @@
-type RemoveArgTypeReturn = { [K: string]: { table: { disable: boolean } } };
+type DisableArgType =
+  | { argTypes: { [K: string]: { table: { disable: boolean } } } }
+  | { [K: string]: { table: { disable: boolean } } };
 
-function removeArgType(propNames: string): RemoveArgTypeReturn;
-function removeArgType(...propNames: string[]): RemoveArgTypeReturn;
-function removeArgType(...propNames: string[]): RemoveArgTypeReturn {
+export function disableArgTypes(
+  propsToDisable: string[],
+  topLevel = true
+): DisableArgType {
+  const OBJECT_TOP_LEVEL_PROP = 'argTypes';
   const OBJECT_VALUE = { table: { disable: true } };
 
-  return propNames.reduce(
+  const disabledProps = propsToDisable.reduce(
     (acc, curr) => ({ ...acc, [curr]: OBJECT_VALUE }),
     {}
   );
+
+  return topLevel ? { [OBJECT_TOP_LEVEL_PROP]: disabledProps } : disabledProps;
 }
 
 type DarkBackground =
@@ -16,9 +22,8 @@ type DarkBackground =
   | { backgrounds: { default: 'dark' } };
 
 export function darkBackground(topLevel = true): DarkBackground {
-  const DARK_BACKGROUND: DarkBackground = { backgrounds: { default: 'dark' } };
+  const OBJECT_PROP = 'parameters';
+  const OBJECT_VALUE: DarkBackground = { backgrounds: { default: 'dark' } };
 
-  return topLevel ? { parameters: DARK_BACKGROUND } : DARK_BACKGROUND;
+  return topLevel ? { [OBJECT_PROP]: OBJECT_VALUE } : OBJECT_VALUE;
 }
-
-export { removeArgType };

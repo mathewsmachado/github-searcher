@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { removeArgType } from 'utils/storybook';
+import { disableArgTypes } from 'utils/storybook';
 
 import { LineSeparator } from '.';
 
@@ -8,7 +8,7 @@ export default {
   title: 'LineSeparator',
   component: LineSeparator,
   argTypes: {
-    ...removeArgType('as', 'forwardedAs', 'ref', 'theme'),
+    ...disableArgTypes(['as', 'forwardedAs', 'ref', 'theme'], false),
     color: {
       control: { type: 'radio' },
       options: ['primary', 'accent'],
