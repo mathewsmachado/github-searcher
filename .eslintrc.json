@@ -13,7 +13,8 @@
   "rules": {
     "import/prefer-default-export": "off",
     "react/react-in-jsx-scope": "off",
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off"
   },
   "overrides": [
     {
@@ -24,15 +25,17 @@
       }
     },
     {
+      "files": ["src/**/style?(s).ts?(x)"],
+      "rules": { "@typescript-eslint/no-use-before-define": "off" }
+    },
+    {
       "files": [
         "src/**/stories.tsx",
         "src/**/test?(s).ts?(x)",
         "src/setupTests.ts",
         "src/utils/tests/*"
       ],
-      "rules": {
-        "import/no-extraneous-dependencies": "off"
-      }
+      "rules": { "import/no-extraneous-dependencies": "off" }
     }
   ]
 }
