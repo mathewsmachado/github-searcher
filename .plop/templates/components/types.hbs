@@ -5,4 +5,4 @@ export type {{pascalCase name}}Props = {
   color?: 'primary' | 'accent';
 };
 
-export type WrapperProps = Exclude<{{pascalCase name}}Props, 'children'>;
+export type WrapperProps = Omit<{{pascalCase name}}Props, 'children'>;

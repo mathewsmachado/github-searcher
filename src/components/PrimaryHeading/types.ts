@@ -4,4 +4,4 @@ export type PrimaryHeadingProps = {
   unfilled?: boolean;
 };
 
-export type WrapperProps = Exclude<PrimaryHeadingProps, 'children'>;
+export type WrapperProps = Omit<PrimaryHeadingProps, 'children'>;

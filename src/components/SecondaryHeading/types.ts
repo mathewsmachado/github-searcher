@@ -4,4 +4,4 @@ export type SecondaryHeadingProps = {
   thin?: boolean;
 };
 
-export type WrapperProps = Exclude<SecondaryHeadingProps, 'children'>;
+export type WrapperProps = Omit<SecondaryHeadingProps, 'children'>;
