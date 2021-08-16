@@ -13,6 +13,10 @@ const wrapperModifiers = {
     ${PrimaryHeading} {
       font-size: 5rem;
     }
+
+    ${Github} {
+      max-width: 15rem;
+    }
   `,
   large: () => css`
     display: block;
@@ -20,6 +24,10 @@ const wrapperModifiers = {
     ${PrimaryHeading} {
       font-size: 7rem;
       line-height: 7rem;
+    }
+
+    ${Github} {
+      max-width: 22.5rem;
     }
   `,
 };
@@ -38,19 +46,6 @@ export const Wrapper = styled.div<ComponentsProps>`
   `};
 `;
 
-const githubModifiers = {
-  medium: () => css`
-    max-width: 15rem;
-  `,
-  large: () => css`
-    max-width: 22.5rem;
-  `,
-};
-
-export const Github = styled.svg<ComponentsProps>`
-  ${({ size }) => css`
-    max-width: 7.5rem;
-
-    ${size !== 'small' && githubModifiers[size!]()};
-  `}
+export const Github = styled.svg`
+  max-width: 7.5rem;
 `;

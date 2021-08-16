@@ -1,10 +1,8 @@
-import { InputHTMLAttributes } from 'react';
-
 import styled, { css } from 'styled-components';
 
 import { Wrapper as GithubSearcherIcon } from 'components/GithubSearcherIcon/styles';
 
-export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
+export type WrapperProps = {
   icon?: boolean;
   error?: string;
 };
@@ -19,13 +17,18 @@ const wrapperModifiers = {
         width: 5.5rem;
       }
     }
+
+    ${InputField} {
+      padding-left: 0;
+      margin-left: -0.4rem;
+    }
   `,
   error: () => css`
     border-color: red;
   `,
 };
 
-export const Wrapper = styled.div<InputProps>`
+export const Wrapper = styled.div<WrapperProps>`
   ${({ theme, icon, error }) => css`
     display: flex;
     align-items: center;
@@ -37,23 +40,14 @@ export const Wrapper = styled.div<InputProps>`
   `};
 `;
 
-const inputModifiers = {
-  icon: () => css`
-    padding-left: 0;
-    margin-left: -0.4rem;
-  `,
-};
-
-export const Input = styled.input<InputProps>`
-  ${({ theme, icon }) => css`
+export const InputField = styled.input`
+  ${({ theme }) => css`
     width: 100%;
     padding: 1rem;
     font-family: ${theme.font.family.secondary};
     background: transparent;
     border: none;
     outline: none;
-
-    ${icon && inputModifiers.icon()}
   `}
 `;
 

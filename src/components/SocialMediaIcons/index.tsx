@@ -46,10 +46,10 @@ export function SocialMediaIcons({
   const hasMultipleIcons = socialMedias.length > 1;
 
   return (
-    <S.Wrapper size={size}>
+    <S.Wrapper size={size} hasMultipleIcons={hasMultipleIcons}>
       {!!label && <S.Label>{label}</S.Label>}
 
-      <S.IconsWrapper hasMultipleIcons={hasMultipleIcons}>
+      <S.IconsWrapper>
         {socialMedias.map(({ link, title, Icon }) => (
           <S.IconWrapper key={link} href={link}>
             <Icon title={title} size={iconsSizesMapper[size]} />

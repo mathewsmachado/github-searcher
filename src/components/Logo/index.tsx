@@ -11,7 +11,6 @@ export function Logo({ size = 'small', githubColor = 'primary' }: LogoProps) {
   return (
     <S.Wrapper size={size}>
       <S.Github
-        size={size}
         fill={theme.color[githubColor]}
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 360.18 97.41'
