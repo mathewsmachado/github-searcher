@@ -6,7 +6,25 @@ export type ComponentsProps = {
   size?: 'small' | 'medium' | 'large';
 };
 
-const wrapperModifiers = {
+export const Wrapper = styled.div<ComponentsProps>`
+  ${({ size }) => css`
+    display: flex;
+    align-items: center;
+
+    ${PrimaryHeading} {
+      font-size: 2.7rem;
+      margin-left: 0.4rem;
+    }
+
+    ${size !== 'small' && modifiers[size!]()}
+  `};
+`;
+
+export const Github = styled.svg`
+  max-width: 7.5rem;
+`;
+
+const modifiers = {
   medium: () => css`
     align-items: baseline;
 
@@ -31,21 +49,3 @@ const wrapperModifiers = {
     }
   `,
 };
-
-export const Wrapper = styled.div<ComponentsProps>`
-  ${({ size }) => css`
-    display: flex;
-    align-items: center;
-
-    ${PrimaryHeading} {
-      font-size: 2.7rem;
-      margin-left: 0.4rem;
-    }
-
-    ${size !== 'small' && wrapperModifiers[size!]()}
-  `};
-`;
-
-export const Github = styled.svg`
-  max-width: 7.5rem;
-`;

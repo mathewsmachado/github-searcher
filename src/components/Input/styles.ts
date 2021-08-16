@@ -7,27 +7,6 @@ export type WrapperProps = {
   error?: string;
 };
 
-const wrapperModifiers = {
-  icon: () => css`
-    padding: 0 0 0 1rem;
-
-    ${GithubSearcherIcon} {
-      &,
-      & > * {
-        width: 5.5rem;
-      }
-    }
-
-    ${InputField} {
-      padding-left: 0;
-      margin-left: -0.4rem;
-    }
-  `,
-  error: () => css`
-    border-color: red;
-  `,
-};
-
 export const Wrapper = styled.div<WrapperProps>`
   ${({ theme, icon, error }) => css`
     display: flex;
@@ -35,8 +14,8 @@ export const Wrapper = styled.div<WrapperProps>`
     border: 1px solid ${theme.color.primary};
     border-radius: ${theme.border.radius.medium};
 
-    ${icon && wrapperModifiers.icon()}
-    ${error && wrapperModifiers.error()}
+    ${icon && modifiers.icon()}
+    ${error && modifiers.error()}
   `};
 `;
 
@@ -60,3 +39,24 @@ export const Error = styled.span`
     color: red;
   `}
 `;
+
+const modifiers = {
+  icon: () => css`
+    padding: 0 0 0 1rem;
+
+    ${GithubSearcherIcon} {
+      &,
+      & > * {
+        width: 5.5rem;
+      }
+    }
+
+    ${InputField} {
+      padding-left: 0;
+      margin-left: -0.4rem;
+    }
+  `,
+  error: () => css`
+    border-color: red;
+  `,
+};

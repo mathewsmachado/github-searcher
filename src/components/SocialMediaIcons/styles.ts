@@ -7,17 +7,6 @@ export type WrapperProps = {
   size?: AllowedSizes;
 };
 
-const modifiers = {
-  medium: (theme: DefaultTheme) => css`
-    font-size: ${theme.font.size.xsmall};
-  `,
-  hasMultipleIcons: () => css`
-    ${IconsWrapper} {
-      justify-content: space-between;
-    }
-  `,
-};
-
 export const Wrapper = styled.div<WrapperProps>`
   ${({ theme, size, hasMultipleIcons }) => css`
     text-align: center;
@@ -42,3 +31,14 @@ export const Label = styled.span`
     margin-bottom: ${theme.spacing.xxsmall};
   `};
 `;
+
+const modifiers = {
+  medium: (theme: DefaultTheme) => css`
+    font-size: ${theme.font.size.xsmall};
+  `,
+  hasMultipleIcons: () => css`
+    ${IconsWrapper} {
+      justify-content: space-between;
+    }
+  `,
+};

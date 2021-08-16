@@ -5,13 +5,6 @@ export type WrapperProps = {
   unfilled?: boolean;
 };
 
-const modifiers = {
-  unfilled: (theme: DefaultTheme) => css`
-    color: ${theme.color.secondary};
-    -webkit-text-stroke: 2px ${theme.color.primary};
-  `,
-};
-
 export const Wrapper = styled.h1<WrapperProps>`
   ${({ theme, color, unfilled }) => css`
     font-size: ${theme.font.size.xhuge};
@@ -20,3 +13,10 @@ export const Wrapper = styled.h1<WrapperProps>`
     ${unfilled && modifiers.unfilled(theme)}
   `};
 `;
+
+const modifiers = {
+  unfilled: (theme: DefaultTheme) => css`
+    color: ${theme.color.secondary};
+    -webkit-text-stroke: 2px ${theme.color.primary};
+  `,
+};

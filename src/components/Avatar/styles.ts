@@ -6,40 +6,6 @@ export type WrapperProps = {
   href?: string;
 };
 
-const modifiers = {
-  row: () => css`
-    flex-direction: row;
-
-    ${About} {
-      margin-top: 0;
-    }
-
-    ${Username} {
-      display: block;
-      margin-left: 0.8rem;
-    }
-
-    ${Name} {
-      margin-top: 0;
-      font-size: 2.6rem;
-    }
-
-    ${NamesWrapper} {
-      display: flex;
-      align-items: baseline;
-    }
-
-    ${Image} {
-      max-width: 6rem;
-      margin-right: 1rem;
-      border-width: 0.2rem;
-    }
-  `,
-  asLink: () => css`
-    cursor: pointer;
-  `,
-};
-
 export const Wrapper = styled.div<WrapperProps>`
   ${({ theme, direction, as }) => css`
     display: flex;
@@ -87,3 +53,37 @@ export const About = styled.span`
     color: ${theme.color.secondary};
   `};
 `;
+
+const modifiers = {
+  row: () => css`
+    flex-direction: row;
+
+    ${About} {
+      margin-top: 0;
+    }
+
+    ${Username} {
+      display: block;
+      margin-left: 0.8rem;
+    }
+
+    ${Name} {
+      margin-top: 0;
+      font-size: 2.6rem;
+    }
+
+    ${NamesWrapper} {
+      display: flex;
+      align-items: baseline;
+    }
+
+    ${Image} {
+      max-width: 6rem;
+      margin-right: 1rem;
+      border-width: 0.2rem;
+    }
+  `,
+  asLink: () => css`
+    cursor: pointer;
+  `,
+};

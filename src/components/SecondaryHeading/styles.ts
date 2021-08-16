@@ -5,12 +5,6 @@ export type WrapperProps = {
   thin?: boolean;
 };
 
-const modifiers = {
-  thin: (theme: DefaultTheme) => css`
-    font-weight: ${theme.font.weight.normal};
-  `,
-};
-
 export const Wrapper = styled.h2<WrapperProps>`
   ${({ theme, size, thin }) => css`
     color: ${theme.color.primary};
@@ -20,3 +14,9 @@ export const Wrapper = styled.h2<WrapperProps>`
     ${thin && modifiers.thin(theme)}
   `};
 `;
+
+const modifiers = {
+  thin: (theme: DefaultTheme) => css`
+    font-weight: ${theme.font.weight.normal};
+  `,
+};
