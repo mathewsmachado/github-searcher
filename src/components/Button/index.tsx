@@ -1,5 +1,6 @@
 import * as S from './styles';
-import { ButtonProps } from './types';
+
+type ButtonProps = Omit<S.WrapperProps, 'isChildrenText'>;
 
 export function Button({
   children,

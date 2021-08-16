@@ -2,11 +2,10 @@ import { theme } from 'styles/theme';
 import { LineSeparator } from 'components/LineSeparator';
 
 import * as S from './styles';
-import { GithubSearcherIconProps } from './types';
 
 export function GithubSearcherIcon({
   separator = false,
-}: GithubSearcherIconProps) {
+}: S.GithubSearcherIconProps) {
   return (
     <S.Wrapper separator={separator}>
       <svg

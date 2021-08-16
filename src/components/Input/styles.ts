@@ -1,8 +1,13 @@
+import { InputHTMLAttributes } from 'react';
+
 import styled, { css } from 'styled-components';
 
 import { Wrapper as GithubSearcherIcon } from 'components/GithubSearcherIcon/styles';
 
-import { InputProps } from './types';
+export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
+  icon?: boolean;
+  error?: string;
+};
 
 const wrapperModifiers = {
   icon: () => css`

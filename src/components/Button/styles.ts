@@ -1,6 +1,13 @@
+import { ButtonHTMLAttributes } from 'react';
 import styled, { css, DefaultTheme } from 'styled-components';
 
-import { WrapperProps } from './types';
+export type WrapperProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  isChildrenText: boolean;
+  onClick: () => void;
+  color?: 'primary' | 'accent';
+  size?: 'small' | 'medium' | 'large';
+  minimal?: boolean;
+};
 
 const modifiers = {
   primary: (theme: DefaultTheme) => css`

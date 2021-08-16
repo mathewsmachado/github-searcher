@@ -2,7 +2,9 @@ import styled, { css } from 'styled-components';
 
 import { Wrapper as PrimaryHeading } from 'components/PrimaryHeading/styles';
 
-import { ComponentsProps } from './types';
+export type ComponentsProps = {
+  size?: 'small' | 'medium' | 'large';
+};
 
 const wrapperModifiers = {
   medium: () => css`

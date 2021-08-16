@@ -1,5 +1,8 @@
 import * as S from './styles';
-import { SecondaryHeadingProps } from './types';
+
+type SecondaryHeadingProps = S.WrapperProps & {
+  children: string;
+};
 
 export function SecondaryHeading({
   children,

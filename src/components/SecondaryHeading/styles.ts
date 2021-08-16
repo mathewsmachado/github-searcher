@@ -1,6 +1,9 @@
 import styled, { css, DefaultTheme } from 'styled-components';
 
-import { WrapperProps } from './types';
+export type WrapperProps = {
+  size?: 'huge' | 'xlarge';
+  thin?: boolean;
+};
 
 const modifiers = {
   thin: (theme: DefaultTheme) => css`

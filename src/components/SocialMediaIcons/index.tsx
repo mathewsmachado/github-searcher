@@ -1,17 +1,27 @@
+import { IconType } from 'react-icons';
 import { FaLinkedinIn } from 'react-icons/fa';
 import { AiFillGithub, AiOutlineTwitter } from 'react-icons/ai';
 
 import * as S from './styles';
-import {
-  AllowedSocialMedias,
-  IconsSizeMapper,
-  SocialMediaMapper,
-  SocialMediaIconsProps,
-} from './types';
 
-const iconsSizesMapper: IconsSizeMapper = { medium: 20, xlarge: 40 };
+type AllowedSocialMedias = 'github' | 'linkedin' | 'twitter';
 
-const socialMediaMapper: SocialMediaMapper = {
+type SocialMediaMapperItem = {
+  baseUrl: string;
+  Icon: IconType;
+};
+
+type SocialMediaIconsProps = S.WrapperProps & {
+  usernames: Partial<Record<AllowedSocialMedias, string>>;
+  label?: string;
+};
+
+const iconsSizesMapper: Record<S.AllowedSizes, number> = {
+  medium: 20,
+  xlarge: 40,
+};
+
+const socialMediaMapper: Record<AllowedSocialMedias, SocialMediaMapperItem> = {
   twitter: { baseUrl: 'https://www.twitter.com', Icon: AiOutlineTwitter },
   linkedin: { baseUrl: 'https://www.linkedin.com/in', Icon: FaLinkedinIn },
   github: { baseUrl: 'https://www.github.com', Icon: AiFillGithub },

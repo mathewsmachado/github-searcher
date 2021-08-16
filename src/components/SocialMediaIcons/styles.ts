@@ -1,6 +1,14 @@
 import styled, { css, DefaultTheme } from 'styled-components';
 
-import { WrapperProps, IconsWrapperProps } from './types';
+export type AllowedSizes = 'medium' | 'xlarge';
+
+export type WrapperProps = {
+  size?: AllowedSizes;
+};
+
+type IconsWrapperProps = {
+  hasMultipleIcons: boolean;
+};
 
 const wrapperModifiers = {
   medium: (theme: DefaultTheme) => css`

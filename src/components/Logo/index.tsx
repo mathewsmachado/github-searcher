@@ -1,9 +1,11 @@
+import { theme } from 'styles/theme';
 import { PrimaryHeading } from 'components/PrimaryHeading';
 
-import { theme } from 'styles/theme';
-
 import * as S from './styles';
-import { LogoProps } from './types';
+
+type LogoProps = S.ComponentsProps & {
+  githubColor?: 'primary' | 'secondary';
+};
 
 export function Logo({ size = 'small', githubColor = 'primary' }: LogoProps) {
   return (

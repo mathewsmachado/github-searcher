@@ -1,9 +1,8 @@
 import { GithubSearcherIcon } from 'components/GithubSearcherIcon';
 
 import * as S from './styles';
-import { InputProps } from './types';
 
-export function Input({ icon = false, error = '', ...props }: InputProps) {
+export function Input({ icon = false, error = '', ...props }: S.InputProps) {
   return (
     <>
       <S.Wrapper icon={icon} error={error}>

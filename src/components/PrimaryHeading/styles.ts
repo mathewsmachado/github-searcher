@@ -1,6 +1,9 @@
 import styled, { css, DefaultTheme } from 'styled-components';
 
-import { WrapperProps } from './types';
+export type WrapperProps = {
+  color?: 'primary' | 'accent';
+  unfilled?: boolean;
+};
 
 const modifiers = {
   unfilled: (theme: DefaultTheme) => css`

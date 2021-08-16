@@ -2,7 +2,9 @@ import styled, { css } from 'styled-components';
 
 import { LineSeparator } from 'components/LineSeparator';
 
-import { GithubSearcherIconProps } from './types';
+export type GithubSearcherIconProps = {
+  separator?: boolean;
+};
 
 export const Wrapper = styled.div<GithubSearcherIconProps>`
   ${({ separator }) =>
