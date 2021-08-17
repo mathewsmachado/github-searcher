@@ -1,3 +1,5 @@
+import { CSSProperties } from 'react';
+
 type DisableArgType =
   | { argTypes: { [K: string]: { table: { disable: boolean } } } }
   | { [K: string]: { table: { disable: boolean } } };
@@ -26,4 +28,27 @@ export function darkBackground(topLevel = true): DarkBackground {
   const OBJECT_VALUE: DarkBackground = { backgrounds: { default: 'dark' } };
 
   return topLevel ? { [OBJECT_PROP]: OBJECT_VALUE } : OBJECT_VALUE;
+}
+
+type StoryContainerProps = {
+  children: JSX.Element;
+  style?: CSSProperties;
+};
+
+export function StoryContainer({
+  children,
+  style,
+}: StoryContainerProps): JSX.Element {
+  return (
+    <div
+      style={{
+        maxWidth: '20rem',
+        display: 'block',
+        margin: '0 auto',
+        ...style,
+      }}
+    >
+      {children}
+    </div>
+  );
 }

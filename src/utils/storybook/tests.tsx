@@ -1,4 +1,6 @@
-import { darkBackground, disableArgTypes } from '.';
+import { render, screen } from 'utils/tests';
+
+import { darkBackground, disableArgTypes, StoryContainer } from '.';
 
 describe('disableArgType', () => {
   it('should match the expected object', () => {
@@ -34,6 +36,33 @@ describe('darkBackground', () => {
 
     expect(darkBackground(false)).toMatchObject({
       backgrounds: { default: 'dark' },
+    });
+  });
+});
+
+describe('<StoryContainer />', () => {
+  it('should render the passed children', () => {
+    render(
+      <StoryContainer>
+        <h1>Github Searcher</h1>
+      </StoryContainer>
+    );
+
+    expect(screen.getByRole('heading')).toBeInTheDocument();
+  });
+
+  it('should render the story with the passed style', () => {
+    render(
+      <StoryContainer
+        style={{ maxWidth: '50px', backgroundColor: 'rebeccapurple' }}
+      >
+        <h1>Github Searcher</h1>
+      </StoryContainer>
+    );
+
+    expect(screen.getByRole('heading').parentElement).toHaveStyle({
+      maxWidth: '50px',
+      backgroundColor: 'rebeccapurple',
     });
   });
 });

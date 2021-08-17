@@ -1,6 +1,10 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { darkBackground, disableArgTypes } from 'utils/storybook';
+import {
+  darkBackground,
+  disableArgTypes,
+  StoryContainer,
+} from 'utils/storybook';
 
 import { SocialMediaIcons } from '.';
 
@@ -34,3 +38,13 @@ ThreeIcons.args = {
   ...TwoIcons.args,
   usernames: { ...TwoIcons.args.usernames, linkedin: 'amorim' },
 };
+
+export const Contained = Template.bind({});
+Contained.args = ThreeIcons.args;
+Contained.decorators = [
+  (Story) => (
+    <StoryContainer>
+      <Story />
+    </StoryContainer>
+  ),
+];

@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryContainer } from 'utils/storybook';
 
 import { GithubSearcherIcon } from '.';
 
@@ -20,8 +21,8 @@ export const Contained = Template.bind({});
 Contained.args = Default.args;
 Contained.decorators = [
   (Story) => (
-    <div style={{ width: '200px' }}>
+    <StoryContainer>
       <Story />
-    </div>
+    </StoryContainer>
   ),
 ];
