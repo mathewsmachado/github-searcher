@@ -3,11 +3,11 @@ import styled, { css } from 'styled-components';
 import { theme } from 'styles/theme';
 import { LineSeparator } from 'components/LineSeparator';
 
-type GithubSearcherIconProps = {
+type Props = {
   separator?: boolean;
 };
 
-export const Wrapper = styled.div<GithubSearcherIconProps>`
+export const Wrapper = styled.div<Props>`
   ${({ separator }) =>
     separator &&
     css`
@@ -25,9 +25,7 @@ export const Wrapper = styled.div<GithubSearcherIconProps>`
     `};
 `;
 
-export function GithubSearcherIcon({
-  separator = false,
-}: GithubSearcherIconProps) {
+export function GithubSearcherIcon({ separator = false }: Props) {
   return (
     <Wrapper separator={separator}>
       <svg

@@ -11,7 +11,7 @@ type SocialMediaMapperItem = {
   Icon: IconType;
 };
 
-type SocialMediaIconsProps = Pick<S.WrapperProps, 'size'> & {
+type Props = Pick<S.Props, 'size'> & {
   usernames: Partial<Record<AllowedSocialMedias, string>>;
   label?: string;
 };
@@ -27,11 +27,7 @@ const socialMediaMapper: Record<AllowedSocialMedias, SocialMediaMapperItem> = {
   github: { baseUrl: 'https://www.github.com', Icon: AiFillGithub },
 };
 
-export function SocialMediaIcons({
-  usernames,
-  label,
-  size = 'xlarge',
-}: SocialMediaIconsProps) {
+export function SocialMediaIcons({ usernames, label, size = 'xlarge' }: Props) {
   const socialMedias = Object.entries(usernames).map(
     ([socialMedia, username]) => {
       const { baseUrl, Icon } =

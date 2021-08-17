@@ -1,6 +1,6 @@
 import * as S from './styles';
 
-type ButtonProps = Omit<S.WrapperProps, 'isChildrenText'>;
+type Props = Omit<S.Props, 'isChildrenText'>;
 
 export function Button({
   children,
@@ -9,7 +9,7 @@ export function Button({
   size = 'small',
   minimal = false,
   ...props
-}: ButtonProps) {
+}: Props) {
   const isChildrenText = typeof children === 'string';
 
   return (

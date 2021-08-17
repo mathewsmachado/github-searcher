@@ -6,7 +6,7 @@ type WrapperProps = {
   thin?: boolean;
 };
 
-type SecondaryHeadingProps = WrapperProps & {
+type Props = WrapperProps & {
   children: string;
 };
 
@@ -30,7 +30,7 @@ export function SecondaryHeading({
   children,
   size = 'huge',
   thin = false,
-}: SecondaryHeadingProps) {
+}: Props) {
   return (
     <Wrapper size={size} thin={thin}>
       {children}

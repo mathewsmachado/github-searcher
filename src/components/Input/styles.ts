@@ -2,12 +2,12 @@ import styled, { css } from 'styled-components';
 
 import { Wrapper as GithubSearcherIcon } from 'components/GithubSearcherIcon';
 
-export type WrapperProps = {
+export type Props = {
   icon?: boolean;
   error?: string;
 };
 
-export const Wrapper = styled.div<WrapperProps>`
+export const Wrapper = styled.div<Props>`
   ${({ theme, icon, error }) => css`
     display: flex;
     align-items: center;

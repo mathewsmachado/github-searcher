@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes } from 'react';
 import styled, { css, DefaultTheme } from 'styled-components';
 
-export type WrapperProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+export type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   isChildrenText: boolean;
   onClick: () => void;
   color?: 'primary' | 'accent';
@@ -9,7 +9,7 @@ export type WrapperProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   minimal?: boolean;
 };
 
-export const Wrapper = styled.button<WrapperProps>`
+export const Wrapper = styled.button<Props>`
   ${({ theme, color, size, minimal, isChildrenText }) => css`
     min-width: 4rem;
     min-height: 4rem;

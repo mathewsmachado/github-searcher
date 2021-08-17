@@ -1,11 +1,11 @@
 /* eslint-disable react/require-default-props */
 import { theme } from 'styles/theme';
 
-type VsProps = {
+type Props = {
   color?: 'secondary' | 'accent';
 };
 
-export function Vs({ color = 'accent' }: VsProps) {
+export function Vs({ color = 'accent' }: Props) {
   return (
     <svg
       fill={theme.color[color]}

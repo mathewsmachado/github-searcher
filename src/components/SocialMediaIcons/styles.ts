@@ -2,12 +2,12 @@ import styled, { css, DefaultTheme } from 'styled-components';
 
 export type AllowedSizes = 'medium' | 'xlarge';
 
-export type WrapperProps = {
+export type Props = {
   hasMultipleIcons: boolean;
   size?: AllowedSizes;
 };
 
-export const Wrapper = styled.div<WrapperProps>`
+export const Wrapper = styled.div<Props>`
   ${({ theme, size, hasMultipleIcons }) => css`
     text-align: center;
     font-size: ${theme.font.size.small};

@@ -6,7 +6,7 @@ type WrapperProps = {
   unfilled?: boolean;
 };
 
-type PrimaryHeadingProps = WrapperProps & {
+type Props = WrapperProps & {
   children: string;
 };
 
@@ -30,7 +30,7 @@ export function PrimaryHeading({
   children,
   color = 'primary',
   unfilled = false,
-}: PrimaryHeadingProps) {
+}: Props) {
   return (
     <Wrapper color={color} unfilled={unfilled}>
       {children}

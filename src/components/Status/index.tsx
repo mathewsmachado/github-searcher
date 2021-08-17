@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-type StatusProps = {
+type Props = {
   count: number;
   label: string;
 };
@@ -27,7 +27,7 @@ const Label = styled.span`
   `};
 `;
 
-export function Status({ count, label }: StatusProps) {
+export function Status({ count, label }: Props) {
   return (
     <Wrapper>
       <Count>{count}</Count>

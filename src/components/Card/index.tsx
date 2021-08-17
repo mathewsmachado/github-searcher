@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
-type CardProps = {
+type Props = {
   children: ReactNode;
 };
 
@@ -27,6 +27,6 @@ export const Wrapper = styled.div`
   `};
 `;
 
-export function Card({ children }: CardProps) {
+export function Card({ children }: Props) {
   return <Wrapper>{children}</Wrapper>;
 }

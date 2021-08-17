@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
 
-export type WrapperProps = {
+export type Props = {
   as?: 'a';
   direction?: 'column' | 'row';
   href?: string;
 };
 
-export const Wrapper = styled.div<WrapperProps>`
+export const Wrapper = styled.div<Props>`
   ${({ theme, direction, as }) => css`
     display: flex;
     flex-direction: column;

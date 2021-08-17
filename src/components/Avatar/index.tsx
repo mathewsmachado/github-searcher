@@ -1,6 +1,6 @@
 import * as S from './styles';
 
-type AvatarProps = S.WrapperProps & {
+type Props = S.Props & {
   name: string;
   pictureUrl: string;
   username: string;
@@ -17,7 +17,7 @@ export function Avatar({
   type = 'user',
   about = type === 'user' ? 'A passionate developer.' : 'A passionate tool.',
   direction = 'column',
-}: AvatarProps) {
+}: Props) {
   const wrapperProps = as ? { direction, as, href } : { direction };
 
   return (
