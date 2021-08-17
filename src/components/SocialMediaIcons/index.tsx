@@ -11,7 +11,7 @@ type SocialMediaMapperItem = {
   Icon: IconType;
 };
 
-type SocialMediaIconsProps = S.WrapperProps & {
+type SocialMediaIconsProps = Pick<S.WrapperProps, 'size'> & {
   usernames: Partial<Record<AllowedSocialMedias, string>>;
   label?: string;
 };

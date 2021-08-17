@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { Wrapper as PrimaryHeading } from 'components/PrimaryHeading/styles';
+import { Wrapper as PrimaryHeading } from 'components/PrimaryHeading';
 
 export type ComponentsProps = {
   size?: 'small' | 'medium' | 'large';

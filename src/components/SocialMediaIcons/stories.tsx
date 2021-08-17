@@ -2,7 +2,6 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { darkBackground, disableArgTypes } from 'utils/storybook';
 
-import { usernames } from './mock';
 import { SocialMediaIcons } from '.';
 
 export default {
@@ -19,20 +18,19 @@ const Template: ComponentStory<typeof SocialMediaIcons> = (args) => (
 export const OneIcon = Template.bind({});
 OneIcon.args = {
   label: 'check it on',
-  usernames: usernames.one,
+  usernames: { twitter: 'mathews' },
   size: 'xlarge',
 };
 
 export const TwoIcons = Template.bind({});
 TwoIcons.args = {
+  ...OneIcon.args,
   label: '',
-  usernames: usernames.two,
-  size: 'xlarge',
+  usernames: { ...OneIcon.args.usernames, github: 'machado' },
 };
 
 export const ThreeIcons = Template.bind({});
 ThreeIcons.args = {
-  label: '',
-  usernames: usernames.three,
-  size: 'xlarge',
+  ...TwoIcons.args,
+  usernames: { ...TwoIcons.args.usernames, linkedin: 'amorim' },
 };

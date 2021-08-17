@@ -1,13 +1,35 @@
+import styled, { css } from 'styled-components';
+
 import { theme } from 'styles/theme';
 import { LineSeparator } from 'components/LineSeparator';
 
-import * as S from './styles';
+type GithubSearcherIconProps = {
+  separator?: boolean;
+};
+
+export const Wrapper = styled.div<GithubSearcherIconProps>`
+  ${({ separator }) =>
+    separator &&
+    css`
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      & svg {
+        width: 50%;
+      }
+
+      ${LineSeparator} {
+        width: 50%;
+      }
+    `};
+`;
 
 export function GithubSearcherIcon({
   separator = false,
-}: S.GithubSearcherIconProps) {
+}: GithubSearcherIconProps) {
   return (
-    <S.Wrapper separator={separator}>
+    <Wrapper separator={separator}>
       <svg
         fill={theme.color.primary}
         xmlns='http://www.w3.org/2000/svg'
@@ -26,6 +48,6 @@ export function GithubSearcherIcon({
           orientation='vertical'
         />
       )}
-    </S.Wrapper>
+    </Wrapper>
   );
 }

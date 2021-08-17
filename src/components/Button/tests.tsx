@@ -1,8 +1,8 @@
 import userEvent from '@testing-library/user-event';
-import { Vs } from 'components/Vs';
 
 import { theme } from 'styles/theme';
 import { render, screen } from 'utils/tests';
+import { Vs } from 'components/Vs';
 
 import { Button } from '.';
 

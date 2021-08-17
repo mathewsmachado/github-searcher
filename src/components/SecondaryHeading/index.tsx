@@ -1,7 +1,29 @@
-import * as S from './styles';
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import styled, { css, DefaultTheme } from 'styled-components';
 
-type SecondaryHeadingProps = S.WrapperProps & {
+type WrapperProps = {
+  size?: 'huge' | 'xlarge';
+  thin?: boolean;
+};
+
+type SecondaryHeadingProps = WrapperProps & {
   children: string;
+};
+
+const Wrapper = styled.h2<WrapperProps>`
+  ${({ theme, size, thin }) => css`
+    color: ${theme.color.primary};
+    font-size: ${theme.font.size[size!]};
+    font-weight: ${theme.font.weight.bold};
+
+    ${thin && modifiers.thin(theme)}
+  `};
+`;
+
+const modifiers = {
+  thin: (theme: DefaultTheme) => css`
+    font-weight: ${theme.font.weight.normal};
+  `,
 };
 
 export function SecondaryHeading({
@@ -10,8 +32,8 @@ export function SecondaryHeading({
   thin = false,
 }: SecondaryHeadingProps) {
   return (
-    <S.Wrapper size={size} thin={thin}>
+    <Wrapper size={size} thin={thin}>
       {children}
-    </S.Wrapper>
+    </Wrapper>
   );
 }

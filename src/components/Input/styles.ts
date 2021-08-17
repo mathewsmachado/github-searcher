@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { Wrapper as GithubSearcherIcon } from 'components/GithubSearcherIcon/styles';
+import { Wrapper as GithubSearcherIcon } from 'components/GithubSearcherIcon';
 
 export type WrapperProps = {
   icon?: boolean;
