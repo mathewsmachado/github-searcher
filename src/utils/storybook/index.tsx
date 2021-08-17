@@ -1,13 +1,12 @@
 import { CSSProperties } from 'react';
 
-type DisableArgType =
-  | { argTypes: { [K: string]: { table: { disable: boolean } } } }
-  | { [K: string]: { table: { disable: boolean } } };
+type DisableArgType = { [K: string]: { table: { disable: boolean } } };
+type DisableArgTypeReturn = { argTypes: DisableArgType } | DisableArgType;
 
 export function disableArgTypes(
   propsToDisable: string[],
   topLevel = true
-): DisableArgType {
+): DisableArgTypeReturn {
   const OBJECT_TOP_LEVEL_PROP = 'argTypes';
   const OBJECT_VALUE = { table: { disable: true } };
 
@@ -19,11 +18,10 @@ export function disableArgTypes(
   return topLevel ? { [OBJECT_TOP_LEVEL_PROP]: disabledProps } : disabledProps;
 }
 
-type DarkBackground =
-  | { parameters: { backgrounds: { default: 'dark' } } }
-  | { backgrounds: { default: 'dark' } };
+type DarkBackground = { backgrounds: { default: 'dark' } };
+type DarkBackgroundReturn = { parameters: DarkBackground } | DarkBackground;
 
-export function darkBackground(topLevel = true): DarkBackground {
+export function darkBackground(topLevel = true): DarkBackgroundReturn {
   const OBJECT_PROP = 'parameters';
   const OBJECT_VALUE: DarkBackground = { backgrounds: { default: 'dark' } };
 
