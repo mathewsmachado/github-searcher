@@ -8,17 +8,13 @@ export default {
   component: GithubSearcherIcon,
 } as ComponentMeta<typeof GithubSearcherIcon>;
 
-const Template: ComponentStory<typeof GithubSearcherIcon> = (args) => (
-  <GithubSearcherIcon {...args} />
+const Template: ComponentStory<typeof GithubSearcherIcon> = () => (
+  <GithubSearcherIcon />
 );
 
 export const Default = Template.bind({});
-Default.args = {
-  separator: false,
-};
 
 export const Contained = Template.bind({});
-Contained.args = Default.args;
 Contained.decorators = [
   (Story) => (
     <StoryContainer>

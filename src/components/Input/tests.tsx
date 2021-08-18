@@ -18,7 +18,7 @@ describe('<Input />', () => {
   it('should render the error', () => {
     render(<Input error='No user was found' />, 'wrapper');
 
-    expect(screen.getByText(/user/i)).toBeInTheDocument();
+    expect(screen.getByText(/user/i)).toHaveStyle({ color: 'red' });
     expect(screen.getByTestId('wrapper').firstChild).toHaveStyle({
       borderColor: 'red',
     });
