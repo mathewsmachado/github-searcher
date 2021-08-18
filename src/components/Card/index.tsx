@@ -1,11 +1,6 @@
-import { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
-type Props = {
-  children: ReactNode;
-};
-
-export const Wrapper = styled.div`
+export const Card = styled.div`
   ${({ theme }) => css`
     min-height: 10rem;
     padding: ${theme.spacing.xsmall};
@@ -26,7 +21,3 @@ export const Wrapper = styled.div`
     }
   `};
 `;
-
-export function Card({ children }: Props) {
-  return <Wrapper>{children}</Wrapper>;
-}

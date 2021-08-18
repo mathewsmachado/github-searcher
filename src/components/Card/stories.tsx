@@ -7,12 +7,12 @@ import { Card } from '.';
 export default {
   title: 'Card',
   component: Card,
+  ...disableArgTypes(['ref', 'theme', 'as', 'forwardedAs']),
 } as ComponentMeta<typeof Card>;
 
 export const Default: ComponentStory<typeof Card> = (args) => (
   <Card {...args} />
 );
-Default.argTypes = disableArgTypes(['children'], false);
 
 export const Populated: ComponentStory<typeof Card> = ({ children }) => (
   <Card>

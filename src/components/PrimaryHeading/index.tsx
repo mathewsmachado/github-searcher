@@ -1,17 +1,13 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import styled, { css, DefaultTheme } from 'styled-components';
 
-type WrapperProps = {
+type Props = {
   color?: 'primary' | 'accent';
   unfilled?: boolean;
 };
 
-type Props = WrapperProps & {
-  children: string;
-};
-
-const Wrapper = styled.h1<WrapperProps>`
-  ${({ theme, color, unfilled }) => css`
+export const PrimaryHeading = styled.h1<Props>`
+  ${({ theme, color = 'primary', unfilled = false }) => css`
     font-size: ${theme.font.size.xhuge};
     color: ${theme.color[color!]};
 
@@ -25,17 +21,3 @@ const modifiers = {
     -webkit-text-stroke: 2px ${theme.color.primary};
   `,
 };
-
-function PrimaryHeading({
-  children,
-  color = 'primary',
-  unfilled = false,
-}: Props) {
-  return (
-    <Wrapper color={color} unfilled={unfilled}>
-      {children}
-    </Wrapper>
-  );
-}
-
-export { PrimaryHeading, Wrapper as PrimaryHeadingWrapper };

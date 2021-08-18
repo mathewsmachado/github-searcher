@@ -1,17 +1,13 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import styled, { css, DefaultTheme } from 'styled-components';
 
-type WrapperProps = {
+type Props = {
   size?: 'huge' | 'xlarge';
   thin?: boolean;
 };
 
-type Props = WrapperProps & {
-  children: string;
-};
-
-const Wrapper = styled.h2<WrapperProps>`
-  ${({ theme, size, thin }) => css`
+export const SecondaryHeading = styled.h2<Props>`
+  ${({ theme, size = 'huge', thin = false }) => css`
     color: ${theme.color.primary};
     font-size: ${theme.font.size[size!]};
     font-weight: ${theme.font.weight.bold};
@@ -25,15 +21,3 @@ const modifiers = {
     font-weight: ${theme.font.weight.normal};
   `,
 };
-
-export function SecondaryHeading({
-  children,
-  size = 'huge',
-  thin = false,
-}: Props) {
-  return (
-    <Wrapper size={size} thin={thin}>
-      {children}
-    </Wrapper>
-  );
-}
