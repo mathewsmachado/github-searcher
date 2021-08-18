@@ -7,18 +7,16 @@ describe('<Vs />', () => {
   it('should render a pink version by default', () => {
     render(<Vs />);
 
-    expect(screen.getByTitle(/vs/i).parentElement).toHaveAttribute(
-      'fill',
-      theme.color.accent
-    );
+    expect(screen.getByTitle(/vs/i).parentElement).toHaveStyle({
+      fill: theme.color.accent,
+    });
   });
 
   it('should render a white version', () => {
     render(<Vs color='secondary' />);
 
-    expect(screen.getByTitle(/vs/i).parentElement).toHaveAttribute(
-      'fill',
-      theme.color.secondary
-    );
+    expect(screen.getByTitle(/vs/i).parentElement).toHaveStyle({
+      fill: theme.color.secondary,
+    });
   });
 });

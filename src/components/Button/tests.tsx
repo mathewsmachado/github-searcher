@@ -9,21 +9,21 @@ import { Button } from '.';
 describe('<Button />', () => {
   it('should render the passed children', () => {
     render(
-      <Button onClick={() => {}}>
+      <Button>
         <Vs color='secondary' />
       </Button>
     );
 
     expect(screen.getByRole('button')).toBeInTheDocument();
 
-    render(<Button onClick={() => {}}>Search user</Button>);
+    render(<Button>Search user</Button>);
 
     expect(screen.getByText(/search/i)).toBeInTheDocument();
   });
 
   it('should render a pink small button by default', () => {
     render(
-      <Button onClick={() => {}}>
+      <Button>
         <Vs color='secondary' />
       </Button>
     );
@@ -33,7 +33,7 @@ describe('<Button />', () => {
       minWidth: '4rem',
     });
 
-    render(<Button onClick={() => {}}>Search user</Button>);
+    render(<Button>Search user</Button>);
     const textButton = screen.getByText(/search/i);
 
     expect(textButton).toHaveStyleRule('background-color', theme.color.accent);
@@ -46,7 +46,7 @@ describe('<Button />', () => {
 
   it('should render a medium button', () => {
     render(
-      <Button onClick={() => {}} size='medium'>
+      <Button size='medium'>
         <Vs />
       </Button>
     );
@@ -55,11 +55,7 @@ describe('<Button />', () => {
       minWidth: '5.2rem',
     });
 
-    render(
-      <Button onClick={() => {}} size='medium'>
-        Search user
-      </Button>
-    );
+    render(<Button size='medium'>Search user</Button>);
 
     expect(screen.getByText(/search/i)).toHaveStyleRule(
       'padding',
@@ -69,7 +65,7 @@ describe('<Button />', () => {
 
   it('should render a large button', () => {
     render(
-      <Button onClick={() => {}} size='large'>
+      <Button size='large'>
         <Vs />
       </Button>
     );
@@ -78,11 +74,7 @@ describe('<Button />', () => {
       minWidth: '6.4rem',
     });
 
-    render(
-      <Button onClick={() => {}} size='large'>
-        Search user
-      </Button>
-    );
+    render(<Button size='large'>Search user</Button>);
 
     expect(screen.getByText(/search/i)).toHaveStyleRule(
       'padding',
@@ -91,11 +83,7 @@ describe('<Button />', () => {
   });
 
   it('should render a black button', () => {
-    render(
-      <Button onClick={() => {}} color='primary'>
-        Search user
-      </Button>
-    );
+    render(<Button color='primary'>Search user</Button>);
 
     expect(screen.getByRole('button')).toHaveStyle({
       backgroundColor: theme.color.primary,
@@ -106,7 +94,7 @@ describe('<Button />', () => {
     const defaultBoxShadow =
       'box-shadow: 0.2rem 0.4rem 0.4rem 0rem rgba(0,0,0,0.25)';
 
-    render(<Button onClick={() => {}}>Pink button</Button>);
+    render(<Button>Pink button</Button>);
     const pinkButton = screen.getByText(/pink/i);
 
     expect(pinkButton).toHaveStyle(defaultBoxShadow);
@@ -116,11 +104,7 @@ describe('<Button />', () => {
       { modifier: ':active' }
     );
 
-    render(
-      <Button onClick={() => {}} color='primary'>
-        Black button
-      </Button>
-    );
+    render(<Button color='primary'>Black button</Button>);
     const blackButton = screen.getByText(/black/i);
 
     expect(blackButton).toHaveStyle(defaultBoxShadow);
@@ -133,7 +117,7 @@ describe('<Button />', () => {
 
   it('should render a minimal version of the button', () => {
     render(
-      <Button onClick={() => {}} minimal>
+      <Button minimal>
         <Vs />
       </Button>
     );
@@ -142,11 +126,7 @@ describe('<Button />', () => {
       backgroundColor: 'transparent',
     });
 
-    render(
-      <Button onClick={() => {}} minimal>
-        Search User
-      </Button>
-    );
+    render(<Button minimal>Search User</Button>);
 
     expect(screen.getByText(/search/i)).toHaveStyle({
       backgroundColor: 'transparent',

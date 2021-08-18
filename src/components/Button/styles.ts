@@ -3,7 +3,6 @@ import styled, { css, DefaultTheme } from 'styled-components';
 
 export type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   isChildrenText: boolean;
-  onClick: () => void;
   color?: 'primary' | 'accent';
   size?: 'small' | 'medium' | 'large';
   minimal?: boolean;
@@ -15,8 +14,8 @@ export const Wrapper = styled.button<Props>`
     min-height: 4rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 0.6rem;
-    padding-top: 0.9rem;
     background-color: ${theme.color.accent};
     border-radius: ${theme.border.radius.large};
     border: 0.2rem solid ${theme.color.accent};
