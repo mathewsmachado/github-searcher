@@ -10,7 +10,7 @@ type Props = WrapperProps & {
   children: string;
 };
 
-export const Wrapper = styled.h1<WrapperProps>`
+const Wrapper = styled.h1<WrapperProps>`
   ${({ theme, color, unfilled }) => css`
     font-size: ${theme.font.size.xhuge};
     color: ${theme.color[color!]};
@@ -26,7 +26,7 @@ const modifiers = {
   `,
 };
 
-export function PrimaryHeading({
+function PrimaryHeading({
   children,
   color = 'primary',
   unfilled = false,
@@ -37,3 +37,5 @@ export function PrimaryHeading({
     </Wrapper>
   );
 }
+
+export { PrimaryHeading, Wrapper as PrimaryHeadingWrapper };

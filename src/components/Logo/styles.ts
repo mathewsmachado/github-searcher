@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { Wrapper as PrimaryHeading } from 'components/PrimaryHeading';
+import { PrimaryHeadingWrapper } from 'components/PrimaryHeading';
 
 export type Props = {
   size?: 'small' | 'medium' | 'large';
@@ -10,7 +10,7 @@ const modifiers = {
   medium: () => css`
     align-items: baseline;
 
-    ${PrimaryHeading} {
+    ${PrimaryHeadingWrapper} {
       font-size: 5rem;
     }
 
@@ -21,7 +21,7 @@ const modifiers = {
   large: () => css`
     display: block;
 
-    ${PrimaryHeading} {
+    ${PrimaryHeadingWrapper} {
       font-size: 7rem;
       line-height: 7rem;
     }
@@ -37,7 +37,7 @@ export const Wrapper = styled.div<Props>`
     display: flex;
     align-items: center;
 
-    ${PrimaryHeading} {
+    ${PrimaryHeadingWrapper} {
       font-size: 2.7rem;
       margin-left: 0.4rem;
     }

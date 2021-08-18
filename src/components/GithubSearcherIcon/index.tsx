@@ -7,7 +7,7 @@ type Props = {
   separator?: boolean;
 };
 
-export const Wrapper = styled.div<Props>`
+const Wrapper = styled.div<Props>`
   ${({ separator }) =>
     separator &&
     css`
@@ -25,7 +25,7 @@ export const Wrapper = styled.div<Props>`
     `};
 `;
 
-export function GithubSearcherIcon({ separator = false }: Props) {
+function GithubSearcherIcon({ separator = false }: Props) {
   return (
     <Wrapper separator={separator}>
       <svg
@@ -49,3 +49,5 @@ export function GithubSearcherIcon({ separator = false }: Props) {
     </Wrapper>
   );
 }
+
+export { GithubSearcherIcon, Wrapper as GithubSearcherIconWrapper };

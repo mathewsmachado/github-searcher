@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { Wrapper as GithubSearcherIcon } from 'components/GithubSearcherIcon';
+import { GithubSearcherIconWrapper } from 'components/GithubSearcherIcon';
 
 export type Props = {
   icon?: boolean;
@@ -44,7 +44,7 @@ const modifiers = {
   icon: () => css`
     padding: 0 0 0 1rem;
 
-    ${GithubSearcherIcon} {
+    ${GithubSearcherIconWrapper} {
       &,
       & > * {
         width: 5.5rem;
