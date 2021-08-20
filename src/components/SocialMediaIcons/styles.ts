@@ -4,22 +4,25 @@ export type AllowedSizes = 'medium' | 'xlarge';
 
 export type Props = {
   hasMultipleIcons: boolean;
+  mostInner: boolean;
   size?: AllowedSizes;
 };
 
 export const Wrapper = styled.div<Props>`
-  ${({ theme, size, hasMultipleIcons }) => css`
+  ${({ theme, hasMultipleIcons, mostInner, size }) => css`
     text-align: center;
     font-size: ${theme.font.size.small};
     color: ${theme.color.secondary};
 
     ${size === 'medium' && modifiers.medium(theme)}
+    ${mostInner && modifiers.mostInner()}
     ${hasMultipleIcons && modifiers.hasMultipleIcons()}
   `};
 `;
 
 export const IconsWrapper = styled.div`
   display: flex;
+  align-items: center;
   justify-content: center;
 `;
 
@@ -37,8 +40,15 @@ const modifiers = {
     font-size: ${theme.font.size.xsmall};
   `,
   hasMultipleIcons: () => css`
+    justify-content: space-between;
+
     ${IconsWrapper} {
       justify-content: space-between;
     }
+  `,
+  mostInner: () => css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
   `,
 };

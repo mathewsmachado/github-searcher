@@ -4,44 +4,15 @@ import { render, screen } from 'utils/tests';
 import { SocialMediaIcons } from '.';
 
 describe('<SocialMediaIcons />', () => {
-  it('should render a xlarge size by default', () => {
-    render(<SocialMediaIcons usernames={{ twitter: 'mathews' }} />, 'wrapper');
-
-    expect(screen.getByTestId('wrapper').firstChild).toHaveStyleRule(
-      'font-size',
-      theme.font.size.small
-    );
-  });
-
-  it('should render a medium size', () => {
+  it('should render the passed label', () => {
     render(
-      <SocialMediaIcons usernames={{ twitter: 'mathews' }} size='medium' />,
-      'wrapper'
-    );
-
-    expect(screen.getByTestId('wrapper').firstChild).toHaveStyleRule(
-      'font-size',
-      theme.font.size.xsmall
-    );
-  });
-
-  it('should render a label only if passed', () => {
-    const { container: containerOne } = render(
-      <SocialMediaIcons usernames={{ twitter: 'mathews' }} />
-    );
-
-    expect(containerOne.querySelector('span')).toBeNull();
-
-    const { container: containerTwo } = render(
       <SocialMediaIcons
         usernames={{ twitter: 'mathews' }}
         label='check it on'
       />
     );
-    const label = containerTwo.querySelector('span');
 
-    expect(label).not.toBeNull();
-    expect(label).toHaveTextContent(/check it on/i);
+    expect(screen.getByText(/check it on/i)).toBeInTheDocument();
   });
 
   it('should render multiple icons', () => {
@@ -67,27 +38,59 @@ describe('<SocialMediaIcons />', () => {
     );
   });
 
-  /**
-   * Couldn't find where is the error. In storybook all seems like the expected.
-   *
-   * Seems like a bug with toHaveStyle/toHaveStyleRule (it wouldn't be the
-   * first time).
-   */
-  it.skip('should render a centralized icon if there is only one and spaced-between otherwise', () => {
+  it('should render only the necessary DOM nodes', () => {
+    const { container: containerOne } = render(
+      <SocialMediaIcons usernames={{ twitter: 'mathews', github: 'machado' }} />
+    );
+
+    expect(containerOne.querySelectorAll('div')).toHaveLength(1);
+    expect(containerOne.querySelectorAll('span')).toHaveLength(0);
+
+    const { container: containerTwo } = render(
+      <SocialMediaIcons
+        usernames={{ twitter: 'mathews', github: 'machado' }}
+        label='check it out'
+      />
+    );
+
+    expect(containerTwo.querySelectorAll('div')).toHaveLength(2);
+    expect(containerTwo.querySelectorAll('span')).toHaveLength(1);
+  });
+
+  it('should render a xlarge size by default', () => {
+    render(<SocialMediaIcons usernames={{ twitter: 'mathews' }} />, 'wrapper');
+
+    expect(screen.getByTestId('wrapper').firstChild).toHaveStyleRule(
+      'font-size',
+      theme.font.size.small
+    );
+  });
+
+  it('should render a medium size', () => {
+    render(
+      <SocialMediaIcons usernames={{ twitter: 'mathews' }} size='medium' />,
+      'wrapper'
+    );
+
+    expect(screen.getByTestId('wrapper').firstChild).toHaveStyleRule(
+      'font-size',
+      theme.font.size.xsmall
+    );
+  });
+
+  it('should render a centralized icon if there is only one and spaced-between otherwise', () => {
     render(<SocialMediaIcons usernames={{ twitter: 'mathews' }} />);
 
-    expect(screen.getByRole('link').parentElement).toHaveStyleRule(
-      'justify-content',
-      'center'
-    );
+    expect(screen.getByRole('link').parentElement).toHaveStyle({
+      justifyContent: 'center',
+    });
 
     render(
       <SocialMediaIcons usernames={{ twitter: 'mathews', github: 'machado' }} />
     );
 
-    expect(screen.getAllByRole('link')[1].parentElement).toHaveStyleRule(
-      'justify-content',
-      'space-between'
-    );
+    expect(screen.getAllByRole('link')[1].parentElement).toHaveStyle({
+      justifyContent: 'space-between',
+    });
   });
 });

@@ -28,30 +28,45 @@ const socialMediaMapper: Record<AllowedSocialMedias, SocialMediaMapperItem> = {
 };
 
 export function SocialMediaIcons({ usernames, label, size = 'xlarge' }: Props) {
-  const socialMedias = Object.entries(usernames).map(
-    ([socialMedia, username]) => {
+  const SocialMediaData = Object.entries(usernames).map(
+    ([socialMediaName, username]) => {
       const { baseUrl, Icon } =
-        socialMediaMapper[socialMedia as AllowedSocialMedias];
-      const link = `${baseUrl}/${username}`;
-      const title = `${socialMedia} icon`;
+        socialMediaMapper[socialMediaName as AllowedSocialMedias];
 
-      return { Icon, link, title };
+      return {
+        Icon,
+        href: `${baseUrl}/${username}`,
+        title: `${socialMediaName} icon`,
+      };
     }
   );
-
-  const hasMultipleIcons = socialMedias.length > 1;
+  const mostInner = !label;
+  const hasMultipleIcons = SocialMediaData.length > 1;
 
   return (
-    <S.Wrapper size={size} hasMultipleIcons={hasMultipleIcons}>
-      {!!label && <S.Label>{label}</S.Label>}
-
-      <S.IconsWrapper>
-        {socialMedias.map(({ link, title, Icon }) => (
-          <S.IconWrapper key={link} href={link}>
+    <S.Wrapper
+      hasMultipleIcons={hasMultipleIcons}
+      mostInner={mostInner}
+      size={size}
+    >
+      {!!label && (
+        <>
+          <S.Label>{label}</S.Label>
+          <S.IconsWrapper>
+            {SocialMediaData.map(({ Icon, href, title }) => (
+              <S.IconWrapper key={href} href={href}>
+                <Icon title={title} size={iconsSizesMapper[size]} />
+              </S.IconWrapper>
+            ))}
+          </S.IconsWrapper>
+        </>
+      )}
+      {!label &&
+        SocialMediaData.map(({ Icon, href, title }) => (
+          <S.IconWrapper key={href} href={href}>
             <Icon title={title} size={iconsSizesMapper[size]} />
           </S.IconWrapper>
         ))}
-      </S.IconsWrapper>
     </S.Wrapper>
   );
 }
