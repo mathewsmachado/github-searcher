@@ -5,7 +5,15 @@ import * as mixins from 'styles/mixins';
 export const theme = {
   mixins,
   media: builder(
-    { small: 57.6, medium: 76.8, large: 102.4, xlarge: 128 },
+    /**
+     * the original sizes are:
+     *   small: 57.6
+     *   medium: 76.8
+     *   large: 102.4
+     *   xlarge: 128
+     * the below sizes are 62,5% of the above sizes
+     */
+    { small: 36, medium: 48, large: 64, xlarge: 80 },
     'rem'
   ),
   border: {
