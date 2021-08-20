@@ -27,7 +27,7 @@ const socialMediaMapper: Record<AllowedSocialMedias, SocialMediaMapperItem> = {
   github: { baseUrl: 'https://www.github.com', Icon: AiFillGithub },
 };
 
-export function SocialMediaIcons({ usernames, label, size = 'xlarge' }: Props) {
+function SocialMediaIcons({ usernames, label, size = 'xlarge' }: Props) {
   const SocialMediaData = Object.entries(usernames).map(
     ([socialMediaName, username]) => {
       const { baseUrl, Icon } =
@@ -70,3 +70,6 @@ export function SocialMediaIcons({ usernames, label, size = 'xlarge' }: Props) {
     </S.Wrapper>
   );
 }
+
+export { SocialMediaIcons };
+export type { Props as SocialMediaIconsProps };
