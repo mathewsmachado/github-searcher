@@ -2,6 +2,7 @@ import userEvent from '@testing-library/user-event';
 
 import { theme } from 'styles/theme';
 import { render, screen } from 'utils/tests';
+
 import { Vs } from 'components/Vs';
 
 import { Button } from '.';
@@ -22,64 +23,24 @@ describe('<Button />', () => {
   });
 
   it('should render a pink small button by default', () => {
-    render(
-      <Button>
-        <Vs color='secondary' />
-      </Button>
-    );
+    render(<Button>Search User</Button>);
 
     expect(screen.getByRole('button')).toHaveStyle({
       backgroundColor: theme.color.accent,
-      minWidth: '4rem',
+      width: '4rem',
     });
-
-    render(<Button>Search user</Button>);
-    const textButton = screen.getByText(/search/i);
-
-    expect(textButton).toHaveStyleRule('background-color', theme.color.accent);
-    expect(textButton).toHaveStyleRule('font-size', theme.font.size.small);
-    expect(textButton).toHaveStyleRule(
-      'padding',
-      `2rem ${theme.spacing.large}`
-    );
   });
 
   it('should render a medium button', () => {
-    render(
-      <Button size='medium'>
-        <Vs />
-      </Button>
-    );
+    render(<Button size='medium'>Search User</Button>);
 
-    expect(screen.getByRole('button')).toHaveStyle({
-      minWidth: '5.2rem',
-    });
-
-    render(<Button size='medium'>Search user</Button>);
-
-    expect(screen.getByText(/search/i)).toHaveStyleRule(
-      'padding',
-      `${theme.spacing.small} 8rem`
-    );
+    expect(screen.getByRole('button')).toHaveStyle({ width: '5.2rem' });
   });
 
   it('should render a large button', () => {
-    render(
-      <Button size='large'>
-        <Vs />
-      </Button>
-    );
+    render(<Button size='large'>Search User</Button>);
 
-    expect(screen.getByRole('button')).toHaveStyle({
-      minWidth: '6.4rem',
-    });
-
-    render(<Button size='large'>Search user</Button>);
-
-    expect(screen.getByText(/search/i)).toHaveStyleRule(
-      'padding',
-      `${theme.spacing.medium} 11rem`
-    );
+    expect(screen.getByRole('button')).toHaveStyle({ width: '6.4rem' });
   });
 
   it('should render a black button', () => {
@@ -116,19 +77,9 @@ describe('<Button />', () => {
   });
 
   it('should render a minimal version of the button', () => {
-    render(
-      <Button minimal>
-        <Vs />
-      </Button>
-    );
-
-    expect(screen.getByRole('button')).toHaveStyle({
-      backgroundColor: 'transparent',
-    });
-
     render(<Button minimal>Search User</Button>);
 
-    expect(screen.getByText(/search/i)).toHaveStyle({
+    expect(screen.getByRole('button')).toHaveStyle({
       backgroundColor: 'transparent',
     });
   });
