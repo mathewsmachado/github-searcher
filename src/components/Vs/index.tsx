@@ -1,8 +1,7 @@
-/* eslint-disable react/require-default-props */
 import styled, { css } from 'styled-components';
 
 type Props = {
-  color?: 'secondary' | 'accent';
+  color?: 'primary' | 'secondary' | 'accent';
 };
 
 const Wrapper = styled.svg<Props>`
