@@ -18,3 +18,5 @@ export function CloseButton({
     </Button>
   );
 }
+
+export { Button as CloseButtonWrapper };
