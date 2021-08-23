@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import userEvent, { TargetElement } from '@testing-library/user-event';
 
-import { theme } from 'styles/theme';
 import { render, screen } from 'utils/tests';
 
 import { Modal } from '.';
@@ -54,26 +53,6 @@ describe('<Modal />', () => {
       left: 0,
     });
     expect(contentWrapper).toBeInTheDocument();
-  });
-
-  it('should render the content wrapper occupying almost the whole screen in medium screens ', () => {
-    render(
-      <Modal onModalClose={() => {}} isOpen>
-        <h1>Github Searcher</h1>
-      </Modal>
-    );
-    const contentWrapper = screen.getByRole('button').parentElement;
-
-    expect(contentWrapper).toHaveStyle({
-      width: '60rem',
-      height: '50rem',
-    });
-    expect(contentWrapper).toHaveStyleRule('width', '90vw', {
-      media: theme.media.breakpoints('below', 'medium'),
-    });
-    expect(contentWrapper).toHaveStyleRule('height', '90vh', {
-      media: theme.media.breakpoints('below', 'medium'),
-    });
   });
 
   it('should close if the overlay is clicked', () => {

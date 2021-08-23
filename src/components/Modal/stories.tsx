@@ -14,15 +14,7 @@ const Template: ComponentStory<typeof Modal> = (args) => <Modal {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  children: (
-    <h1>
-      Open the console to see the &quot;onModalClose&quot; been
-      <br /> called
-    </h1>
-  ),
+  children: Array.from({ length: 20 }).map(() => <br />),
   isOpen: true,
-  onModalClose: () => {
-    // eslint-disable-next-line no-console
-    console.log('onModalClose');
-  },
+  onModalClose: () => window.alert('working'),
 };

@@ -30,9 +30,7 @@ export const ContentWrapper = styled(Card)`
   ${({ theme }) => css`
     position: absolute;
     max-width: 70rem;
-    max-height: 60rem;
-    width: 60rem;
-    height: 50rem;
+    width: 100%;
     color: ${theme.color.secondary};
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
@@ -44,12 +42,6 @@ export const ContentWrapper = styled(Card)`
       position: absolute;
       right: ${theme.spacing.small};
     }
-
-    ${theme.media.below('medium')`
-      width: 90vw;
-      height: 90vh;
-      border-radius: ${theme.border.radius.medium};
-    `};
   `};
 `;
 
