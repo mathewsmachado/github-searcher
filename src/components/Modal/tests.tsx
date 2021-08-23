@@ -31,7 +31,7 @@ describe('<Modal />', () => {
     expect(screen.getByRole('heading')).toHaveTextContent(/github/i);
   });
 
-  it('should render a full screen overlay and a centered content wrapper', () => {
+  it('should render a full screen overlay and a centered content wrapper with a close button by default', () => {
     render(
       <Modal onModalClose={() => {}} isOpen>
         <h1>Github Searcher</h1>
@@ -41,6 +41,7 @@ describe('<Modal />', () => {
 
     const overlay = screen.getByTestId(/wrapper/i).firstChild;
     const contentWrapper = overlay?.firstChild;
+    const closeButton = screen.getByRole('button');
 
     expect(overlay).toHaveStyle({
       display: 'flex',
@@ -53,6 +54,17 @@ describe('<Modal />', () => {
       left: 0,
     });
     expect(contentWrapper).toBeInTheDocument();
+    expect(closeButton).toBeInTheDocument();
+  });
+
+  it('should render a version without a close button', () => {
+    render(
+      <Modal onModalClose={() => {}} isOpen closeButton={false}>
+        <h1>Github Searcher</h1>
+      </Modal>
+    );
+
+    expect(screen.queryByRole('button')).not.toBeInTheDocument();
   });
 
   it('should close if the overlay is clicked', () => {
