@@ -26,7 +26,13 @@ export const IconsWrapper = styled.div`
   justify-content: center;
 `;
 
-export const IconWrapper = styled.a``;
+export const IconWrapper = styled.a`
+  margin-right: 2rem;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+`;
 
 export const Label = styled.span`
   ${({ theme }) => css`
