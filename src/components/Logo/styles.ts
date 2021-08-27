@@ -48,4 +48,5 @@ export const Wrapper = styled.div<Props>`
 
 export const Github = styled.svg`
   max-width: 7.5rem;
+  width: 100%;
 `;
