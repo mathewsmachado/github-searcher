@@ -6,26 +6,24 @@ import * as S from './styles';
 
 type Props = S.Props & {
   children: ReactNode;
-  onModalClose: () => void;
+  onClose: () => void;
   closeButton?: boolean;
 };
 
-export function Modal({
-  children,
-  isOpen,
-  onModalClose,
-  closeButton = true,
-}: Props) {
-  function preventClosing(event: MouseEvent<HTMLElement>) {
-    event.stopPropagation();
-  }
+function preventClosing(event: MouseEvent<HTMLElement>) {
+  event.stopPropagation();
+}
 
+function Modal({ children, isOpen, onClose, closeButton = true }: Props) {
   return (
-    <S.Overlay onClick={onModalClose} isOpen={isOpen}>
+    <S.Overlay onClick={onClose} isOpen={isOpen}>
       <S.ContentWrapper onClick={preventClosing}>
-        {closeButton && <CloseButton onClick={onModalClose} minimal />}
+        {closeButton && <CloseButton onClick={onClose} minimal />}
         {children}
       </S.ContentWrapper>
     </S.Overlay>
   );
 }
+
+export { Modal };
+export type { Props as ModalProps };

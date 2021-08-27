@@ -13,7 +13,7 @@ const MockedComponent = () => {
       <button type='button' onClick={() => setIsModalOpen(true)}>
         Open
       </button>
-      <Modal onModalClose={() => setIsModalOpen(false)} isOpen={isModalOpen}>
+      <Modal onClose={() => setIsModalOpen(false)} isOpen={isModalOpen}>
         <h1>Github Searcher</h1>
       </Modal>
     </>
@@ -23,7 +23,7 @@ const MockedComponent = () => {
 describe('<Modal />', () => {
   it('should render the passed children', () => {
     render(
-      <Modal onModalClose={() => {}} isOpen>
+      <Modal onClose={() => {}} isOpen>
         <h1>Github Searcher</h1>
       </Modal>
     );
@@ -33,7 +33,7 @@ describe('<Modal />', () => {
 
   it('should render a full screen overlay and a centered content wrapper with a close button by default', () => {
     render(
-      <Modal onModalClose={() => {}} isOpen>
+      <Modal onClose={() => {}} isOpen>
         <h1>Github Searcher</h1>
       </Modal>,
       'wrapper'
@@ -59,7 +59,7 @@ describe('<Modal />', () => {
 
   it('should render a version without a close button', () => {
     render(
-      <Modal onModalClose={() => {}} isOpen closeButton={false}>
+      <Modal onClose={() => {}} isOpen closeButton={false}>
         <h1>Github Searcher</h1>
       </Modal>
     );

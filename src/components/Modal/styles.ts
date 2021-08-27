@@ -18,6 +18,7 @@ export const Overlay = styled.div<Props>`
     bottom: 0;
     right: 0;
     left: 0;
+    overflow-y: auto;
     background-color: rgba(0, 0, 0, 0.2);
     transition: transform ${theme.transition.fast},
       opacity ${theme.transition.fast};

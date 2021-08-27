@@ -16,6 +16,6 @@ export const Default = Template.bind({});
 Default.args = {
   children: Array.from({ length: 20 }).map(() => <br />),
   isOpen: true,
-  onModalClose: () => window.alert('working'),
+  onClose: () => window.alert('working'),
   closeButton: true,
 };
