@@ -11,6 +11,7 @@ export const Wrapper = styled.div<Props>`
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     color: ${theme.color.secondary};
 
     ${direction !== 'column' && modifiers.row()};
@@ -57,6 +58,7 @@ export const About = styled.span`
 const modifiers = {
   row: () => css`
     flex-direction: row;
+    text-align: start;
 
     ${About} {
       margin-top: 0;
