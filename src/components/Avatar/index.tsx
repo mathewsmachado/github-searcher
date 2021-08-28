@@ -4,19 +4,19 @@ type Props = S.Props & {
   name: string;
   pictureUrl: string;
   username: string;
+  type: 'user' | 'repo';
   about?: string;
-  type?: 'user' | 'repo';
 };
 
-export function Avatar({
+function Avatar({
   name,
   username,
   pictureUrl,
   as,
   href,
-  type = 'user',
-  about = type === 'user' ? 'A passionate developer.' : 'A passionate tool.',
+  type,
   direction = 'column',
+  about = type === 'user' ? 'A passionate developer.' : 'A passionate tool.',
 }: Props) {
   const wrapperProps = as ? { direction, as, href } : { direction };
 
@@ -42,3 +42,6 @@ export function Avatar({
     </S.Wrapper>
   );
 }
+
+export { Avatar };
+export type { Props as AvatarProps };
