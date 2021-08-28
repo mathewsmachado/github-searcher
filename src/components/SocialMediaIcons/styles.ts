@@ -47,10 +47,6 @@ const modifiers = {
   `,
   hasMultipleIcons: () => css`
     justify-content: space-between;
-
-    ${IconsWrapper} {
-      justify-content: space-between;
-    }
   `,
   mostInner: () => css`
     display: flex;

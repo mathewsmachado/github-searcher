@@ -54,7 +54,7 @@ function SocialMediaIcons({ usernames, label, size = 'xlarge' }: Props) {
           <S.Label>{label}</S.Label>
           <S.IconsWrapper>
             {SocialMediaData.map(({ Icon, href, title }) => (
-              <S.IconWrapper key={href} href={href}>
+              <S.IconWrapper key={href} href={href} target='_blank'>
                 <Icon title={title} size={iconsSizesMapper[size]} />
               </S.IconWrapper>
             ))}
