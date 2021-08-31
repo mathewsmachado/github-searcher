@@ -9,7 +9,7 @@ type Props = S.Props &
     icon?: boolean;
   };
 
-export function Input({ icon = false, error = '', ...props }: Props) {
+function Input({ icon = false, error = '', ...props }: Props) {
   return (
     <>
       <S.Wrapper error={error}>
@@ -24,3 +24,6 @@ export function Input({ icon = false, error = '', ...props }: Props) {
     </>
   );
 }
+
+export { Input };
+export type { Props as InputProps };
