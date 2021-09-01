@@ -1,13 +1,13 @@
+/* eslint-disable */
 import * as S from './styles';
-import { {{pascalCase name}}Props } from './types';
+
+type Props = S.Props & {
+};
 
 export function {{pascalCase name}}({
-  children,
-  color = 'primary'
-}: {{pascalCase name}}Props) {
+}: Props) {
   return (
-    <S.Wrapper color={color}>
-      {children}
+    <S.Wrapper>
     </S.Wrapper>
   );
 }

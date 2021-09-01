@@ -21,11 +21,6 @@ module.exports = (plop) => {
       },
       {
         type: 'add',
-        templateFile: `${components.from}/types.hbs`,
-        path: `${components.to}/types.ts`,
-      },
-      {
-        type: 'add',
         templateFile: `${components.from}/styles.hbs`,
         path: `${components.to}/styles.ts`,
       },

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { {{pascalCase name}} } from '.';
@@ -7,11 +8,8 @@ export default {
   component: {{pascalCase name}},
 } as ComponentMeta<typeof {{pascalCase name}}>;
 
-const Template: ComponentStory<typeof {{pascalCase name}}> = (args) => (
-  <{{pascalCase name}} {...args} />
-);
+const Template: ComponentStory<typeof {{pascalCase name}}> = (args) => <{{pascalCase name}} {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  children: 'Github Searcher',
 };

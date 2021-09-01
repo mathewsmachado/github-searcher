@@ -1,17 +1,19 @@
+/* eslint-disable */
 import styled, { css, DefaultTheme } from 'styled-components';
 
-import { WrapperProps } from './types';
-
-const modifiers = {
-  accent: (theme: DefaultTheme) => css`
-    color: ${theme.color.accent};
-  `,
+export type Props = {
 };
 
-export const Wrapper = styled.div<WrapperProps>`
-  ${({ theme, color }) => css`
-    color: ${theme.color.primary};
-
-    ${color === 'accent' && modifiers.accent(theme)}
+export const Wrapper = styled.div<Props>`
+  ${({ theme }) => css`
+    ${modifiers};
   `};
 `;
+
+// export const = styled.div`
+// `;
+
+const modifiers = {
+  // : (theme: DefaultTheme) => css`
+  // `,
+};
