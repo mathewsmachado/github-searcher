@@ -8,7 +8,7 @@ const VsWrapper = styled.span`
   padding: 0.5rem 0.3rem 0;
 `;
 
-export function VsButton({
+function VsButton({
   color = 'accent',
   minimal = false,
   ...props
@@ -21,3 +21,6 @@ export function VsButton({
     </Button>
   );
 }
+
+export { VsButton };
+export { Button as VsButtonWrapper };
