@@ -1,15 +1,14 @@
 import { render, screen } from 'utils/tests';
 
-import mock from './mock.jpg';
 import { Avatar } from '.';
 
 describe('<Avatar />', () => {
   it('should render the passed name, username, picture and about', () => {
     render(
       <Avatar
+        type='user'
         name='Mathews'
         username='machado'
-        pictureUrl={mock}
         about='Github Searcher creator'
       />
     );
@@ -21,13 +20,11 @@ describe('<Avatar />', () => {
   });
 
   it('should render a default about if not passed', () => {
-    render(<Avatar name='Mathews' username='machado' pictureUrl={mock} />);
+    render(<Avatar type='user' name='Mathews' username='machado' />);
 
     expect(screen.getByText(/passionate developer/i)).toBeInTheDocument();
 
-    render(
-      <Avatar name='Jest' username='facebook' pictureUrl={mock} type='repo' />
-    );
+    render(<Avatar name='Jest' username='facebook' type='repo' />);
 
     expect(screen.getByText(/passionate tool/i)).toBeInTheDocument();
   });
@@ -35,9 +32,9 @@ describe('<Avatar />', () => {
   it('should render the avatar as a link', () => {
     render(
       <Avatar
+        type='user'
         name='Mathews'
         username='machado'
-        pictureUrl={mock}
         as='a'
         href='https://github.com/machado'
       />
@@ -50,12 +47,7 @@ describe('<Avatar />', () => {
 
   it('should not render the avatar username if the direction is "row" and type is "user"', () => {
     render(
-      <Avatar
-        name='Mathews'
-        username='machado'
-        pictureUrl={mock}
-        direction='row'
-      />
+      <Avatar type='user' name='Mathews' username='machado' direction='row' />
     );
 
     expect(screen.queryByText(/mathews/i)).toBeInTheDocument();
@@ -63,10 +55,7 @@ describe('<Avatar />', () => {
   });
 
   it('should render the avatar in column direction by default', () => {
-    render(
-      <Avatar name='Mathews' username='machado' pictureUrl={mock} />,
-      'wrapper'
-    );
+    render(<Avatar type='user' name='Mathews' username='machado' />, 'wrapper');
 
     expect(screen.getByTestId('wrapper').firstChild).toHaveStyle({
       flexDirection: 'column',
@@ -75,12 +64,7 @@ describe('<Avatar />', () => {
 
   it('should render the avatar in row direction ', () => {
     render(
-      <Avatar
-        name='Mathews'
-        username='machado'
-        pictureUrl={mock}
-        direction='row'
-      />,
+      <Avatar type='user' name='Mathews' username='machado' direction='row' />,
       'wrapper'
     );
 

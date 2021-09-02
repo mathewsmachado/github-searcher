@@ -1,20 +1,21 @@
 import * as S from './styles';
+import mock from './mock.jpg';
 
 type Props = S.Props & {
   name: string;
-  pictureUrl: string;
   username: string;
   type: 'user' | 'repo';
+  pictureUrl?: string;
   about?: string;
 };
 
 function Avatar({
   name,
   username,
-  pictureUrl,
   as,
   href,
   type,
+  pictureUrl = mock,
   direction = 'column',
   about = type === 'user' ? 'A passionate developer.' : 'A passionate tool.',
 }: Props) {

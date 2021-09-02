@@ -2,14 +2,13 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { darkBackground, disableArgTypes } from 'utils/storybook';
 
-import mock from './mock.jpg';
-import { Avatar } from '.';
+import { Avatar, AvatarProps } from '.';
 
 export default {
   title: 'Avatar',
   component: Avatar,
   ...darkBackground(),
-  ...disableArgTypes(['pictureUrl', 'type', 'as']),
+  ...disableArgTypes<AvatarProps>(['pictureUrl', 'type', 'as']),
 } as ComponentMeta<typeof Avatar>;
 
 const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />;
@@ -19,7 +18,6 @@ User.argTypes = disableArgTypes(['href'], false);
 User.args = {
   name: 'Mathews',
   username: 'machado',
-  pictureUrl: mock,
   type: 'user',
   about: 'A passionate developer.',
   direction: 'column',

@@ -1,10 +1,8 @@
 import { render, screen } from 'utils/tests';
 
-import mock from './mock.jpg';
 import { ModalResult, ModalResultProps } from '.';
 
 const userProps: ModalResultProps = {
-  pictureUrl: mock,
   name: 'Mathews',
   username: 'mathewsmachado',
   statuses: { followers: 777, following: 1, repositories: 99 },

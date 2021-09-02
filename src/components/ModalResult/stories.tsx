@@ -2,7 +2,6 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { disableArgTypes } from 'utils/storybook';
 
-import mock from './mock.jpg';
 import { ModalResult, ModalResultProps } from '.';
 
 export default {
@@ -20,7 +19,6 @@ User.args = {
   isOpen: true,
   onClose: () => window.alert('working'),
   name: 'MathewsMachado',
-  pictureUrl: mock,
   username: 'mathewsmachado',
   type: 'user',
   about: 'A passionate developer.',
