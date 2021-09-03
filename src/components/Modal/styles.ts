@@ -1,55 +1,81 @@
 // @ts-nocheck
-import styled, { css } from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components';
 
 import { Card } from 'components/Card';
 import { CloseButtonWrapper } from 'components/CloseButton';
+import { VsSeparatorWrapper } from 'components/VsSeparator';
 
 export type Props = {
   isOpen: boolean;
+  type?: 'single' | 'double';
 };
 
 export const Overlay = styled.div<Props>`
-  ${({ theme, isOpen }) => css`
+  ${({ theme, isOpen, type }) => css`
+    position: relative;
+    min-height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
     overflow-y: auto;
+    align-items: center;
+    padding: ${theme.spacing.small};
     background-color: rgba(0, 0, 0, 0.2);
     transition: transform ${theme.transition.fast},
       opacity ${theme.transition.fast};
 
-    ${!isOpen && modifiers.close()}
+    ${VsSeparatorWrapper} {
+      width: 20%;
+      margin: 0 ${theme.spacing.small};
+    }
+
+    ${theme.media.below('medium')`
+      ${VsSeparatorWrapper} {
+        width: 80%;
+        margin: ${theme.spacing.small} 0;
+      }
+    `};
+
+    ${modifiers[type](theme)};
+    ${!isOpen && modifiers.close()};
   `};
 `;
 
 export const ContentWrapper = styled(Card)`
   ${({ theme }) => css`
-    position: absolute;
+    position: relative;
     max-width: 70rem;
     width: 100%;
     color: ${theme.color.secondary};
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 0.5rem 1.5rem;
 
     &:hover {
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0 0.5rem 1.5rem;
     }
 
-    ${CloseButtonWrapper}:first-of-type {
+    ${CloseButtonWrapper} {
       position: absolute;
-      right: ${theme.spacing.small};
+      right: ${theme.spacing.xsmall};
     }
   `};
 `;
 
 const modifiers = {
+  single: () => css`
+    justify-content: center;
+  `,
+  double: (theme: DefaultTheme) => css`
+    justify-content: space-between;
+
+    ${ContentWrapper} {
+      max-width: 48rem;
+    }
+
+    ${theme.media.below('medium')`
+      flex-direction: column;
+    `};
+  `,
   close: () => css`
     opacity: 0;
     pointer-events: none;
-    transform: translateY(-2em);
+    transform: translateY(-2rem);
   `,
 };

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import userEvent, { TargetElement } from '@testing-library/user-event';
 
+import { theme } from 'styles/theme';
 import { render, screen } from 'utils/tests';
 
 import { Modal } from '.';
@@ -13,55 +14,87 @@ const MockedComponent = () => {
       <button type='button' onClick={() => setIsModalOpen(true)}>
         Open
       </button>
-      <Modal onClose={() => setIsModalOpen(false)} isOpen={isModalOpen}>
-        <h1>Github Searcher</h1>
-      </Modal>
+      <Modal
+        modalOneContent={<h1>The first</h1>}
+        onClose={() => setIsModalOpen(false)}
+        isOpen={isModalOpen}
+      />
     </>
   );
 };
 
 describe('<Modal />', () => {
-  it('should render the passed children', () => {
+  it('should render a single modal with a close button by default', () => {
     render(
-      <Modal onClose={() => {}} isOpen>
-        <h1>Github Searcher</h1>
-      </Modal>
-    );
-
-    expect(screen.getByRole('heading')).toHaveTextContent(/github/i);
-  });
-
-  it('should render a full screen overlay and a centered content wrapper with a close button by default', () => {
-    render(
-      <Modal onClose={() => {}} isOpen>
-        <h1>Github Searcher</h1>
-      </Modal>,
+      <Modal
+        modalOneContent={<h1>Github Searcher</h1>}
+        onClose={() => {}}
+        isOpen
+      />,
       'wrapper'
     );
 
     const overlay = screen.getByTestId(/wrapper/i).firstChild;
     const contentWrapper = overlay?.firstChild;
     const closeButton = screen.getByRole('button');
+    const content = screen.getByRole('heading');
 
+    expect(overlay?.childNodes).toHaveLength(1);
     expect(overlay).toHaveStyle({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      position: 'fixed',
-      top: 0,
-      bottom: 0,
-      right: 0,
-      left: 0,
+      position: 'relative',
+      minHeight: '100vh',
     });
-    expect(contentWrapper).toBeInTheDocument();
-    expect(closeButton).toBeInTheDocument();
+    expect(contentWrapper).toHaveStyle({
+      position: 'relative',
+      maxWidth: '70rem',
+      width: '100%',
+    });
+    expect(closeButton).toHaveStyle({
+      position: 'absolute',
+      right: theme.spacing.xsmall,
+    });
+    expect(content).toHaveTextContent(/github searcher/i);
+  });
+
+  it('should render a double modal', () => {
+    render(
+      <Modal
+        modalOneContent={<h1>The first</h1>}
+        modalTwoContent={<h1>The second</h1>}
+        type='double'
+        onClose={() => {}}
+        isOpen
+      />,
+      'wrapper'
+    );
+
+    const overlay = screen.getByTestId(/wrapper/i).firstChild;
+    const contentWrapperOne = overlay?.firstChild;
+    const contentWrapperTwo = overlay?.lastChild;
+    const vsSeparator = screen.getByTitle(/vs/i);
+    const closeButtons = screen.getAllByRole('button');
+    const contents = screen.getAllByRole('heading');
+
+    expect(overlay?.childNodes).toHaveLength(3);
+    expect(contentWrapperOne).toBeInTheDocument();
+    expect(contentWrapperTwo).toBeInTheDocument();
+    expect(vsSeparator).toBeInTheDocument();
+    expect(closeButtons).toHaveLength(2);
+    expect(contents[0]).toHaveTextContent(/the first/i);
+    expect(contents[1]).toHaveTextContent(/the second/i);
   });
 
   it('should render a version without a close button', () => {
     render(
-      <Modal onClose={() => {}} isOpen closeButton={false}>
-        <h1>Github Searcher</h1>
-      </Modal>
+      <Modal
+        modalOneContent={<h1>The first</h1>}
+        onClose={() => {}}
+        isOpen
+        closeButton={false}
+      />
     );
 
     expect(screen.queryByRole('button')).not.toBeInTheDocument();
