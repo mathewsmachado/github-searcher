@@ -3,23 +3,20 @@
 import { throttle, debounce } from '.';
 
 describe('throttle', () => {
-  const MOCK_DELAY = 2000;
-
-  let time = MOCK_DELAY + 1;
+  const delay = 2000;
+  let time = delay + 1;
   let calledTimes = 0;
 
-  beforeEach(() => {
-    global.Date = class {
-      getTime() {
-        calledTimes += 1;
-        return time * calledTimes;
-      }
-    } as any;
-  });
+  global.Date = class {
+    getTime() {
+      calledTimes += 1;
+      return time * calledTimes;
+    }
+  } as any;
 
-  it('should call the callback', () => {
+  it('should call the callback in the begin of the specified time and wait until the time is finished to call it again', () => {
     const callback = jest.fn();
-    const realThrottle = throttle(callback, MOCK_DELAY);
+    const realThrottle = throttle(callback, delay);
 
     expect(callback).not.toBeCalled();
 
@@ -27,18 +24,7 @@ describe('throttle', () => {
     expect(callback).toBeCalledTimes(1);
 
     realThrottle();
-    realThrottle();
-    expect(callback).toBeCalledTimes(3);
-  });
-
-  it('should call the callback once in the specified time', () => {
-    const callback = jest.fn();
-    const realThrottle = throttle(callback, MOCK_DELAY);
-
-    expect(callback).not.toBeCalled();
-
-    realThrottle();
-    expect(callback).toBeCalledTimes(1);
+    expect(callback).toBeCalledTimes(2);
 
     /**
      * In the real function, time is equal current execution time - the last
@@ -52,7 +38,7 @@ describe('throttle', () => {
 
     realThrottle();
     realThrottle();
-    expect(callback).toBeCalledTimes(1);
+    expect(callback).toBeCalledTimes(2);
   });
 
   describe('debounce', () => {
