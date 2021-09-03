@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 
-import { throttle } from '.';
+import { throttle, debounce } from '.';
 
 describe('throttle', () => {
   const MOCK_DELAY = 2000;
@@ -53,5 +53,27 @@ describe('throttle', () => {
     realThrottle();
     realThrottle();
     expect(callback).toBeCalledTimes(1);
+  });
+
+  describe('debounce', () => {
+    it('should call the callback only after the specified time is finished', () => {
+      const callback = jest.fn();
+      const realDebounce = debounce(callback, 2000);
+
+      jest.useFakeTimers();
+
+      expect(callback).not.toBeCalled();
+
+      realDebounce();
+      jest.runAllTimers();
+
+      expect(callback).toBeCalledTimes(1);
+
+      realDebounce();
+      realDebounce();
+      jest.runAllTimers();
+
+      expect(callback).toBeCalledTimes(2);
+    });
   });
 });
