@@ -54,36 +54,4 @@ describe('<SearchInput />', () => {
       flexDirection: 'column',
     });
   });
-
-  it("should throw an error if the passed inputs don't match the passed type", () => {
-    jest.spyOn(console, 'error').mockReturnValue();
-
-    expect(() =>
-      render(<SearchInput type='single' inputOne={{}} inputTwo={{}} />)
-    ).toThrow();
-
-    expect(() =>
-      render(
-        <SearchInput
-          type='double'
-          inputOne={{}}
-          inputTwo={{}}
-          inputThree={{}}
-        />
-      )
-    ).toThrow();
-
-    expect(() => render(<SearchInput type='double' inputOne={{}} />)).toThrow();
-
-    expect(() =>
-      render(
-        <SearchInput
-          type='doubleComposed'
-          inputOne={{}}
-          inputTwo={{}}
-          inputThree={{}}
-        />
-      )
-    ).toThrow();
-  });
 });

@@ -2,8 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { disableArgTypes } from 'utils/storybook';
 
-import { SearchInputProps } from './types';
-import { SearchInput } from '.';
+import { SearchInput, SearchInputProps } from '.';
 
 export default {
   title: 'SearchInput',

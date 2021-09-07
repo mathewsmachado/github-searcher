@@ -1,18 +1,28 @@
 import { useState, useEffect, ReactNode, MouseEvent } from 'react';
 
 import { debounce } from 'utils/performance';
-import { ThrowsError } from 'utils/typescript';
 import { CloseButton } from 'components/CloseButton';
 import { VsSeparator } from 'components/VsSeparator';
 
 import * as S from './styles';
 
-type Props = S.Props & {
+type ModalBase = S.Props & {
   onClose: () => void;
   modalOneContent: ReactNode;
-  modalTwoContent?: ReactNode;
   closeButton?: boolean;
 };
+
+type ModalSingle = {
+  type?: 'single';
+  modalTwoContent?: undefined;
+};
+
+type ModalDouble = {
+  type: 'double';
+  modalTwoContent: ReactNode;
+};
+
+type ModalProps = ModalBase & (ModalSingle | ModalDouble);
 
 function preventClosing(event: MouseEvent<HTMLElement>) {
   event.stopPropagation();
@@ -25,14 +35,7 @@ function Modal({
   modalTwoContent,
   type = 'single',
   closeButton = true,
-}: Props): ThrowsError | JSX.Element {
-  if (
-    (type === 'double' && !modalTwoContent) ||
-    (type === 'single' && !!modalTwoContent)
-  ) {
-    throw new Error('"type" mismatch with the passed props.');
-  }
-
+}: ModalProps) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -71,4 +74,4 @@ function Modal({
 
 export { Modal };
 export { ContentWrapper } from './styles';
-export type { Props as ModalProps };
+export type { ModalProps };

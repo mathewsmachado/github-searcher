@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 
-import { WrapperProps } from './types';
+type WrapperProps = {
+  type?: 'single' | 'double' | 'doubleComposed';
+};
 
 export const Wrapper = styled.div<WrapperProps>`
   ${({ type }) => css`

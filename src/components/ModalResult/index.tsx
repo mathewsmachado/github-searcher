@@ -8,7 +8,7 @@ type ModalResultBase = Pick<ModalProps, 'isOpen' | 'onClose'> & {
 };
 
 type ModalResultSingle = {
-  type: 'single';
+  type?: 'single';
   modalTwoContent?: undefined;
 };
 
@@ -28,15 +28,29 @@ function ModalResult({
   modalTwoContent,
 }: ModalResultProps) {
   return (
-    <Wrapper>
-      <Modal
-        type={type}
-        isOpen={isOpen}
-        onClose={onClose}
-        modalOneContent={<Content {...modalOneContent} />}
-        modalTwoContent={!!modalTwoContent && <Content {...modalTwoContent} />}
-      />
-    </Wrapper>
+    <>
+      {type === 'single' && (
+        <Wrapper>
+          <Modal
+            type='single'
+            isOpen={isOpen}
+            onClose={onClose}
+            modalOneContent={<Content {...modalOneContent} />}
+          />
+        </Wrapper>
+      )}
+      {type === 'double' && !!modalTwoContent && (
+        <Wrapper>
+          <Modal
+            type='double'
+            isOpen={isOpen}
+            onClose={onClose}
+            modalOneContent={<Content {...modalOneContent} />}
+            modalTwoContent={<Content {...modalTwoContent} />}
+          />
+        </Wrapper>
+      )}
+    </>
   );
 }
 

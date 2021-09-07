@@ -1,32 +1,43 @@
-import { ThrowsError } from 'utils/typescript';
-import { Input } from 'components/Input';
+import { Input, InputProps } from 'components/Input';
 import { VsSeparator } from 'components/VsSeparator';
 
-import {
-  SearchInputProps,
-  isSingle,
-  isDouble,
-  isDoubleComposed,
-} from './types';
 import * as S from './styles';
 
-export function SearchInput({
+type SearchInputBase = {
+  inputOne: InputProps;
+};
+
+type SearchInputSingle = {
+  type?: 'single';
+  inputTwo?: undefined;
+  inputThree?: undefined;
+  inputFour?: undefined;
+};
+
+type SearchInputDouble = {
+  type: 'double';
+  inputTwo: InputProps;
+  inputThree?: undefined;
+  inputFour?: undefined;
+};
+
+type SearchInputDoubleComposed = {
+  type: 'doubleComposed';
+  inputTwo: InputProps;
+  inputThree: InputProps;
+  inputFour: InputProps;
+};
+
+type SearchInputProps = SearchInputBase &
+  (SearchInputSingle | SearchInputDouble | SearchInputDoubleComposed);
+
+function SearchInput({
   inputOne,
   inputTwo,
   inputThree,
   inputFour,
   type = 'single',
-}: SearchInputProps): ThrowsError | JSX.Element {
-  const inputs = { inputOne, inputTwo, inputThree, inputFour };
-
-  if (
-    (type === 'single' && !isSingle(inputs)) ||
-    (type === 'double' && !isDouble(inputs)) ||
-    (type === 'doubleComposed' && !isDoubleComposed(inputs))
-  ) {
-    throw new Error('"type" mismatch with the passed inputs.');
-  }
-
+}: SearchInputProps) {
   return (
     <S.Wrapper type={type}>
       {type === 'single' && <Input icon {...inputOne} />}
@@ -57,3 +68,6 @@ export function SearchInput({
     </S.Wrapper>
   );
 }
+
+export { SearchInput };
+export type { SearchInputProps };
