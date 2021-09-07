@@ -23,12 +23,15 @@ export const Overlay = styled.div<Props>`
       opacity ${theme.transition.fast};
 
     ${VsSeparatorWrapper} {
+      max-width: 12rem;
+      min-width: 4rem;
       width: 20%;
       margin: 0 ${theme.spacing.small};
     }
 
     ${theme.media.below('medium')`
       ${VsSeparatorWrapper} {
+        max-width: 40rem;
         width: 80%;
         margin: ${theme.spacing.small} 0;
       }

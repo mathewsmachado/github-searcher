@@ -7,7 +7,7 @@ import { ModalResult, ModalResultProps } from '.';
 export default {
   title: 'ModalResult',
   component: ModalResult,
-  ...disableArgTypes<ModalResultProps>(['onClose', 'pictureUrl', 'type']),
+  ...disableArgTypes<ModalResultProps>(['type', 'isOpen', 'onClose']),
 } as ComponentMeta<typeof ModalResult>;
 
 const Template: ComponentStory<typeof ModalResult> = (args) => (
@@ -15,25 +15,38 @@ const Template: ComponentStory<typeof ModalResult> = (args) => (
 );
 
 export const User = Template.bind({});
+User.argTypes = disableArgTypes<ModalResultProps>(['modalTwoContent'], false);
 User.args = {
   isOpen: true,
   onClose: () => window.alert('working'),
-  name: 'MathewsMachado',
-  username: 'mathewsmachado',
-  type: 'user',
-  about: 'A passionate developer.',
-  statuses: { followers: 777, following: 1, repositories: 99 },
-  socialMediaUsernames: { linkedin: 'mathewsmachado' },
+  type: 'single',
+  modalOneContent: {
+    name: 'MathewsMachado',
+    username: 'mathewsmachado',
+    type: 'user',
+    about: 'A passionate developer.',
+    statuses: { followers: 777, following: 1, repositories: 99 },
+    socialMediaUsernames: { linkedin: 'mathewsmachado' },
+  },
 };
 
-export const Repo = Template.bind({});
-Repo.argTypes = disableArgTypes(['socialMediaUsernames'], false);
-Repo.args = {
+export const RepoSingle = Template.bind({});
+RepoSingle.argTypes = User.argTypes;
+RepoSingle.args = {
   ...User.args,
-  name: 'tl',
-  username: 'mathewsmachado',
-  about: 'A command-line translator',
-  type: 'repo',
-  statuses: { stars: 777, forks: 1, issues: 99 },
-  socialMediaUsernames: {},
+  modalOneContent: {
+    name: 'tl',
+    username: 'mathewsmachado',
+    about: 'A command-line translator',
+    type: 'repo',
+    statuses: { stars: 777, forks: 1, issues: 99 },
+    socialMediaUsernames: {},
+  },
+};
+
+export const RepoDouble = Template.bind({});
+RepoDouble.args = {
+  ...RepoSingle.args,
+  type: 'double',
+  modalTwoContent: RepoSingle.args.modalOneContent,
 };

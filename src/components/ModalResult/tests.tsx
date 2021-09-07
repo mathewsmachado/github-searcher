@@ -1,82 +1,105 @@
 import { render, screen } from 'utils/tests';
 
-import { ModalResult, ModalResultProps } from '.';
+import { ModalResult } from '.';
 
-const userProps: ModalResultProps = {
-  name: 'Mathews',
-  username: 'mathewsmachado',
-  statuses: { followers: 777, following: 1, repositories: 99 },
-  socialMediaUsernames: { linkedin: 'mathewsmachado' },
-  isOpen: true,
-  type: 'user',
-  onClose: () => {},
-};
+it('should render a version with only one modal', () => {
+  render(
+    <ModalResult
+      isOpen
+      onClose={() => {}}
+      type='single'
+      modalOneContent={{
+        name: 'mathews',
+        type: 'user',
+        statuses: { followers: 1, following: 1, repositories: 1 },
+        username: 'mathewsmachado',
+      }}
+    />,
+    'wrapper'
+  );
 
-const repoProps: ModalResultProps = {
-  ...userProps,
-  name: 'tl',
-  statuses: { stars: 777, forks: 1, issues: 99 },
-  type: 'repo',
-};
+  const overlay = screen.getByTestId(/wrapper/i).firstChild?.firstChild;
+  const avatar = screen.getByRole('img');
+  const status = screen.getByText(/following/i);
+  const socialMediaIcons = screen.getByTitle(/github icon/i);
 
-describe('<ResultModal />', () => {
-  it('should render all the items, including a label, an about by default and a github icon by default', () => {
-    render(<ModalResult {...userProps} />);
+  expect(overlay).toBeInTheDocument();
+  expect(avatar).toBeInTheDocument();
+  expect(status).toBeInTheDocument();
+  expect(socialMediaIcons).toBeInTheDocument();
+});
 
-    const picture = screen.getByRole('img');
-    expect(picture).toBeInTheDocument();
+it('should render a version with two modals', () => {
+  render(
+    <ModalResult
+      isOpen
+      onClose={() => {}}
+      type='double'
+      modalOneContent={{
+        name: 'tl',
+        type: 'repo',
+        statuses: { forks: 1, issues: 1, stars: 1 },
+        username: 'mathewsmachado',
+      }}
+      modalTwoContent={{
+        name: 'jest',
+        type: 'repo',
+        statuses: { forks: 1, issues: 1, stars: 1 },
+        username: 'facebook',
+      }}
+    />,
+    'wrapper'
+  );
 
-    const name = screen.getByText('Mathews');
-    expect(name).toBeInTheDocument();
+  const overlay = screen.getByTestId(/wrapper/i).firstChild?.firstChild;
+  const avatars = screen.getAllByRole('img');
+  const statuses = screen.getAllByText(/forks/i);
+  const socialMediaIcons = screen.getAllByTitle(/github icon/i);
+  const vsSeparator = screen.getByTitle(/vs/i);
 
-    const username = screen.getByText(/@mathewsmachado/i);
-    expect(username).toBeInTheDocument();
+  expect(overlay!.childNodes).toHaveLength(3);
+  expect(avatars).toHaveLength(2);
+  expect(statuses).toHaveLength(2);
+  expect(socialMediaIcons).toHaveLength(2);
+  expect(vsSeparator).toBeInTheDocument();
+});
 
-    const about = screen.getByText(/a passionate developer/i);
-    expect(about).toBeInTheDocument();
+it('should build the github link depending if it is a user or a repo', () => {
+  render(
+    <ModalResult
+      isOpen
+      onClose={() => {}}
+      type='single'
+      modalOneContent={{
+        name: 'mathews',
+        type: 'user',
+        statuses: { followers: 1, following: 1, repositories: 1 },
+        username: 'mathewsmachado',
+      }}
+    />
+  );
 
-    const followers = screen.getByText(/followers/i);
-    expect(followers).toBeInTheDocument();
+  expect(screen.getByRole('link')).toHaveAttribute(
+    'href',
+    expect.stringMatching(/github.com\/mathewsmachado$/)
+  );
 
-    const following = screen.getByText(/following/i);
-    expect(following).toBeInTheDocument();
+  render(
+    <ModalResult
+      isOpen
+      onClose={() => {}}
+      type='single'
+      modalOneContent={{
+        name: 'tl',
+        type: 'repo',
+        statuses: { forks: 1, issues: 1, stars: 1 },
+        username: 'mathewsmachado',
+      }}
+    />
+  );
 
-    const repositories = screen.getByText(/repositories/i);
-    expect(repositories).toBeInTheDocument();
-
-    const label = screen.getByText(/user on/i);
-    expect(label).toBeInTheDocument();
-
-    const linkedin = screen.getByRole('link', { name: /linkedin/i });
-    expect(linkedin).toBeInTheDocument();
-
-    const github = screen.getByRole('link', { name: /github/i });
-    expect(github).toBeInTheDocument();
-  });
-
-  it('should render render the social media icons label based on modal type ', () => {
-    render(<ModalResult {...userProps} />);
-
-    expect(screen.getByText(/check this user on/i)).toBeInTheDocument();
-
-    render(<ModalResult {...repoProps} />);
-
-    expect(screen.getByText(/check it on/i)).toBeInTheDocument();
-  });
-
-  it('should build the github icon link based on the modal type ', () => {
-    render(<ModalResult {...userProps} />);
-    render(<ModalResult {...repoProps} />);
-
-    const icons = screen.getAllByRole('link', { name: /github/i });
-
-    expect(icons[0]).toHaveAttribute(
-      'href',
-      'https://www.github.com/mathewsmachado'
-    );
-    expect(icons[1]).toHaveAttribute(
-      'href',
-      'https://www.github.com/mathewsmachado/tl'
-    );
-  });
+  expect(screen.getAllByRole('link')[1]).toHaveAttribute(
+    'href',
+    expect.stringMatching(/github.com\/mathewsmachado\/tl$/)
+  );
 });

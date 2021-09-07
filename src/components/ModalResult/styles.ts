@@ -1,7 +1,15 @@
 // @ts-nocheck
 import styled, { css } from 'styled-components';
 
-export const Wrapper = styled.div<Props>`
+import { ContentWrapper as ModalContentWrapper } from 'components/Modal';
+
+export const Wrapper = styled.div`
+  ${ModalContentWrapper} {
+    max-width: 50rem;
+  }
+`;
+
+export const ContentWrapper = styled.div`
   ${({ theme }) => css`
     display: flex;
     flex-direction: column;
@@ -11,11 +19,7 @@ export const Wrapper = styled.div<Props>`
 
 export const AvatarWrapper = styled.div`
   ${({ theme }) => css`
-    padding: 0 16rem;
-
-    ${theme.media.below('medium')`
-      padding: 0 12rem;
-    `};
+    padding: 0 4rem;
 
     ${theme.media.below('small')`
       padding: 0 2rem;
@@ -23,30 +27,16 @@ export const AvatarWrapper = styled.div`
   `};
 `;
 
-export const StatusWrapper = styled.div<Props>`
+export const StatusWrapper = styled.div`
   ${({ theme }) => css`
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 4rem 16rem;
-
-    ${theme.media.below('medium')`
-      padding: 4rem 12rem;
-    `};
+    padding: 4rem;
 
     ${theme.media.below('small')`
-      padding: 4rem 2rem;
-    `};
-  `};
-`;
-
-export const SocialMediaWrapper = styled.div<Props>`
-  ${({ theme }) => css`
-    padding: 0 20rem;
-
-    ${theme.media.below('small')`
-      padding: 0 6rem;
+      padding: 4rem 1rem;
     `};
   `};
 `;

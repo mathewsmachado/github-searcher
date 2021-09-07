@@ -70,4 +70,5 @@ function Modal({
 }
 
 export { Modal };
+export { ContentWrapper } from './styles';
 export type { Props as ModalProps };
