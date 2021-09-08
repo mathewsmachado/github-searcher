@@ -3,94 +3,89 @@ import { render, screen } from 'utils/tests';
 
 import { SocialMediaIcons } from '.';
 
-describe('<SocialMediaIcons />', () => {
-  it('should render the passed label', () => {
-    render(
-      <SocialMediaIcons
-        usernames={{ twitter: 'mathews' }}
-        label='check it on'
-      />
-    );
+it('should render the passed label', () => {
+  render(
+    <SocialMediaIcons usernames={{ twitter: 'mathews' }} label='check it on' />
+  );
 
-    expect(screen.getByText(/check it on/i)).toBeInTheDocument();
+  expect(screen.getByText(/check it on/i)).toBeInTheDocument();
+});
+
+it('should render multiple icons', () => {
+  render(
+    <SocialMediaIcons
+      usernames={{
+        twitter: 'mathews',
+        github: 'machado',
+        linkedin: 'amorim',
+      }}
+    />
+  );
+
+  const github = screen.getByRole('link', { name: /github/i });
+  const twitter = screen.getByRole('link', { name: /twitter/i });
+  const linkedin = screen.getByRole('link', { name: /linkedin/i });
+
+  expect(twitter).toHaveAttribute('href', 'https://www.twitter.com/mathews');
+  expect(github).toHaveAttribute('href', 'https://www.github.com/machado');
+  expect(linkedin).toHaveAttribute(
+    'href',
+    'https://www.linkedin.com/in/amorim'
+  );
+});
+
+it('should render only the necessary DOM nodes', () => {
+  const { container: containerOne } = render(
+    <SocialMediaIcons usernames={{ twitter: 'mathews', github: 'machado' }} />
+  );
+
+  expect(containerOne.querySelectorAll('div')).toHaveLength(1);
+  expect(containerOne.querySelectorAll('span')).toHaveLength(0);
+
+  const { container: containerTwo } = render(
+    <SocialMediaIcons
+      usernames={{ twitter: 'mathews', github: 'machado' }}
+      label='check it out'
+    />
+  );
+
+  expect(containerTwo.querySelectorAll('div')).toHaveLength(2);
+  expect(containerTwo.querySelectorAll('span')).toHaveLength(1);
+});
+
+it('should render a xlarge size by default', () => {
+  render(<SocialMediaIcons usernames={{ twitter: 'mathews' }} />, 'wrapper');
+
+  expect(screen.getByTestId('wrapper').firstChild).toHaveStyleRule(
+    'font-size',
+    theme.font.size.small
+  );
+});
+
+it('should render a medium size', () => {
+  render(
+    <SocialMediaIcons usernames={{ twitter: 'mathews' }} size='medium' />,
+    'wrapper'
+  );
+
+  expect(screen.getByTestId('wrapper').firstChild).toHaveStyleRule(
+    'font-size',
+    theme.font.size.xsmall
+  );
+});
+
+it('should render a centralized icon if there is only one and spaced-between otherwise', () => {
+  render(<SocialMediaIcons usernames={{ twitter: 'mathews' }} />);
+
+  expect(screen.getByRole('link').parentElement).toHaveStyle({
+    justifyContent: 'center',
   });
 
-  it('should render multiple icons', () => {
-    render(
-      <SocialMediaIcons
-        usernames={{
-          twitter: 'mathews',
-          github: 'machado',
-          linkedin: 'amorim',
-        }}
-      />
-    );
+  render(
+    <SocialMediaIcons usernames={{ twitter: 'mathews', github: 'machado' }} />
+  );
 
-    const github = screen.getByRole('link', { name: /github/i });
-    const twitter = screen.getByRole('link', { name: /twitter/i });
-    const linkedin = screen.getByRole('link', { name: /linkedin/i });
-
-    expect(twitter).toHaveAttribute('href', 'https://www.twitter.com/mathews');
-    expect(github).toHaveAttribute('href', 'https://www.github.com/machado');
-    expect(linkedin).toHaveAttribute(
-      'href',
-      'https://www.linkedin.com/in/amorim'
-    );
-  });
-
-  it('should render only the necessary DOM nodes', () => {
-    const { container: containerOne } = render(
-      <SocialMediaIcons usernames={{ twitter: 'mathews', github: 'machado' }} />
-    );
-
-    expect(containerOne.querySelectorAll('div')).toHaveLength(1);
-    expect(containerOne.querySelectorAll('span')).toHaveLength(0);
-
-    const { container: containerTwo } = render(
-      <SocialMediaIcons
-        usernames={{ twitter: 'mathews', github: 'machado' }}
-        label='check it out'
-      />
-    );
-
-    expect(containerTwo.querySelectorAll('div')).toHaveLength(2);
-    expect(containerTwo.querySelectorAll('span')).toHaveLength(1);
-  });
-
-  it('should render a xlarge size by default', () => {
-    render(<SocialMediaIcons usernames={{ twitter: 'mathews' }} />, 'wrapper');
-
-    expect(screen.getByTestId('wrapper').firstChild).toHaveStyleRule(
-      'font-size',
-      theme.font.size.small
-    );
-  });
-
-  it('should render a medium size', () => {
-    render(
-      <SocialMediaIcons usernames={{ twitter: 'mathews' }} size='medium' />,
-      'wrapper'
-    );
-
-    expect(screen.getByTestId('wrapper').firstChild).toHaveStyleRule(
-      'font-size',
-      theme.font.size.xsmall
-    );
-  });
-
-  it('should render a centralized icon if there is only one and spaced-between otherwise', () => {
-    render(<SocialMediaIcons usernames={{ twitter: 'mathews' }} />);
-
-    expect(screen.getByRole('link').parentElement).toHaveStyle({
-      justifyContent: 'center',
-    });
-
-    render(
-      <SocialMediaIcons usernames={{ twitter: 'mathews', github: 'machado' }} />
-    );
-
-    expect(screen.getAllByRole('link')[1].parentElement).toHaveStyle({
-      justifyContent: 'space-between',
-    });
+  expect(screen.getAllByRole('link')[1].parentElement).toHaveStyle({
+    justifyContent: 'space-between',
   });
 });

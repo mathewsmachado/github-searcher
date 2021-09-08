@@ -23,130 +23,128 @@ const MockedComponent = () => {
   );
 };
 
-describe('<Modal />', () => {
-  it('should render a single modal with a close button by default', () => {
-    render(
-      <Modal
-        modalOneContent={<h1>Github Searcher</h1>}
-        onClose={() => {}}
-        isOpen
-      />,
-      'wrapper'
-    );
+it('should render a single modal with a close button by default', () => {
+  render(
+    <Modal
+      modalOneContent={<h1>Github Searcher</h1>}
+      onClose={() => {}}
+      isOpen
+    />,
+    'wrapper'
+  );
 
-    const overlay = screen.getByTestId(/wrapper/i).firstChild;
-    const contentWrapper = overlay?.firstChild;
-    const closeButton = screen.getByRole('button');
-    const content = screen.getByRole('heading');
+  const overlay = screen.getByTestId(/wrapper/i).firstChild;
+  const contentWrapper = overlay?.firstChild;
+  const closeButton = screen.getByRole('button');
+  const content = screen.getByRole('heading');
 
-    expect(overlay?.childNodes).toHaveLength(1);
-    expect(overlay).toHaveStyle({
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      position: 'relative',
-      minHeight: '100vh',
-    });
-    expect(contentWrapper).toHaveStyle({
-      position: 'relative',
-      maxWidth: '70rem',
-      width: '100%',
-    });
-    expect(closeButton).toHaveStyle({
-      position: 'absolute',
-      right: theme.spacing.xsmall,
-    });
-    expect(content).toHaveTextContent(/github searcher/i);
+  expect(overlay?.childNodes).toHaveLength(1);
+  expect(overlay).toHaveStyle({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'relative',
+    minHeight: '100vh',
   });
-
-  it('should render a double modal', () => {
-    render(
-      <Modal
-        modalOneContent={<h1>The first</h1>}
-        modalTwoContent={<h1>The second</h1>}
-        type='double'
-        onClose={() => {}}
-        isOpen
-      />,
-      'wrapper'
-    );
-
-    const overlay = screen.getByTestId(/wrapper/i).firstChild;
-    const contentWrapperOne = overlay?.firstChild;
-    const contentWrapperTwo = overlay?.lastChild;
-    const vsSeparator = screen.getByTitle(/vs/i);
-    const closeButtons = screen.getAllByRole('button');
-    const contents = screen.getAllByRole('heading');
-
-    expect(overlay?.childNodes).toHaveLength(3);
-    expect(contentWrapperOne).toBeInTheDocument();
-    expect(contentWrapperTwo).toBeInTheDocument();
-    expect(vsSeparator).toBeInTheDocument();
-    expect(closeButtons).toHaveLength(2);
-    expect(contents[0]).toHaveTextContent(/the first/i);
-    expect(contents[1]).toHaveTextContent(/the second/i);
+  expect(contentWrapper).toHaveStyle({
+    position: 'relative',
+    maxWidth: '70rem',
+    width: '100%',
   });
-
-  it('should render a version without a close button', () => {
-    render(
-      <Modal
-        modalOneContent={<h1>The first</h1>}
-        onClose={() => {}}
-        isOpen
-        closeButton={false}
-      />
-    );
-
-    expect(screen.queryByRole('button')).not.toBeInTheDocument();
+  expect(closeButton).toHaveStyle({
+    position: 'absolute',
+    right: theme.spacing.xsmall,
   });
+  expect(content).toHaveTextContent(/github searcher/i);
+});
 
-  it('should close if the overlay is clicked', () => {
-    render(<MockedComponent />);
-    const openButton = screen.getByRole('button', { name: /open/i });
-    const overlay = openButton.nextElementSibling;
+it('should render a double modal', () => {
+  render(
+    <Modal
+      modalOneContent={<h1>The first</h1>}
+      modalTwoContent={<h1>The second</h1>}
+      type='double'
+      onClose={() => {}}
+      isOpen
+    />,
+    'wrapper'
+  );
 
-    expect(overlay).not.toBeVisible();
+  const overlay = screen.getByTestId(/wrapper/i).firstChild;
+  const contentWrapperOne = overlay?.firstChild;
+  const contentWrapperTwo = overlay?.lastChild;
+  const vsSeparator = screen.getByTitle(/vs/i);
+  const closeButtons = screen.getAllByRole('button');
+  const contents = screen.getAllByRole('heading');
 
-    userEvent.click(openButton);
+  expect(overlay?.childNodes).toHaveLength(3);
+  expect(contentWrapperOne).toBeInTheDocument();
+  expect(contentWrapperTwo).toBeInTheDocument();
+  expect(vsSeparator).toBeInTheDocument();
+  expect(closeButtons).toHaveLength(2);
+  expect(contents[0]).toHaveTextContent(/the first/i);
+  expect(contents[1]).toHaveTextContent(/the second/i);
+});
 
-    expect(overlay).toBeVisible();
+it('should render a version without a close button', () => {
+  render(
+    <Modal
+      modalOneContent={<h1>The first</h1>}
+      onClose={() => {}}
+      isOpen
+      closeButton={false}
+    />
+  );
 
-    userEvent.click(overlay as TargetElement);
+  expect(screen.queryByRole('button')).not.toBeInTheDocument();
+});
 
-    expect(overlay).not.toBeVisible();
-  });
+it('should close if the overlay is clicked', () => {
+  render(<MockedComponent />);
+  const openButton = screen.getByRole('button', { name: /open/i });
+  const overlay = openButton.nextElementSibling;
 
-  it('should close if the close button is clicked', () => {
-    render(<MockedComponent />);
-    const openButton = screen.getByRole('button', { name: /open/i });
-    const closeButton = screen.getByRole('button', { name: /close/i });
+  expect(overlay).not.toBeVisible();
 
-    expect(closeButton).not.toBeVisible();
+  userEvent.click(openButton);
 
-    userEvent.click(openButton);
+  expect(overlay).toBeVisible();
 
-    expect(closeButton).toBeVisible();
+  userEvent.click(overlay as TargetElement);
 
-    userEvent.click(closeButton);
+  expect(overlay).not.toBeVisible();
+});
 
-    expect(closeButton).not.toBeVisible();
-  });
+it('should close if the close button is clicked', () => {
+  render(<MockedComponent />);
+  const openButton = screen.getByRole('button', { name: /open/i });
+  const closeButton = screen.getByRole('button', { name: /close/i });
 
-  it('should not close if the content wrapper is clicked', () => {
-    render(<MockedComponent />);
-    const openButton = screen.getByRole('button', { name: /open/i });
-    const contentWrapper = screen.getByRole('button', {
-      name: /close/i,
-    }).parentElement;
+  expect(closeButton).not.toBeVisible();
 
-    expect(contentWrapper).not.toBeVisible();
+  userEvent.click(openButton);
 
-    userEvent.click(openButton);
+  expect(closeButton).toBeVisible();
 
-    expect(contentWrapper).toBeVisible();
+  userEvent.click(closeButton);
 
-    userEvent.click(contentWrapper as TargetElement);
+  expect(closeButton).not.toBeVisible();
+});
 
-    expect(contentWrapper).toBeVisible();
-  });
+it('should not close if the content wrapper is clicked', () => {
+  render(<MockedComponent />);
+  const openButton = screen.getByRole('button', { name: /open/i });
+  const contentWrapper = screen.getByRole('button', {
+    name: /close/i,
+  }).parentElement;
+
+  expect(contentWrapper).not.toBeVisible();
+
+  userEvent.click(openButton);
+
+  expect(contentWrapper).toBeVisible();
+
+  userEvent.click(contentWrapper as TargetElement);
+
+  expect(contentWrapper).toBeVisible();
 });

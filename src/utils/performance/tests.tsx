@@ -40,26 +40,26 @@ describe('throttle', () => {
     realThrottle();
     expect(callback).toBeCalledTimes(2);
   });
+});
 
-  describe('debounce', () => {
-    it('should call the callback only after the specified time is finished', () => {
-      const callback = jest.fn();
-      const realDebounce = debounce(callback, 2000);
+describe('debounce', () => {
+  it('should call the callback only after the specified time is finished', () => {
+    const callback = jest.fn();
+    const realDebounce = debounce(callback, 2000);
 
-      jest.useFakeTimers();
+    jest.useFakeTimers();
 
-      expect(callback).not.toBeCalled();
+    expect(callback).not.toBeCalled();
 
-      realDebounce();
-      jest.runAllTimers();
+    realDebounce();
+    jest.runAllTimers();
 
-      expect(callback).toBeCalledTimes(1);
+    expect(callback).toBeCalledTimes(1);
 
-      realDebounce();
-      realDebounce();
-      jest.runAllTimers();
+    realDebounce();
+    realDebounce();
+    jest.runAllTimers();
 
-      expect(callback).toBeCalledTimes(2);
-    });
+    expect(callback).toBeCalledTimes(2);
   });
 });
