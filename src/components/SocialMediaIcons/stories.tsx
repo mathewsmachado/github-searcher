@@ -6,13 +6,13 @@ import {
   StoryContainer,
 } from 'utils/storybook';
 
-import { SocialMediaIcons } from '.';
+import { SocialMediaIcons, SocialMediaIconsProps } from '.';
 
 export default {
   title: 'SocialMediaIcons',
   component: SocialMediaIcons,
   ...darkBackground(),
-  ...disableArgTypes(['usernames']),
+  ...disableArgTypes<SocialMediaIconsProps>(['usernames']),
 } as ComponentMeta<typeof SocialMediaIcons>;
 
 const Template: ComponentStory<typeof SocialMediaIcons> = (args) => (

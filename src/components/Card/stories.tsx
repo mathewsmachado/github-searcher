@@ -7,7 +7,9 @@ import { Card } from '.';
 export default {
   title: 'Card',
   component: Card,
-  ...disableArgTypes(['ref', 'theme', 'as', 'forwardedAs']),
+  argTypes: {
+    ...disableArgTypes(['ref', 'theme', 'as', 'forwardedAs'], false),
+  },
 } as ComponentMeta<typeof Card>;
 
 export const Default: ComponentStory<typeof Card> = (args) => (

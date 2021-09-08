@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { disableArgTypes } from 'utils/storybook';
 
-import { CloseButton } from '.';
+import { CloseButton, CloseButtonProps } from '.';
 
 export default {
   title: 'CloseButton',
@@ -13,7 +13,7 @@ export default {
       control: { type: 'radio' },
       options: ['primary', 'accent'],
     },
-    ...disableArgTypes(['onClick'], false),
+    ...disableArgTypes<CloseButtonProps>(['onClick'], false),
   },
 } as ComponentMeta<typeof CloseButton>;
 

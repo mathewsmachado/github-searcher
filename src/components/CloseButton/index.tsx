@@ -22,3 +22,4 @@ export function CloseButton({
 }
 
 export { Button as CloseButtonWrapper };
+export type { CloseButtonProps };
