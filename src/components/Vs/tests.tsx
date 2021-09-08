@@ -1,12 +1,12 @@
 import { theme } from 'styles/theme';
-import { render, screen } from 'utils/tests';
+import { render, s } from 'utils/tests';
 
 import { Vs } from '.';
 
 it('should render a pink version by default', () => {
   render(<Vs />);
 
-  expect(screen.getByTitle(/vs/i).parentElement).toHaveStyle({
+  expect(s.getByTitle(/vs/i).parentElement).toHaveStyle({
     fill: theme.color.accent,
   });
 });
@@ -14,7 +14,7 @@ it('should render a pink version by default', () => {
 it('should render a white version', () => {
   render(<Vs color='secondary' />);
 
-  expect(screen.getByTitle(/vs/i).parentElement).toHaveStyle({
+  expect(s.getByTitle(/vs/i).parentElement).toHaveStyle({
     fill: theme.color.secondary,
   });
 });

@@ -1,13 +1,13 @@
-import { render, screen } from 'utils/tests';
+import { render, s } from 'utils/tests';
 
 import { Status } from '.';
 
 it('should render a pink counter and a white label, both centralized by default', () => {
   render(<Status count={7} label='followers' />, 'wrapper');
 
-  expect(screen.getByText(/7/i)).toBeInTheDocument();
-  expect(screen.getByText(/followers/i)).toBeInTheDocument();
-  expect(screen.getByTestId('wrapper').firstChild).toMatchInlineSnapshot(`
+  expect(s.getByText(/7/i)).toBeInTheDocument();
+  expect(s.getByText(/followers/i)).toBeInTheDocument();
+  expect(s.getByTestId('wrapper').firstChild).toMatchInlineSnapshot(`
     .c0 {
       text-align: center;
     }

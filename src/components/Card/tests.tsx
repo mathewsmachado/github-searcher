@@ -1,17 +1,17 @@
-import { render, screen } from 'utils/tests';
+import { render, s } from 'utils/tests';
 
 import { Card } from '.';
 
 it('should render the passed children', () => {
   render(<Card>Github Searcher</Card>);
 
-  expect(screen.getByText(/github searcher/i)).toBeInTheDocument();
+  expect(s.getByText(/github searcher/i)).toBeInTheDocument();
 });
 
 it('should render correctly', () => {
   render(<Card>Github Searcher</Card>, 'wrapper');
 
-  expect(screen.getByTestId(/wrapper/i).firstChild).toMatchInlineSnapshot(`
+  expect(s.getByTestId(/wrapper/i).firstChild).toMatchInlineSnapshot(`
     .c0 {
       min-height: 10rem;
       padding: 1.6rem;

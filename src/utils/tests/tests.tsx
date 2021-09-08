@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { render, screen } from '.';
+import { render, s } from '.';
 
 describe('customRender', () => {
   const Title = styled.h1`
@@ -10,18 +10,18 @@ describe('customRender', () => {
   it('should render the passed component', () => {
     render(<Title>Github Searcher</Title>);
 
-    expect(screen.getByRole('heading')).toHaveTextContent(/github searcher/i);
+    expect(s.getByRole('heading')).toHaveTextContent(/github searcher/i);
   });
 
   it('should provide to the passed component access to the global providers', () => {
     render(<Title>Github Searcher</Title>);
 
-    expect(screen.getByRole('heading')).toHaveStyle({ color: '#FF007F' });
+    expect(s.getByRole('heading')).toHaveStyle({ color: '#FF007F' });
   });
 
   it('should render the passed component wrapped by a div with a "data-testid" prop', () => {
     render(<Title>Github Searcher</Title>, 'wrapper');
-    const wrapper = screen.getByTestId('wrapper');
+    const wrapper = s.getByTestId('wrapper');
 
     expect(wrapper).toBeInTheDocument();
     expect(wrapper).toMatchInlineSnapshot(`

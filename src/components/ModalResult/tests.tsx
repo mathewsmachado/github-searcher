@@ -1,4 +1,4 @@
-import { render, screen } from 'utils/tests';
+import { render, s } from 'utils/tests';
 
 import { ModalResult } from '.';
 
@@ -18,10 +18,10 @@ it('should render a version with only one modal', () => {
     'wrapper'
   );
 
-  const overlay = screen.getByTestId(/wrapper/i).firstChild?.firstChild;
-  const avatar = screen.getByRole('img');
-  const status = screen.getByText(/following/i);
-  const socialMediaIcons = screen.getByTitle(/github icon/i);
+  const overlay = s.getByTestId(/wrapper/i).firstChild?.firstChild;
+  const avatar = s.getByRole('img');
+  const status = s.getByText(/following/i);
+  const socialMediaIcons = s.getByTitle(/github icon/i);
 
   expect(overlay).toBeInTheDocument();
   expect(avatar).toBeInTheDocument();
@@ -51,11 +51,11 @@ it('should render a version with two modals', () => {
     'wrapper'
   );
 
-  const overlay = screen.getByTestId(/wrapper/i).firstChild?.firstChild;
-  const avatars = screen.getAllByRole('img');
-  const statuses = screen.getAllByText(/forks/i);
-  const socialMediaIcons = screen.getAllByTitle(/github icon/i);
-  const vsSeparator = screen.getByTitle(/vs/i);
+  const overlay = s.getByTestId(/wrapper/i).firstChild?.firstChild;
+  const avatars = s.getAllByRole('img');
+  const statuses = s.getAllByText(/forks/i);
+  const socialMediaIcons = s.getAllByTitle(/github icon/i);
+  const vsSeparator = s.getByTitle(/vs/i);
 
   expect(overlay!.childNodes).toHaveLength(3);
   expect(avatars).toHaveLength(2);
@@ -79,7 +79,7 @@ it('should build the github link depending if it is a user or a repo', () => {
     />
   );
 
-  expect(screen.getByRole('link')).toHaveAttribute(
+  expect(s.getByRole('link')).toHaveAttribute(
     'href',
     expect.stringMatching(/github.com\/mathewsmachado$/)
   );
@@ -98,7 +98,7 @@ it('should build the github link depending if it is a user or a repo', () => {
     />
   );
 
-  expect(screen.getAllByRole('link')[1]).toHaveAttribute(
+  expect(s.getAllByRole('link')[1]).toHaveAttribute(
     'href',
     expect.stringMatching(/github.com\/mathewsmachado\/tl$/)
   );

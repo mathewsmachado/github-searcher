@@ -1,4 +1,4 @@
-import { render, screen } from 'utils/tests';
+import { render, s } from 'utils/tests';
 
 import { darkBackground, disableArgTypes, StoryContainer } from '.';
 
@@ -48,7 +48,7 @@ describe('<StoryContainer />', () => {
       </StoryContainer>
     );
 
-    expect(screen.getByRole('heading')).toBeInTheDocument();
+    expect(s.getByRole('heading')).toBeInTheDocument();
   });
 
   it('should render the story with the passed style', () => {
@@ -60,7 +60,7 @@ describe('<StoryContainer />', () => {
       </StoryContainer>
     );
 
-    expect(screen.getByRole('heading').parentElement).toHaveStyle({
+    expect(s.getByRole('heading').parentElement).toHaveStyle({
       maxWidth: '50px',
       backgroundColor: 'rebeccapurple',
     });

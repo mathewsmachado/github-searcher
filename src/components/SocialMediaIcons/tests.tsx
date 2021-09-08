@@ -1,5 +1,5 @@
 import { theme } from 'styles/theme';
-import { render, screen } from 'utils/tests';
+import { render, s } from 'utils/tests';
 
 import { SocialMediaIcons } from '.';
 
@@ -8,7 +8,7 @@ it('should render the passed label', () => {
     <SocialMediaIcons usernames={{ twitter: 'mathews' }} label='check it on' />
   );
 
-  expect(screen.getByText(/check it on/i)).toBeInTheDocument();
+  expect(s.getByText(/check it on/i)).toBeInTheDocument();
 });
 
 it('should render multiple icons', () => {
@@ -22,9 +22,9 @@ it('should render multiple icons', () => {
     />
   );
 
-  const github = screen.getByRole('link', { name: /github/i });
-  const twitter = screen.getByRole('link', { name: /twitter/i });
-  const linkedin = screen.getByRole('link', { name: /linkedin/i });
+  const github = s.getByRole('link', { name: /github/i });
+  const twitter = s.getByRole('link', { name: /twitter/i });
+  const linkedin = s.getByRole('link', { name: /linkedin/i });
 
   expect(twitter).toHaveAttribute('href', 'https://www.twitter.com/mathews');
   expect(github).toHaveAttribute('href', 'https://www.github.com/machado');
@@ -56,7 +56,7 @@ it('should render only the necessary DOM nodes', () => {
 it('should render a xlarge size by default', () => {
   render(<SocialMediaIcons usernames={{ twitter: 'mathews' }} />, 'wrapper');
 
-  expect(screen.getByTestId('wrapper').firstChild).toHaveStyleRule(
+  expect(s.getByTestId('wrapper').firstChild).toHaveStyleRule(
     'font-size',
     theme.font.size.small
   );
@@ -68,7 +68,7 @@ it('should render a medium size', () => {
     'wrapper'
   );
 
-  expect(screen.getByTestId('wrapper').firstChild).toHaveStyleRule(
+  expect(s.getByTestId('wrapper').firstChild).toHaveStyleRule(
     'font-size',
     theme.font.size.xsmall
   );
@@ -77,7 +77,7 @@ it('should render a medium size', () => {
 it('should render a centralized icon if there is only one and spaced-between otherwise', () => {
   render(<SocialMediaIcons usernames={{ twitter: 'mathews' }} />);
 
-  expect(screen.getByRole('link').parentElement).toHaveStyle({
+  expect(s.getByRole('link').parentElement).toHaveStyle({
     justifyContent: 'center',
   });
 
@@ -85,7 +85,7 @@ it('should render a centralized icon if there is only one and spaced-between oth
     <SocialMediaIcons usernames={{ twitter: 'mathews', github: 'machado' }} />
   );
 
-  expect(screen.getAllByRole('link')[1].parentElement).toHaveStyle({
+  expect(s.getAllByRole('link')[1].parentElement).toHaveStyle({
     justifyContent: 'space-between',
   });
 });

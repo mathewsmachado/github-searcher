@@ -1,7 +1,7 @@
 import userEvent from '@testing-library/user-event';
 
 import { theme } from 'styles/theme';
-import { render, screen } from 'utils/tests';
+import { render, s } from 'utils/tests';
 
 import { Vs } from 'components/Vs';
 
@@ -14,17 +14,17 @@ it('should render the passed children', () => {
     </Button>
   );
 
-  expect(screen.getByRole('button')).toBeInTheDocument();
+  expect(s.getByRole('button')).toBeInTheDocument();
 
   render(<Button>Search user</Button>);
 
-  expect(screen.getByText(/search/i)).toBeInTheDocument();
+  expect(s.getByText(/search/i)).toBeInTheDocument();
 });
 
 it('should render a pink small button by default', () => {
   render(<Button>Search User</Button>);
 
-  expect(screen.getByRole('button')).toHaveStyle({
+  expect(s.getByRole('button')).toHaveStyle({
     backgroundColor: theme.color.accent,
     width: '4rem',
   });
@@ -33,19 +33,19 @@ it('should render a pink small button by default', () => {
 it('should render a medium button', () => {
   render(<Button size='medium'>Search User</Button>);
 
-  expect(screen.getByRole('button')).toHaveStyle({ width: '5.2rem' });
+  expect(s.getByRole('button')).toHaveStyle({ width: '5.2rem' });
 });
 
 it('should render a large button', () => {
   render(<Button size='large'>Search User</Button>);
 
-  expect(screen.getByRole('button')).toHaveStyle({ width: '6.4rem' });
+  expect(s.getByRole('button')).toHaveStyle({ width: '6.4rem' });
 });
 
 it('should render a black button', () => {
   render(<Button color='primary'>Search user</Button>);
 
-  expect(screen.getByRole('button')).toHaveStyle({
+  expect(s.getByRole('button')).toHaveStyle({
     backgroundColor: theme.color.primary,
   });
 });
@@ -55,7 +55,7 @@ it('should change the box-shadow when active', () => {
     'box-shadow: 0.2rem 0.4rem 0.4rem 0rem rgba(0,0,0,0.25)';
 
   render(<Button>Pink button</Button>);
-  const pinkButton = screen.getByText(/pink/i);
+  const pinkButton = s.getByText(/pink/i);
 
   expect(pinkButton).toHaveStyle(defaultBoxShadow);
   expect(pinkButton).toHaveStyleRule(
@@ -65,7 +65,7 @@ it('should change the box-shadow when active', () => {
   );
 
   render(<Button color='primary'>Black button</Button>);
-  const blackButton = screen.getByText(/black/i);
+  const blackButton = s.getByText(/black/i);
 
   expect(blackButton).toHaveStyle(defaultBoxShadow);
   expect(blackButton).toHaveStyleRule(
@@ -78,7 +78,7 @@ it('should change the box-shadow when active', () => {
 it('should render a minimal version of the button', () => {
   render(<Button minimal>Search User</Button>);
 
-  expect(screen.getByRole('button')).toHaveStyle({
+  expect(s.getByRole('button')).toHaveStyle({
     backgroundColor: 'transparent',
   });
 });
@@ -87,7 +87,7 @@ it('should call the function passed to onClick prop when clicked', () => {
   const handleClickOne = jest.fn();
 
   render(<Button onClick={handleClickOne}>First Button</Button>);
-  const buttonOne = screen.getByRole('button');
+  const buttonOne = s.getByRole('button');
 
   userEvent.click(buttonOne);
   expect(handleClickOne).toHaveBeenCalledTimes(1);
@@ -104,7 +104,7 @@ it('should call the function passed to onClick prop when clicked', () => {
     </Button>
   );
 
-  const buttonTwo = screen.getByText(/second/i);
+  const buttonTwo = s.getByText(/second/i);
 
   userEvent.click(buttonTwo);
   expect(handleClickTwo).toHaveBeenCalledTimes(0);

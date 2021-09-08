@@ -22,4 +22,5 @@ function customRender(
 }
 
 export * from '@testing-library/react';
+export { screen as s } from '@testing-library/react';
 export { customRender as render };

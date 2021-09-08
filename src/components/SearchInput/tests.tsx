@@ -1,13 +1,13 @@
-import { render, screen } from 'utils/tests';
+import { render, s } from 'utils/tests';
 
 import { SearchInput } from '.';
 
 it('should render a single input by default', () => {
   render(<SearchInput inputOne={{ placeholder: 'one' }} />, 'wrapper');
 
-  expect(screen.getByRole('textbox')).toHaveAttribute('placeholder', 'one');
-  expect(screen.getByTitle(/search/i)).toBeInTheDocument();
-  expect(screen.getByTestId(/wrapper/i).firstChild).toHaveStyle({
+  expect(s.getByRole('textbox')).toHaveAttribute('placeholder', 'one');
+  expect(s.getByTitle(/search/i)).toBeInTheDocument();
+  expect(s.getByTestId(/wrapper/i).firstChild).toHaveStyle({
     display: 'flex',
     alignItems: 'center',
     maxWidth: '53rem',
@@ -24,9 +24,9 @@ it('should render a double input', () => {
     'wrapper'
   );
 
-  expect(screen.getByPlaceholderText(/one/i)).toBeInTheDocument();
-  expect(screen.getByPlaceholderText(/two/i)).toBeInTheDocument();
-  expect(screen.getByTestId(/wrapper/i).firstChild).toHaveStyle({
+  expect(s.getByPlaceholderText(/one/i)).toBeInTheDocument();
+  expect(s.getByPlaceholderText(/two/i)).toBeInTheDocument();
+  expect(s.getByTestId(/wrapper/i).firstChild).toHaveStyle({
     display: 'flex',
     alignItems: 'center',
     maxWidth: '53rem',
@@ -45,11 +45,11 @@ it('should render a double composed input', () => {
     'wrapper'
   );
 
-  expect(screen.getByPlaceholderText(/one/i)).toBeInTheDocument();
-  expect(screen.getByPlaceholderText(/two/i)).toBeInTheDocument();
-  expect(screen.getByPlaceholderText(/three/i)).toBeInTheDocument();
-  expect(screen.getByPlaceholderText(/four/i)).toBeInTheDocument();
-  expect(screen.getByTestId(/wrapper/i).firstChild).toHaveStyle({
+  expect(s.getByPlaceholderText(/one/i)).toBeInTheDocument();
+  expect(s.getByPlaceholderText(/two/i)).toBeInTheDocument();
+  expect(s.getByPlaceholderText(/three/i)).toBeInTheDocument();
+  expect(s.getByPlaceholderText(/four/i)).toBeInTheDocument();
+  expect(s.getByTestId(/wrapper/i).firstChild).toHaveStyle({
     flexDirection: 'column',
   });
 });

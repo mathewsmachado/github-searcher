@@ -1,18 +1,18 @@
 import { theme } from 'styles/theme';
-import { fireEvent, render, screen } from 'utils/tests';
+import { fireEvent, render, s } from 'utils/tests';
 
 import { Menu } from '.';
 
 it('should display correctly all the items', () => {
   render(<Menu />, 'wrapper');
 
-  const menu = screen.getByTestId(/wrapper/i).firstChild;
+  const menu = s.getByTestId(/wrapper/i).firstChild;
   expect(menu).toHaveStyle({ justifyContent: 'space-between' });
 
-  const logo = screen.getByTitle(/"github" word/i).parentElement;
+  const logo = s.getByTitle(/"github" word/i).parentElement;
   expect(logo).toHaveAttribute('fill', theme.color.secondary);
 
-  const openIcon = screen.getByTitle(/open menu/i).parentElement;
+  const openIcon = s.getByTitle(/open menu/i).parentElement;
   expect(openIcon).toHaveAttribute('color', theme.color.secondary);
 
   const openCloseWrapper = openIcon?.parentElement;
@@ -21,7 +21,7 @@ it('should display correctly all the items', () => {
     right: '4rem',
   });
 
-  const textItems = screen
+  const textItems = s
     .getAllByRole('link')
     .filter((item) => !item?.textContent!.includes('icon'));
   expect(textItems[0]).toHaveStyle({ marginRight: theme.spacing.medium });
@@ -32,7 +32,7 @@ it('should display correctly all the items', () => {
     'Contact Us',
   ]);
 
-  const socialMedia = screen
+  const socialMedia = s
     .getAllByRole('link', { name: /icon/i })
     .map((item) => item.textContent);
   expect(socialMedia).toStrictEqual(['github icon', 'linkedin icon']);
@@ -40,7 +40,7 @@ it('should display correctly all the items', () => {
 
 it('should change text links color on hover', () => {
   render(<Menu />);
-  const textLink = screen.getByText(/search user/i);
+  const textLink = s.getByText(/search user/i);
 
   expect(textLink).toHaveStyle({ color: theme.color.secondary });
   expect(textLink).toHaveStyleRule('color', theme.color.accent, {
@@ -51,7 +51,7 @@ it('should change text links color on hover', () => {
 it('should display the open menu icon only below large screens', () => {
   render(<Menu />);
 
-  const openIcon = screen.getByTitle(/open menu/i).parentElement;
+  const openIcon = s.getByTitle(/open menu/i).parentElement;
   const openCloseWrapper = openIcon!.parentElement;
 
   expect(openCloseWrapper).toHaveStyle({ opacity: 0 });
@@ -66,25 +66,25 @@ it('should toggle the open/close icon if it is clicked', () => {
    * don't make sense to save the buttons into a variable because every time
    * they got clicked, they disappear and need to be queried again
    */
-  expect(screen.getByTitle(/open menu/i)).toBeInTheDocument();
-  expect(screen.queryByTitle(/close menu/i)).not.toBeInTheDocument();
+  expect(s.getByTitle(/open menu/i)).toBeInTheDocument();
+  expect(s.queryByTitle(/close menu/i)).not.toBeInTheDocument();
 
-  fireEvent.click(screen.getByTitle(/open menu/i));
+  fireEvent.click(s.getByTitle(/open menu/i));
 
-  expect(screen.getByTitle(/close menu/i)).toBeInTheDocument();
-  expect(screen.queryByTitle(/open menu/i)).not.toBeInTheDocument();
+  expect(s.getByTitle(/close menu/i)).toBeInTheDocument();
+  expect(s.queryByTitle(/open menu/i)).not.toBeInTheDocument();
 
-  fireEvent.click(screen.getByTitle(/close menu/i));
+  fireEvent.click(s.getByTitle(/close menu/i));
 
-  expect(screen.getByTitle(/open menu/i)).toBeInTheDocument();
-  expect(screen.queryByTitle(/close menu/i)).not.toBeInTheDocument();
+  expect(s.getByTitle(/open menu/i)).toBeInTheDocument();
+  expect(s.queryByTitle(/close menu/i)).not.toBeInTheDocument();
 });
 
 it('should disappear with the text links if the screen is below large and appear with it only after the open menu icon is clicked', () => {
   const media = theme.media.breakpoints('below', 'large');
 
   render(<Menu />);
-  const rightSideWrapper = screen.getByRole('navigation').parentElement;
+  const rightSideWrapper = s.getByRole('navigation').parentElement;
 
   expect(rightSideWrapper).toHaveStyleRule('flex-direction', 'column', {
     media,
@@ -95,7 +95,7 @@ it('should disappear with the text links if the screen is below large and appear
   });
   expect(rightSideWrapper).toHaveStyleRule('opacity', '0', { media });
 
-  fireEvent.click(screen.getByTitle(/open menu/i));
+  fireEvent.click(s.getByTitle(/open menu/i));
 
   expect(rightSideWrapper).toHaveStyle({ transform: 'translateX(0%)' });
   expect(rightSideWrapper).toHaveStyle({ opacity: 1 });
