@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import { Button, ButtonProps } from 'components/Button';
 import { Vs } from 'components/Vs';
 
-const VsWrapper = styled.span`
+export const VsWrapper = styled.span`
   width: 100%;
   padding: 0.5rem 0.3rem 0;
 `;
 
-function VsButton({
+export function VsButton({
   color = 'accent',
   minimal = false,
   ...props
@@ -22,5 +22,4 @@ function VsButton({
   );
 }
 
-export { VsButton };
 export { Button as VsButtonWrapper };

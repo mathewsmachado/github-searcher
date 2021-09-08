@@ -3,12 +3,12 @@ import styled, { css } from 'styled-components';
 import { IconBaseProps } from 'react-icons';
 
 import { VsButtonWrapper } from 'components/VsButton';
-import { Card } from 'components/Card';
+import { CardWrapper } from 'components/Card';
 
 export const CardResultWrapper = styled.div<Props>`
   max-width: 65rem;
 
-  ${Card} {
+  ${CardWrapper} {
     display: flex;
     align-items: center;
     justify-content: space-between;

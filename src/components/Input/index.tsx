@@ -4,12 +4,12 @@ import { GithubSearcherIcon } from 'components/GithubSearcherIcon';
 
 import * as S from './styles';
 
-type InputProps = S.Props &
+export type InputProps = S.Props &
   InputHTMLAttributes<HTMLInputElement> & {
     icon?: boolean;
   };
 
-function Input({ icon = false, error = '', ...props }: InputProps) {
+export function Input({ icon = false, error = '', ...props }: InputProps) {
   return (
     <>
       <S.InputWrapper error={error}>
@@ -25,5 +25,4 @@ function Input({ icon = false, error = '', ...props }: InputProps) {
   );
 }
 
-export { Input };
-export type { InputProps };
+export { InputWrapper } from './styles';

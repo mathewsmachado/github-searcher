@@ -1,7 +1,7 @@
 // @ts-nocheck
 import styled, { css, DefaultTheme } from 'styled-components';
 
-import { Card } from 'components/Card';
+import { CardWrapper } from 'components/Card';
 import { CloseButtonWrapper } from 'components/CloseButton';
 import { VsSeparatorWrapper } from 'components/VsSeparator';
 
@@ -45,7 +45,7 @@ export const Overlay = styled.div<Props>`
   `};
 `;
 
-export const ModalWrapper = styled(Card)`
+export const ModalWrapper = styled(CardWrapper)`
   ${({ theme }) => css`
     position: relative;
     max-width: 70rem;

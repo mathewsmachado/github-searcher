@@ -1,7 +1,7 @@
 /* eslint-disable */
 import * as S from './styles';
 
-type {{pascalCase name}}Props = S.Props & {
+export type {{pascalCase name}}Props = S.Props & {
 };
 
 export function {{pascalCase name}}({
@@ -11,3 +11,5 @@ export function {{pascalCase name}}({
     </S.{{pascalCase name}}Wrapper>
   );
 }
+
+export { {{pascalCase name}}Wrapper } from './styles';

@@ -3,17 +3,17 @@ import styled, { css } from 'styled-components';
 
 import { theme } from 'styles/theme';
 
-type VsSeparatorProps = {
+export type VsSeparatorProps = {
   orientation?: 'horizontal' | 'vertical';
 };
 
-const VsSeparatorWrapper = styled.svg`
+export const VsSeparatorWrapper = styled.svg`
   ${({ theme }) => css`
     fill: ${theme.color.accent};
   `};
 `;
 
-function VsSeparator({ orientation = 'vertical' }: VsSeparatorProps) {
+export function VsSeparator({ orientation = 'vertical' }: VsSeparatorProps) {
   return (
     <VsSeparatorWrapper
       id={orientation}
@@ -66,5 +66,3 @@ function VsSeparator({ orientation = 'vertical' }: VsSeparatorProps) {
     </VsSeparatorWrapper>
   );
 }
-
-export { VsSeparator, VsSeparatorWrapper };

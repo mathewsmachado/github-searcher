@@ -12,23 +12,23 @@ type Base = Pick<S.Props, 'isOpen'> & {
   closeButton?: boolean;
 };
 
-type ModalSingle = {
+export type ModalSingle = {
   type?: S.Single;
   modalTwoContent?: undefined;
 };
 
-type ModalDouble = {
+export type ModalDouble = {
   type: S.Double;
   modalTwoContent: ReactNode;
 };
 
-type ModalProps = Base & (ModalSingle | ModalDouble);
+export type ModalProps = Base & (ModalSingle | ModalDouble);
 
 function preventClosing(event: MouseEvent<HTMLElement>) {
   event.stopPropagation();
 }
 
-function Modal({
+export function Modal({
   isOpen,
   onClose,
   modalOneContent,
@@ -72,6 +72,4 @@ function Modal({
   );
 }
 
-export { Modal };
 export { ModalWrapper } from './styles';
-export type { ModalProps, ModalSingle, ModalDouble };

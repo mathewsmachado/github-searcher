@@ -15,9 +15,9 @@ type Double = Pick<ModalDouble, 'type'> & {
   modalTwoContent: ContentProps;
 };
 
-type ModalResultProps = Base & (Single | Double);
+export type ModalResultProps = Base & (Single | Double);
 
-function ModalResult({
+export function ModalResult({
   type,
   isOpen,
   onClose,
@@ -47,5 +47,4 @@ function ModalResult({
   );
 }
 
-export { ModalResult };
-export type { ModalResultProps };
+export { ModalResultWrapper } from './styles';

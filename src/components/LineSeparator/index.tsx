@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import styled, { css } from 'styled-components';
 
-type LineSeparatorProps = {
+export type LineSeparatorProps = {
   color?: 'primary' | 'accent';
   orientation?: 'horizontal' | 'vertical';
   thickness?: 'thin' | 'regular' | 'bold';
@@ -33,3 +33,5 @@ const modifiers = {
     transform: rotate(90deg);
   `,
 };
+
+export { LineSeparator as LineSeparatorWrapper };

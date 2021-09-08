@@ -3,7 +3,7 @@ import { IoMdClose } from 'react-icons/io';
 import { theme } from 'styles/theme';
 import { Button, ButtonProps } from 'components/Button';
 
-type CloseButtonProps = ButtonProps;
+export type CloseButtonProps = ButtonProps;
 
 export function CloseButton({
   color = 'accent',
@@ -22,4 +22,3 @@ export function CloseButton({
 }
 
 export { Button as CloseButtonWrapper };
-export type { CloseButtonProps };

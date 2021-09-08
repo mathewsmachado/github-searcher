@@ -1,7 +1,7 @@
 import * as S from './styles';
 import mock from './mock.jpg';
 
-type AvatarProps = S.Props & {
+export type AvatarProps = S.Props & {
   name: string;
   username: string;
   type: 'user' | 'repo';
@@ -9,7 +9,7 @@ type AvatarProps = S.Props & {
   about?: string;
 };
 
-function Avatar({
+export function Avatar({
   name,
   username,
   as,
@@ -44,5 +44,4 @@ function Avatar({
   );
 }
 
-export { Avatar };
-export type { AvatarProps };
+export { AvatarWrapper } from './styles';

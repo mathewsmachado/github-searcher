@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
 
-const GithubSearcherIconWrapper = styled.svg`
+export const GithubSearcherIconWrapper = styled.svg`
   ${({ theme }) => css`
     fill: ${theme.color.primary};
   `};
 `;
 
-function GithubSearcherIcon() {
+export function GithubSearcherIcon() {
   return (
     <GithubSearcherIconWrapper
       xmlns='http://www.w3.org/2000/svg'
@@ -20,5 +20,3 @@ function GithubSearcherIcon() {
     </GithubSearcherIconWrapper>
   );
 }
-
-export { GithubSearcherIcon, GithubSearcherIconWrapper };

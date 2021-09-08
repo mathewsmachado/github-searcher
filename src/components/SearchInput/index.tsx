@@ -28,9 +28,9 @@ type DoubleComposed = {
   inputFour: InputProps;
 };
 
-type SearchInputProps = Base & (Single | Double | DoubleComposed);
+export type SearchInputProps = Base & (Single | Double | DoubleComposed);
 
-function SearchInput({
+export function SearchInput({
   inputOne,
   inputTwo,
   inputThree,
@@ -68,5 +68,4 @@ function SearchInput({
   );
 }
 
-export { SearchInput };
-export type { SearchInputProps };
+export { SearchInputWrapper } from './styles';

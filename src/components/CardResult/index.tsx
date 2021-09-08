@@ -6,7 +6,7 @@ import { VsButton } from 'components/VsButton';
 
 import * as S from './styles';
 
-type CardResultProps = Omit<AvatarProps, 'as' | 'href' | 'direction'>;
+export type CardResultProps = Omit<AvatarProps, 'as' | 'href' | 'direction'>;
 
 export function CardResult({
   name,
@@ -44,4 +44,4 @@ export function CardResult({
   );
 }
 
-export type { CardResultProps };
+export { CardResultWrapper } from './styles';

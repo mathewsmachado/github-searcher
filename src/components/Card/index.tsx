@@ -21,3 +21,5 @@ export const Card = styled.div`
     }
   `};
 `;
+
+export { Card as CardWrapper };

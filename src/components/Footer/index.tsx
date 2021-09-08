@@ -5,7 +5,7 @@ import {
 
 import * as S from './styles';
 
-type FooterProps = Pick<SocialMediaIconsProps, 'usernames'> & {
+export type FooterProps = Pick<SocialMediaIconsProps, 'usernames'> & {
   text: string;
 };
 
@@ -19,3 +19,5 @@ export function Footer({ usernames, text }: FooterProps) {
     </S.FooterWrapper>
   );
 }
+
+export { FooterWrapper } from './styles';

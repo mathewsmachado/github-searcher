@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import styled, { css, DefaultTheme } from 'styled-components';
 
-type SecondaryHeadingProps = {
+export type SecondaryHeadingProps = {
   size?: 'huge' | 'xlarge';
   thin?: boolean;
 };
@@ -21,3 +21,5 @@ const modifiers = {
     font-weight: ${theme.font.weight.normal};
   `,
 };
+
+export { SecondaryHeading as SecondaryHeadingWrapper };

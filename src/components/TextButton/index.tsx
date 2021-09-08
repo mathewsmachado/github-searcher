@@ -4,7 +4,7 @@ import styled, { css, DefaultTheme } from 'styled-components';
 
 import { Button, ButtonProps } from 'components/Button';
 
-type TextButtonProps = ButtonProps & {
+export type TextButtonProps = ButtonProps & {
   children: string;
 };
 
@@ -40,3 +40,5 @@ const modifiers = {
     font-size: ${theme.font.size.medium};
   `,
 };
+
+export { TextButton as TextButtonWrapper };

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import styled, { css, DefaultTheme } from 'styled-components';
 
-type PrimaryHeadingProps = {
+export type PrimaryHeadingProps = {
   color?: 'primary' | 'accent';
   unfilled?: boolean;
 };
@@ -21,3 +21,5 @@ const modifiers = {
     -webkit-text-stroke: 2px ${theme.color.primary};
   `,
 };
+
+export { PrimaryHeading as PrimaryHeadingWrapper };

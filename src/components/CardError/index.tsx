@@ -2,7 +2,7 @@ import { CloseButton } from 'components/CloseButton';
 
 import * as S from './styles';
 
-type CardErrorProps = {
+export type CardErrorProps = {
   text: string;
 };
 
@@ -15,3 +15,5 @@ export function CardError({ text }: CardErrorProps) {
     </S.CardErrorWrapper>
   );
 }
+
+export { CardErrorWrapper } from './styles';

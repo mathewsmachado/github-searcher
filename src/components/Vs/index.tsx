@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 
-type VsProps = {
+export type VsProps = {
   color?: 'primary' | 'secondary' | 'accent';
 };
 
-const VsWrapper = styled.svg<VsProps>`
+export const VsWrapper = styled.svg<VsProps>`
   ${({ theme, color }) => css`
     fill: ${theme.color[color!]};
   `};

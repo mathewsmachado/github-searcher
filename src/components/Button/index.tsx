@@ -2,13 +2,13 @@
 import { ButtonHTMLAttributes } from 'react';
 import styled, { css, DefaultTheme } from 'styled-components';
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   color?: 'primary' | 'accent';
   size?: 'small' | 'medium' | 'large';
   minimal?: boolean;
 };
 
-const Button = styled.button<ButtonProps>`
+export const Button = styled.button<ButtonProps>`
   ${({ theme, color = 'accent', size = 'small', minimal = false }) => css`
     display: flex;
     align-items: center;
@@ -63,5 +63,4 @@ const modifiers = {
   `,
 };
 
-export { Button };
-export type { ButtonProps };
+export { Button as ButtonWrapper };

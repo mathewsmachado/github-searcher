@@ -3,7 +3,7 @@ import { PrimaryHeading } from 'components/PrimaryHeading';
 
 import * as S from './styles';
 
-type LogoProps = S.Props & {
+export type LogoProps = S.Props & {
   githubColor?: 'primary' | 'secondary';
 };
 
@@ -25,3 +25,5 @@ export function Logo({ size = 'small', githubColor = 'primary' }: LogoProps) {
     </S.LogoWrapper>
   );
 }
+
+export { LogoWrapper } from './styles';

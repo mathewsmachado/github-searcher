@@ -21,9 +21,9 @@ type Repo = {
   statuses: Record<'stars' | 'forks' | 'issues', number>;
 };
 
-type ContentProps = Base & (User | Repo);
+export type ContentProps = Base & (User | Repo);
 
-function Content({
+export function Content({
   name,
   pictureUrl,
   username,
@@ -65,6 +65,3 @@ function Content({
     </S.ContentWrapper>
   );
 }
-
-export { Content };
-export type { ContentProps };

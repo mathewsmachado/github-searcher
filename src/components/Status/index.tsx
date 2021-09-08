@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components';
 
-type StatusProps = {
+export type StatusProps = {
   count: number;
   label: string;
 };
 
-const StatusWrapper = styled.div`
+export const StatusWrapper = styled.div`
   text-align: center;
 `;
 

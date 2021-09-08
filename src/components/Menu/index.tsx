@@ -68,3 +68,5 @@ export function Menu() {
     </S.MenuWrapper>
   );
 }
+
+export { MenuWrapper } from './styles';
