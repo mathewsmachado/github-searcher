@@ -6,6 +6,25 @@ export type Props = {
   size?: 'small' | 'medium' | 'large';
 };
 
+export const LogoWrapper = styled.div<Props>`
+  ${({ size }) => css`
+    display: flex;
+    align-items: center;
+
+    ${PrimaryHeading} {
+      font-size: 2.7rem;
+      margin-left: 0.4rem;
+    }
+
+    ${size !== 'small' && modifiers[size!]()}
+  `};
+`;
+
+export const Github = styled.svg`
+  max-width: 7.5rem;
+  width: 100%;
+`;
+
 const modifiers = {
   medium: () => css`
     align-items: baseline;
@@ -31,22 +50,3 @@ const modifiers = {
     }
   `,
 };
-
-export const Wrapper = styled.div<Props>`
-  ${({ size }) => css`
-    display: flex;
-    align-items: center;
-
-    ${PrimaryHeading} {
-      font-size: 2.7rem;
-      margin-left: 0.4rem;
-    }
-
-    ${size !== 'small' && modifiers[size!]()}
-  `};
-`;
-
-export const Github = styled.svg`
-  max-width: 7.5rem;
-  width: 100%;
-`;

@@ -3,11 +3,13 @@ import { IoMdClose } from 'react-icons/io';
 import { theme } from 'styles/theme';
 import { Button, ButtonProps } from 'components/Button';
 
+type CloseButtonProps = ButtonProps;
+
 export function CloseButton({
   color = 'accent',
   minimal = false,
   ...props
-}: ButtonProps) {
+}: CloseButtonProps) {
   return (
     <Button color={color} minimal={minimal} {...props}>
       <IoMdClose

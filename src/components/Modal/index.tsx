@@ -6,23 +6,23 @@ import { VsSeparator } from 'components/VsSeparator';
 
 import * as S from './styles';
 
-type ModalBase = S.Props & {
+type Base = Pick<S.Props, 'isOpen'> & {
   onClose: () => void;
   modalOneContent: ReactNode;
   closeButton?: boolean;
 };
 
 type ModalSingle = {
-  type?: 'single';
+  type?: S.Single;
   modalTwoContent?: undefined;
 };
 
 type ModalDouble = {
-  type: 'double';
+  type: S.Double;
   modalTwoContent: ReactNode;
 };
 
-type ModalProps = ModalBase & (ModalSingle | ModalDouble);
+type ModalProps = Base & (ModalSingle | ModalDouble);
 
 function preventClosing(event: MouseEvent<HTMLElement>) {
   event.stopPropagation();
@@ -53,19 +53,19 @@ function Modal({
 
   return (
     <S.Overlay onClick={onClose} isOpen={isOpen} type={type}>
-      <S.ContentWrapper onClick={preventClosing}>
+      <S.ModalWrapper onClick={preventClosing}>
         {closeButton && <CloseButton onClick={onClose} minimal />}
         {modalOneContent}
-      </S.ContentWrapper>
+      </S.ModalWrapper>
       {type === 'double' && (
         <>
           <VsSeparator
             orientation={windowWidth > 768 ? 'vertical' : 'horizontal'}
           />
-          <S.ContentWrapper onClick={preventClosing}>
+          <S.ModalWrapper onClick={preventClosing}>
             {closeButton && <CloseButton onClick={onClose} minimal />}
             {modalTwoContent}
-          </S.ContentWrapper>
+          </S.ModalWrapper>
         </>
       )}
     </S.Overlay>
@@ -73,5 +73,5 @@ function Modal({
 }
 
 export { Modal };
-export { ContentWrapper } from './styles';
-export type { ModalProps };
+export { ModalWrapper } from './styles';
+export type { ModalProps, ModalSingle, ModalDouble };

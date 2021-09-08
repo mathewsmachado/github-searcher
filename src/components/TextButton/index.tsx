@@ -4,13 +4,13 @@ import styled, { css, DefaultTheme } from 'styled-components';
 
 import { Button, ButtonProps } from 'components/Button';
 
-type Props = ButtonProps & {
+type TextButtonProps = ButtonProps & {
   children: string;
 };
 
 // the unused vars are necessary because they're defining default values to the
 // component props
-export const TextButton = styled(Button)<Props>`
+export const TextButton = styled(Button)<TextButtonProps>`
   ${({ theme, size = 'small', color = 'accent', minimal = false }) => css`
     width: unset;
     height: unset;

@@ -5,7 +5,7 @@ import { IconBaseProps } from 'react-icons';
 import { VsButtonWrapper } from 'components/VsButton';
 import { Card } from 'components/Card';
 
-export const Wrapper = styled.div<Props>`
+export const CardResultWrapper = styled.div<Props>`
   max-width: 65rem;
 
   ${Card} {

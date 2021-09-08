@@ -8,7 +8,7 @@ export type Props = {
   size?: AllowedSizes;
 };
 
-export const Wrapper = styled.div<Props>`
+export const SocialMediaIconsWrapper = styled.div<Props>`
   ${({ theme, hasMultipleIcons, mostInner, size }) => css`
     text-align: center;
     font-size: ${theme.font.size.small};

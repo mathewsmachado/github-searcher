@@ -1,24 +1,21 @@
-import { Modal, ModalProps } from 'components/Modal';
+import { Modal, ModalProps, ModalSingle, ModalDouble } from 'components/Modal';
 
 import { Content, ContentProps } from './content';
-import { Wrapper } from './styles';
+import { ModalResultWrapper } from './styles';
 
-type ModalResultBase = Pick<ModalProps, 'isOpen' | 'onClose'> & {
+type Base = Pick<ModalProps, 'isOpen' | 'onClose'> & {
   modalOneContent: ContentProps;
 };
 
-type ModalResultSingle = {
-  type?: 'single';
+type Single = Pick<ModalSingle, 'type'> & {
   modalTwoContent?: undefined;
 };
 
-type ModalResultDouble = {
-  type: 'double';
+type Double = Pick<ModalDouble, 'type'> & {
   modalTwoContent: ContentProps;
 };
 
-type ModalResultProps = ModalResultBase &
-  (ModalResultSingle | ModalResultDouble);
+type ModalResultProps = Base & (Single | Double);
 
 function ModalResult({
   type,
@@ -28,29 +25,25 @@ function ModalResult({
   modalTwoContent,
 }: ModalResultProps) {
   return (
-    <>
+    <ModalResultWrapper>
       {type === 'single' && (
-        <Wrapper>
-          <Modal
-            type='single'
-            isOpen={isOpen}
-            onClose={onClose}
-            modalOneContent={<Content {...modalOneContent} />}
-          />
-        </Wrapper>
+        <Modal
+          type='single'
+          isOpen={isOpen}
+          onClose={onClose}
+          modalOneContent={<Content {...modalOneContent} />}
+        />
       )}
       {type === 'double' && !!modalTwoContent && (
-        <Wrapper>
-          <Modal
-            type='double'
-            isOpen={isOpen}
-            onClose={onClose}
-            modalOneContent={<Content {...modalOneContent} />}
-            modalTwoContent={<Content {...modalTwoContent} />}
-          />
-        </Wrapper>
+        <Modal
+          type='double'
+          isOpen={isOpen}
+          onClose={onClose}
+          modalOneContent={<Content {...modalOneContent} />}
+          modalTwoContent={<Content {...modalTwoContent} />}
+        />
       )}
-    </>
+    </ModalResultWrapper>
   );
 }
 

@@ -1,10 +1,10 @@
 // @ts-nocheck
 import styled, { css } from 'styled-components';
 
-import { ContentWrapper as ModalContentWrapper } from 'components/Modal';
+import { ModalWrapper } from 'components/Modal';
 
-export const Wrapper = styled.div`
-  ${ModalContentWrapper} {
+export const ModalResultWrapper = styled.div`
+  ${ModalWrapper} {
     max-width: 50rem;
   }
 `;

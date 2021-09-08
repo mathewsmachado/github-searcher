@@ -6,7 +6,7 @@ export type Props = {
   href?: string;
 };
 
-export const Wrapper = styled.div<Props>`
+export const AvatarWrapper = styled.div<Props>`
   ${({ theme, direction, as }) => css`
     display: flex;
     flex-direction: column;

@@ -6,11 +6,17 @@ import { VsButton } from 'components/VsButton';
 
 import * as S from './styles';
 
-type Props = Omit<AvatarProps, 'as' | 'href' | 'direction'>;
+type CardResultProps = Omit<AvatarProps, 'as' | 'href' | 'direction'>;
 
-export function CardResult({ name, pictureUrl, username, type, about }: Props) {
+export function CardResult({
+  name,
+  pictureUrl,
+  username,
+  type,
+  about,
+}: CardResultProps) {
   return (
-    <S.Wrapper>
+    <S.CardResultWrapper>
       <Card>
         <Avatar
           name={name}
@@ -34,8 +40,8 @@ export function CardResult({ name, pictureUrl, username, type, about }: Props) {
           </S.ArrowIcon>
         )}
       </Card>
-    </S.Wrapper>
+    </S.CardResultWrapper>
   );
 }
 
-export type { Props as CardResultProps };
+export type { CardResultProps };

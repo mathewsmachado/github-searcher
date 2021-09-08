@@ -8,20 +8,20 @@ import {
 
 import * as S from './styles';
 
-type ContentBase = Omit<AvatarProps, 'as' | 'direction' | 'href'> &
+type Base = Omit<AvatarProps, 'as' | 'direction' | 'href'> &
   Partial<Rename<SocialMediaIconsProps, 'usernames', 'socialMediaUsernames'>>;
 
-type UserContent = {
+type User = {
   type: 'user';
   statuses: Record<'followers' | 'following' | 'repositories', number>;
 };
 
-type RepoContent = {
+type Repo = {
   type: 'repo';
   statuses: Record<'stars' | 'forks' | 'issues', number>;
 };
 
-type ContentProps = ContentBase & (UserContent | RepoContent);
+type ContentProps = Base & (User | Repo);
 
 function Content({
   name,

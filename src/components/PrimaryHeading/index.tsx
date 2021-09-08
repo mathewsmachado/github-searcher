@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import styled, { css, DefaultTheme } from 'styled-components';
 
-type Props = {
+type PrimaryHeadingProps = {
   color?: 'primary' | 'accent';
   unfilled?: boolean;
 };
 
-export const PrimaryHeading = styled.h1<Props>`
+export const PrimaryHeading = styled.h1<PrimaryHeadingProps>`
   ${({ theme, color = 'primary', unfilled = false }) => css`
     font-size: ${theme.font.size.xhuge};
     color: ${theme.color[color!]};

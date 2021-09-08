@@ -5,17 +5,17 @@ import {
 
 import * as S from './styles';
 
-type Props = Pick<SocialMediaIconsProps, 'usernames'> & {
+type FooterProps = Pick<SocialMediaIconsProps, 'usernames'> & {
   text: string;
 };
 
-export function Footer({ usernames, text }: Props) {
+export function Footer({ usernames, text }: FooterProps) {
   return (
-    <S.Wrapper>
+    <S.FooterWrapper>
       <S.Text>{text}</S.Text>
       <S.IconsWrapper>
         <SocialMediaIcons size='medium' usernames={usernames} />
       </S.IconsWrapper>
-    </S.Wrapper>
+    </S.FooterWrapper>
   );
 }

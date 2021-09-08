@@ -6,7 +6,7 @@ export type Props = {
   error?: string;
 };
 
-export const Wrapper = styled.div<Props>`
+export const InputWrapper = styled.div<Props>`
   ${({ theme, error }) => css`
     display: flex;
     align-items: center;

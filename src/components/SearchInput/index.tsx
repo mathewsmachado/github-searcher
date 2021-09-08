@@ -3,33 +3,32 @@ import { VsSeparator } from 'components/VsSeparator';
 
 import * as S from './styles';
 
-type SearchInputBase = {
+type Base = {
   inputOne: InputProps;
 };
 
-type SearchInputSingle = {
-  type?: 'single';
+type Single = {
+  type?: S.Single;
   inputTwo?: undefined;
   inputThree?: undefined;
   inputFour?: undefined;
 };
 
-type SearchInputDouble = {
-  type: 'double';
+type Double = {
+  type: S.Double;
   inputTwo: InputProps;
   inputThree?: undefined;
   inputFour?: undefined;
 };
 
-type SearchInputDoubleComposed = {
-  type: 'doubleComposed';
+type DoubleComposed = {
+  type: S.DoubleComposed;
   inputTwo: InputProps;
   inputThree: InputProps;
   inputFour: InputProps;
 };
 
-type SearchInputProps = SearchInputBase &
-  (SearchInputSingle | SearchInputDouble | SearchInputDoubleComposed);
+type SearchInputProps = Base & (Single | Double | DoubleComposed);
 
 function SearchInput({
   inputOne,
@@ -39,7 +38,7 @@ function SearchInput({
   type = 'single',
 }: SearchInputProps) {
   return (
-    <S.Wrapper type={type}>
+    <S.SearchInputWrapper type={type}>
       {type === 'single' && <Input icon {...inputOne} />}
       {type === 'double' && (
         <>
@@ -65,7 +64,7 @@ function SearchInput({
           </S.InputWrapper>
         </>
       )}
-    </S.Wrapper>
+    </S.SearchInputWrapper>
   );
 }
 

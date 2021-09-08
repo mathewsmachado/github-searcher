@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components';
 
-type Props = {
+type StatusProps = {
   count: number;
   label: string;
 };
 
-const Wrapper = styled.div`
+const StatusWrapper = styled.div`
   text-align: center;
 `;
 
@@ -27,11 +27,11 @@ const Label = styled.span`
   `};
 `;
 
-export function Status({ count, label }: Props) {
+export function Status({ count, label }: StatusProps) {
   return (
-    <Wrapper>
+    <StatusWrapper>
       <Count>{count}</Count>
       <Label>{label}</Label>
-    </Wrapper>
+    </StatusWrapper>
   );
 }

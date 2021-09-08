@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import { Card } from 'components/Card';
 import { CloseButtonWrapper } from 'components/CloseButton';
 
-export const Wrapper = styled(Card)`
+export const CardErrorWrapper = styled(Card)`
   ${({ theme }) => css`
     display: flex;
     align-items: center;

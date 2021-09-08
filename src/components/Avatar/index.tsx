@@ -1,7 +1,7 @@
 import * as S from './styles';
 import mock from './mock.jpg';
 
-type Props = S.Props & {
+type AvatarProps = S.Props & {
   name: string;
   username: string;
   type: 'user' | 'repo';
@@ -18,11 +18,11 @@ function Avatar({
   pictureUrl = mock,
   direction = 'column',
   about = type === 'user' ? 'A passionate developer.' : 'A passionate tool.',
-}: Props) {
+}: AvatarProps) {
   const wrapperProps = as ? { direction, as, href } : { direction };
 
   return (
-    <S.Wrapper {...wrapperProps}>
+    <S.AvatarWrapper {...wrapperProps}>
       <S.Image src={pictureUrl} alt={name} />
       {direction === 'column' && (
         <>
@@ -40,9 +40,9 @@ function Avatar({
           <S.About>{about}</S.About>
         </S.TextWrapper>
       )}
-    </S.Wrapper>
+    </S.AvatarWrapper>
   );
 }
 
 export { Avatar };
-export type { Props as AvatarProps };
+export type { AvatarProps };

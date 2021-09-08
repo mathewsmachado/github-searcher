@@ -3,13 +3,13 @@ import { PrimaryHeading } from 'components/PrimaryHeading';
 
 import * as S from './styles';
 
-type Props = S.Props & {
+type LogoProps = S.Props & {
   githubColor?: 'primary' | 'secondary';
 };
 
-export function Logo({ size = 'small', githubColor = 'primary' }: Props) {
+export function Logo({ size = 'small', githubColor = 'primary' }: LogoProps) {
   return (
-    <S.Wrapper size={size}>
+    <S.LogoWrapper size={size}>
       <S.Github
         fill={theme.color[githubColor]}
         xmlns='http://www.w3.org/2000/svg'
@@ -22,6 +22,6 @@ export function Logo({ size = 'small', githubColor = 'primary' }: Props) {
         />
       </S.Github>
       <PrimaryHeading color='accent'>Searcher</PrimaryHeading>
-    </S.Wrapper>
+    </S.LogoWrapper>
   );
 }

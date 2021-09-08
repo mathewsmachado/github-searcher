@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import styled, { css } from 'styled-components';
 
-type Props = {
+type LineSeparatorProps = {
   color?: 'primary' | 'accent';
   orientation?: 'horizontal' | 'vertical';
   thickness?: 'thin' | 'regular' | 'bold';
 };
 
-export const LineSeparator = styled.div<Props>`
+export const LineSeparator = styled.div<LineSeparatorProps>`
   ${({
     theme,
     color = 'accent',

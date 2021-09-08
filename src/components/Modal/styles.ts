@@ -5,9 +5,12 @@ import { Card } from 'components/Card';
 import { CloseButtonWrapper } from 'components/CloseButton';
 import { VsSeparatorWrapper } from 'components/VsSeparator';
 
+export type Single = 'single';
+export type Double = 'double';
+
 export type Props = {
   isOpen: boolean;
-  type?: 'single' | 'double';
+  type?: Single | Double;
 };
 
 export const Overlay = styled.div<Props>`
@@ -42,7 +45,7 @@ export const Overlay = styled.div<Props>`
   `};
 `;
 
-export const ContentWrapper = styled(Card)`
+export const ModalWrapper = styled(Card)`
   ${({ theme }) => css`
     position: relative;
     max-width: 70rem;
@@ -68,7 +71,7 @@ const modifiers = {
   double: (theme: DefaultTheme) => css`
     justify-content: space-between;
 
-    ${ContentWrapper} {
+    ${ModalWrapper} {
       max-width: 48rem;
     }
 

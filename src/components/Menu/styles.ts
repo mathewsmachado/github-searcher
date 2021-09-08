@@ -1,5 +1,5 @@
 // @ts-nocheck
-import styled, { css } from 'styled-components/macro';
+import styled, { css } from 'styled-components';
 
 export type Props = {
   isOpen: boolean;
@@ -7,7 +7,7 @@ export type Props = {
 
 const sideSpace = { large: '4rem', small: '2rem' };
 
-export const Wrapper = styled.menu<Props>`
+export const MenuWrapper = styled.menu<Props>`
   ${({ theme, isOpen }) => css`
     display: flex;
     justify-content: space-between;

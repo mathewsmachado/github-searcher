@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const Wrapper = styled.footer`
+export const FooterWrapper = styled.footer`
   ${({ theme }) => css`
     width: 100%;
     height: 4rem;

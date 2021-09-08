@@ -47,7 +47,7 @@ export function Menu() {
   };
 
   return (
-    <S.Wrapper isOpen={isOpen}>
+    <S.MenuWrapper isOpen={isOpen}>
       <Logo githubColor='secondary' />
       <S.OpenCloseWrapper>
         {isOpen && (
@@ -65,6 +65,6 @@ export function Menu() {
         </S.Nav>
         <SocialMediaIcons usernames={socialMediaUsernames} />
       </S.RightSideWrapper>
-    </S.Wrapper>
+    </S.MenuWrapper>
   );
 }

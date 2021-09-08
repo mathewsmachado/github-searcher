@@ -1,10 +1,14 @@
 import styled, { css } from 'styled-components';
 
-type WrapperProps = {
-  type?: 'single' | 'double' | 'doubleComposed';
+export type Single = 'single';
+export type Double = 'double';
+export type DoubleComposed = 'doubleComposed';
+
+type Props = {
+  type?: Single | Double | DoubleComposed;
 };
 
-export const Wrapper = styled.div<WrapperProps>`
+export const SearchInputWrapper = styled.div<Props>`
   ${({ type }) => css`
     display: flex;
     align-items: center;
