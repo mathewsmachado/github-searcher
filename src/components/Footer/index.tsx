@@ -20,4 +20,4 @@ export function Footer({ usernames, text }: FooterProps) {
   );
 }
 
-export { FooterWrapper } from './styles';
+export { FooterWrapper, FooterHeight } from './styles';

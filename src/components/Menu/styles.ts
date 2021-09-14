@@ -7,10 +7,12 @@ export type Props = {
   isOpen: boolean;
 };
 
+export const MenuHeight = '5.8rem';
 const sideSpace = { large: '4rem', small: '2rem' };
 
 export const MenuWrapper = styled.menu<Props>`
   ${({ theme, isOpen }) => css`
+    height: ${MenuHeight};
     display: flex;
     justify-content: space-between;
     position: relative;

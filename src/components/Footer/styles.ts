@@ -1,9 +1,11 @@
 import styled, { css } from 'styled-components';
 
+export const FooterHeight = '4rem';
+
 export const FooterWrapper = styled.footer`
   ${({ theme }) => css`
     width: 100%;
-    height: 4rem;
+    height: ${FooterHeight};
     display: flex;
     align-items: center;
     justify-content: space-between;

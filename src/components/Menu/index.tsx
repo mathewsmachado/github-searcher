@@ -76,4 +76,4 @@ export function Menu() {
   );
 }
 
-export { MenuWrapper } from './styles';
+export { MenuWrapper, MenuHeight } from './styles';
