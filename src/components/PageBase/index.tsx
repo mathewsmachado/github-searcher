@@ -19,10 +19,7 @@ export function PageBase({ children }: PageBaseProps) {
     <>
       <Menu />
       <PageBaseContentWrapper>{children}</PageBaseContentWrapper>
-      <Footer
-        text='Mathews Machado, 2021'
-        usernames={{ github: 'mathewsmachado', linkedin: 'mathewsmachado' }}
-      />
+      <Footer />
     </>
   );
 }

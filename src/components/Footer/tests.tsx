@@ -3,22 +3,19 @@ import { render, s } from 'utils/tests';
 
 import { Footer } from '.';
 
-it('should render the passed text and usernames', () => {
-  render(
-    <Footer
-      text='Searcher, Inc'
-      usernames={{ github: 'mathews', linkedin: 'machado' }}
-    />
-  );
+it('should render correctly all the items', () => {
+  render(<Footer />);
+
+  const text = s.getByText(/Mathews Machado, 20/i);
   const links = s.getAllByRole('link');
 
-  expect(s.getByText(/inc/i)).toBeInTheDocument();
+  expect(text).toBeInTheDocument();
   expect(links[0]).toHaveAttribute('href', expect.stringContaining('github'));
   expect(links[1]).toHaveAttribute('href', expect.stringContaining('linkedin'));
 });
 
 it('should render a black spaced-between footer', () => {
-  render(<Footer text='Searcher, Inc' usernames={{ github: 'mathews' }} />);
+  render(<Footer />);
   const footer = s.getByRole('contentinfo');
 
   expect(footer).toHaveStyle({ backgroundColor: theme.color.primary });
@@ -26,7 +23,7 @@ it('should render a black spaced-between footer', () => {
 });
 
 it('should decrease the padding on small screens', () => {
-  render(<Footer text='Searcher, Inc' usernames={{ github: 'mathews' }} />);
+  render(<Footer />);
   const footer = s.getByRole('contentinfo');
 
   expect(footer).toHaveStyleRule('padding', `0 ${theme.spacing.xxlarge}`);

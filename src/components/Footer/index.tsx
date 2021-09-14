@@ -1,20 +1,16 @@
-import {
-  SocialMediaIcons,
-  SocialMediaIconsProps,
-} from 'components/SocialMediaIcons';
+import { SocialMediaIcons } from 'components/SocialMediaIcons';
 
 import * as S from './styles';
 
-export type FooterProps = Pick<SocialMediaIconsProps, 'usernames'> & {
-  text: string;
-};
-
-export function Footer({ usernames, text }: FooterProps) {
+export function Footer() {
   return (
     <S.FooterWrapper>
-      <S.Text>{text}</S.Text>
+      <S.Text>Mathews Machado, 2021</S.Text>
       <S.IconsWrapper>
-        <SocialMediaIcons size='medium' usernames={usernames} />
+        <SocialMediaIcons
+          size='medium'
+          usernames={{ github: 'mathewsmachado', linkedin: 'mathewsmachado' }}
+        />
       </S.IconsWrapper>
     </S.FooterWrapper>
   );
