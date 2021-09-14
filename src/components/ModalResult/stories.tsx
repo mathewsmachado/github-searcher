@@ -7,7 +7,7 @@ import { ModalResult, ModalResultProps } from '.';
 export default {
   title: 'ModalResult',
   component: ModalResult,
-  ...disableArgTypes<ModalResultProps>(['type', 'isOpen', 'onClose']),
+  ...disableArgTypes<ModalResultProps>(['isOpen', 'onClose']),
 } as ComponentMeta<typeof ModalResult>;
 
 const Template: ComponentStory<typeof ModalResult> = (args) => (
@@ -19,7 +19,6 @@ User.argTypes = disableArgTypes<ModalResultProps>(['modalTwoContent'], false);
 User.args = {
   isOpen: true,
   onClose: () => window.alert('working'),
-  type: 'single',
   modalOneContent: {
     name: 'MathewsMachado',
     username: 'mathewsmachado',
@@ -47,6 +46,5 @@ RepoSingle.args = {
 export const RepoDouble = Template.bind({});
 RepoDouble.args = {
   ...RepoSingle.args,
-  type: 'double',
   modalTwoContent: RepoSingle.args.modalOneContent,
 };

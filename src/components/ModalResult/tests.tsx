@@ -7,7 +7,6 @@ it('should render a version with only one modal', () => {
     <ModalResult
       isOpen
       onClose={() => {}}
-      type='single'
       modalOneContent={{
         name: 'mathews',
         type: 'user',
@@ -36,7 +35,6 @@ it('should render a version with two modals', () => {
     <ModalResult
       isOpen
       onClose={() => {}}
-      type='double'
       modalOneContent={{
         name: 'tl',
         type: 'repo',
@@ -73,7 +71,6 @@ it('should build the github link depending if it is a user or a repo', () => {
     <ModalResult
       isOpen
       onClose={() => {}}
-      type='single'
       modalOneContent={{
         name: 'mathews',
         type: 'user',
@@ -92,7 +89,6 @@ it('should build the github link depending if it is a user or a repo', () => {
     <ModalResult
       isOpen
       onClose={() => {}}
-      type='single'
       modalOneContent={{
         name: 'tl',
         type: 'repo',

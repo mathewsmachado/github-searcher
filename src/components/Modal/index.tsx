@@ -7,32 +7,24 @@ import { Overlay } from 'components/Overlay';
 
 import * as S from './styles';
 
-type Base = Pick<S.Props, 'isOpen'> & {
+export type ModalProps = Pick<S.Props, 'isOpen'> & {
   onClose: () => void;
   modalOneContent: ReactNode;
+  modalTwoContent?: ReactNode;
   closeButton?: boolean;
 };
 
-export type ModalSingle = {
-  type?: S.Single;
-  modalTwoContent?: undefined;
-};
-
-export type ModalDouble = {
-  type: S.Double;
-  modalTwoContent: ReactNode;
-};
-
-export type ModalProps = Base & (ModalSingle | ModalDouble);
+export type ModalValidTypes = Pick<S.Props, 'type'>;
 
 export function Modal({
   isOpen,
   onClose,
   modalOneContent,
   modalTwoContent,
-  type = 'single',
   closeButton = true,
 }: ModalProps) {
+  const type = modalTwoContent ? 'double' : 'single';
+
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {

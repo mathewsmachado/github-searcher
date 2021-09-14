@@ -1,11 +1,7 @@
 import styled, { css } from 'styled-components';
 
-export type Single = 'single';
-export type Double = 'double';
-export type DoubleComposed = 'doubleComposed';
-
-type Props = {
-  type?: Single | Double | DoubleComposed;
+export type Props = {
+  type: 'single' | 'double' | 'doubleComposed';
 };
 
 export const SearchInputWrapper = styled.div<Props>`

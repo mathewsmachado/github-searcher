@@ -1,11 +1,9 @@
 // @ts-nocheck
 import styled, { css } from 'styled-components';
 
-import { ModalContentWrapper } from 'components/Modal';
+import { ModalContentWrapper, ModalValidTypes } from 'components/Modal';
 
-type Props = { type: 'single' | 'double' | undefined };
-
-export const ModalResultWrapper = styled.div<Props>`
+export const ModalResultWrapper = styled.div<ModalValidTypes>`
   ${({ type }) => css`
     width: 100%;
     margin: 0 auto;

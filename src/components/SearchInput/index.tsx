@@ -8,21 +8,18 @@ type Base = {
 };
 
 type Single = {
-  type?: S.Single;
   inputTwo?: undefined;
   inputThree?: undefined;
   inputFour?: undefined;
 };
 
 type Double = {
-  type: S.Double;
   inputTwo: InputProps;
   inputThree?: undefined;
   inputFour?: undefined;
 };
 
 type DoubleComposed = {
-  type: S.DoubleComposed;
   inputTwo: InputProps;
   inputThree: InputProps;
   inputFour: InputProps;
@@ -30,13 +27,22 @@ type DoubleComposed = {
 
 export type SearchInputProps = Base & (Single | Double | DoubleComposed);
 
+function getType({
+  inputThree,
+  inputTwo,
+}: Omit<SearchInputProps, 'inputOne' | 'inputFour'>): S.Props['type'] {
+  if (inputThree) return 'doubleComposed';
+  if (inputTwo) return 'double';
+  return 'single';
+}
 export function SearchInput({
   inputOne,
   inputTwo,
   inputThree,
   inputFour,
-  type = 'single',
 }: SearchInputProps) {
+  const type = getType({ inputThree, inputTwo });
+
   return (
     <S.SearchInputWrapper type={type}>
       {type === 'single' && <Input icon {...inputOne} />}

@@ -6,12 +6,9 @@ import { CloseButtonWrapper } from 'components/CloseButton';
 import { VsSeparatorWrapper } from 'components/VsSeparator';
 import { OverlayWrapper } from 'components/Overlay';
 
-export type Single = 'single';
-export type Double = 'double';
-
 export type Props = {
   isOpen: boolean;
-  type?: Single | Double;
+  type?: 'single' | 'double';
 };
 
 export const ModalWrapper = styled.div<Props>`
