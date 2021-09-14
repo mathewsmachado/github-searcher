@@ -1,6 +1,8 @@
 // @ts-nocheck
 import styled, { css } from 'styled-components';
 
+import { OverlayWrapper } from 'components/Overlay';
+
 export type Props = {
   isOpen: boolean;
 };
@@ -17,6 +19,14 @@ export const MenuWrapper = styled.menu<Props>`
     border-bottom: 0.2rem solid ${theme.color.accent};
     transition: all ${theme.transition.fast};
 
+    ${theme.media.below('large')`
+      ${OverlayWrapper} {
+        transform: translateX(100%);
+        opacity: 0;
+        transition: transform ${theme.transition.fast}, opacity 0.5s ease-in-out;
+      }
+    `}
+
     ${theme.media.below('small')`
       padding: 1.4rem ${sideSpace.small} 1rem;
     `}
@@ -25,7 +35,7 @@ export const MenuWrapper = styled.menu<Props>`
   `};
 `;
 
-export const OpenCloseWrapper = styled.div`
+export const OpenClose = styled.div`
   ${({ theme }) => css`
     position: absolute;
     right: ${sideSpace.large};
@@ -33,7 +43,7 @@ export const OpenCloseWrapper = styled.div`
 
     ${theme.media.below('large')`
       opacity: 1;
-      z-index: 1;
+      z-index: ${theme.layer.alwaysOnTop};
       cursor: pointer;
     `};
 
@@ -43,7 +53,7 @@ export const OpenCloseWrapper = styled.div`
   `};
 `;
 
-export const RightSideWrapper = styled.div`
+export const RightSide = styled.div`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
@@ -52,6 +62,7 @@ export const RightSideWrapper = styled.div`
     ${theme.media.below('large')`
       width: 50%;
       height: 100vh;
+      z-index: ${theme.layer.menu};
       flex-direction: column;
       justify-content: space-between;
       position: absolute;
@@ -109,9 +120,12 @@ export const NavItem = styled.a`
 
 const modifiers = {
   open: () => css`
-    background-color: rgba(0, 0, 0, 0.6);
+    ${OverlayWrapper} {
+      transform: translateX(0%);
+      opacity: 1;
+    }
 
-    ${RightSideWrapper} {
+    ${RightSide} {
       left: unset;
       transform: translateX(0%);
       opacity: 1;

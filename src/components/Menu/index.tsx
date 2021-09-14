@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import { IoMdClose } from 'react-icons/io';
 
@@ -6,6 +6,7 @@ import { theme } from 'styles/theme';
 import { throttle } from 'utils/performance';
 import { Logo } from 'components/Logo';
 import { SocialMediaIcons } from 'components/SocialMediaIcons';
+import { Overlay } from 'components/Overlay';
 
 import * as S from './styles';
 
@@ -22,40 +23,44 @@ const navItems: NavItem[] = [
 export function Menu() {
   const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    function close() {
-      setIsOpen(false);
-    }
-
-    window.addEventListener('resize', throttle(close, 4000));
-    return () => window.removeEventListener('resize', throttle(close, 4000));
-  }, []);
-
-  function toggleOpen() {
-    setIsOpen((prevState) => !prevState);
+  function open() {
+    setIsOpen(true);
   }
 
-  const socialMediaUsernames = {
-    github: 'mathewsmachado',
-    linkedin: 'mathewsmachado',
-  };
+  const close = useCallback(() => setIsOpen(false), [setIsOpen]);
 
-  const openCloseIconsProps = {
-    size: 30,
-    color: theme.color.secondary,
-    onClick: toggleOpen,
-  };
+  useEffect(() => {
+    const throttleClose = throttle(close, 4000);
+
+    window.addEventListener('resize', throttleClose);
+    return () => window.removeEventListener('resize', throttleClose);
+  }, [close]);
 
   return (
     <S.MenuWrapper isOpen={isOpen}>
+      <Overlay isVisible={isOpen} onClick={close} />
       <Logo githubColor='secondary' />
-      <S.OpenCloseWrapper>
+
+      <S.OpenClose>
         {isOpen && (
-          <IoMdClose title='close menu icon' {...openCloseIconsProps} />
+          <IoMdClose
+            size={30}
+            color={theme.color.secondary}
+            title='close menu icon'
+            onClick={close}
+          />
         )}
-        {!isOpen && <FiMenu title='open menu icon' {...openCloseIconsProps} />}
-      </S.OpenCloseWrapper>
-      <S.RightSideWrapper>
+        {!isOpen && (
+          <FiMenu
+            size={30}
+            color={theme.color.secondary}
+            title='open menu icon'
+            onClick={open}
+          />
+        )}
+      </S.OpenClose>
+
+      <S.RightSide>
         <S.Nav>
           {navItems.map(({ text, link }) => (
             <S.NavItem key={text} href={link}>
@@ -63,8 +68,10 @@ export function Menu() {
             </S.NavItem>
           ))}
         </S.Nav>
-        <SocialMediaIcons usernames={socialMediaUsernames} />
-      </S.RightSideWrapper>
+        <SocialMediaIcons
+          usernames={{ github: 'mathewsmachado', linkedin: 'mathewsmachado' }}
+        />
+      </S.RightSide>
     </S.MenuWrapper>
   );
 }
