@@ -1,8 +1,9 @@
-import { useState, useEffect, ReactNode, MouseEvent } from 'react';
+import { useState, useEffect, ReactNode } from 'react';
 
 import { debounce } from 'utils/performance';
 import { CloseButton } from 'components/CloseButton';
 import { VsSeparator } from 'components/VsSeparator';
+import { Overlay } from 'components/Overlay';
 
 import * as S from './styles';
 
@@ -24,10 +25,6 @@ export type ModalDouble = {
 
 export type ModalProps = Base & (ModalSingle | ModalDouble);
 
-function preventClosing(event: MouseEvent<HTMLElement>) {
-  event.stopPropagation();
-}
-
 export function Modal({
   isOpen,
   onClose,
@@ -41,35 +38,35 @@ export function Modal({
   useEffect(() => {
     if (type !== 'double') return;
 
-    function updateWindowWidth() {
+    const updateWindowWidth = debounce(() => {
       setWindowWidth(window.innerWidth);
-    }
+    }, 100);
 
-    window.addEventListener('resize', debounce(updateWindowWidth, 100));
+    window.addEventListener('resize', updateWindowWidth);
     // eslint-disable-next-line consistent-return
-    return () =>
-      window.removeEventListener('resize', debounce(updateWindowWidth, 100));
-  }, []);
+    return () => window.removeEventListener('resize', updateWindowWidth);
+  }, [type]);
 
   return (
-    <S.Overlay onClick={onClose} isOpen={isOpen} type={type}>
-      <S.ModalWrapper onClick={preventClosing}>
+    <S.ModalWrapper isOpen={isOpen} type={type}>
+      <Overlay isVisible={isOpen} onClick={onClose} />
+      <S.ModalContentWrapper>
         {closeButton && <CloseButton onClick={onClose} minimal />}
         {modalOneContent}
-      </S.ModalWrapper>
+      </S.ModalContentWrapper>
       {type === 'double' && (
         <>
           <VsSeparator
             orientation={windowWidth > 768 ? 'vertical' : 'horizontal'}
           />
-          <S.ModalWrapper onClick={preventClosing}>
+          <S.ModalContentWrapper>
             {closeButton && <CloseButton onClick={onClose} minimal />}
             {modalTwoContent}
-          </S.ModalWrapper>
+          </S.ModalContentWrapper>
         </>
       )}
-    </S.Overlay>
+    </S.ModalWrapper>
   );
 }
 
-export { ModalWrapper } from './styles';
+export { ModalWrapper, ModalContentWrapper } from './styles';

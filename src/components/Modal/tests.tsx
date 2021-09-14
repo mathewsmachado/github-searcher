@@ -11,14 +11,14 @@ const MockedComponent = () => {
 
   return (
     <>
-      <button type='button' onClick={() => setIsModalOpen(true)}>
-        Open
-      </button>
       <Modal
         modalOneContent={<h1>The first</h1>}
         onClose={() => setIsModalOpen(false)}
         isOpen={isModalOpen}
       />
+      <button type='button' onClick={() => setIsModalOpen(true)}>
+        Open
+      </button>
     </>
   );
 };
@@ -33,23 +33,22 @@ it('should render a single modal with a close button by default', () => {
     'wrapper'
   );
 
-  const overlay = s.getByTestId(/wrapper/i).firstChild;
-  const contentWrapper = overlay?.firstChild;
+  const wrapper = s.getByTestId(/wrapper/i).firstChild;
+  const overlay = wrapper?.firstChild;
+  const card = wrapper?.lastChild;
   const closeButton = s.getByRole('button');
   const content = s.getByRole('heading');
 
-  expect(overlay?.childNodes).toHaveLength(1);
-  expect(overlay).toHaveStyle({
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'relative',
-    minHeight: '100vh',
-  });
-  expect(contentWrapper).toHaveStyle({
+  expect(wrapper?.childNodes).toHaveLength(2);
+  expect(overlay).toBeInTheDocument();
+  expect(wrapper).toHaveStyleRule('display', 'flex');
+  expect(wrapper).toHaveStyleRule('align-items', 'center');
+  expect(wrapper).toHaveStyleRule('justify-content', 'center');
+  expect(card).toHaveStyle({
     position: 'relative',
     maxWidth: '70rem',
     width: '100%',
+    zIndex: theme.layer.modal,
   });
   expect(closeButton).toHaveStyle({
     position: 'absolute',
@@ -70,16 +69,21 @@ it('should render a double modal', () => {
     'wrapper'
   );
 
-  const overlay = s.getByTestId(/wrapper/i).firstChild;
-  const contentWrapperOne = overlay?.firstChild;
-  const contentWrapperTwo = overlay?.lastChild;
-  const vsSeparator = s.getByTitle(/vs/i);
+  const wrapper = s.getByTestId(/wrapper/i).firstChild;
+  const overlay = wrapper?.firstChild;
   const closeButtons = s.getAllByRole('button');
+  const cardOne = closeButtons[0].parentElement;
+  const cardTwo = closeButtons[1].parentElement;
+  const vsSeparator = s.getByTitle(/vs/i);
   const contents = s.getAllByRole('heading');
 
-  expect(overlay?.childNodes).toHaveLength(3);
-  expect(contentWrapperOne).toBeInTheDocument();
-  expect(contentWrapperTwo).toBeInTheDocument();
+  expect(wrapper?.childNodes).toHaveLength(4);
+  expect(wrapper).toHaveStyleRule('flex-direction', 'column', {
+    media: theme.media.breakpoints('below', 'medium'),
+  });
+  expect(overlay).toBeInTheDocument();
+  expect(cardOne).toBeInTheDocument();
+  expect(cardTwo).toBeInTheDocument();
   expect(vsSeparator).toBeInTheDocument();
   expect(closeButtons).toHaveLength(2);
   expect(contents[0]).toHaveTextContent(/the first/i);
@@ -100,9 +104,10 @@ it('should render a version without a close button', () => {
 });
 
 it('should close if the overlay is clicked', () => {
-  render(<MockedComponent />);
+  render(<MockedComponent />, 'wrapper');
+  const overlay = s.getByTestId('wrapper').firstChild
+    ?.firstChild as TargetElement;
   const openButton = s.getByRole('button', { name: /open/i });
-  const overlay = openButton.nextElementSibling;
 
   expect(overlay).not.toBeVisible();
 
@@ -110,7 +115,7 @@ it('should close if the overlay is clicked', () => {
 
   expect(overlay).toBeVisible();
 
-  userEvent.click(overlay as TargetElement);
+  userEvent.click(overlay);
 
   expect(overlay).not.toBeVisible();
 });
@@ -131,20 +136,20 @@ it('should close if the close button is clicked', () => {
   expect(closeButton).not.toBeVisible();
 });
 
-it('should not close if the content wrapper is clicked', () => {
+it('should not close if the card is clicked', () => {
   render(<MockedComponent />);
   const openButton = s.getByRole('button', { name: /open/i });
-  const contentWrapper = s.getByRole('button', {
+  const card = s.getByRole('button', {
     name: /close/i,
-  }).parentElement;
+  }).parentElement as TargetElement;
 
-  expect(contentWrapper).not.toBeVisible();
+  expect(card).not.toBeVisible();
 
   userEvent.click(openButton);
 
-  expect(contentWrapper).toBeVisible();
+  expect(card).toBeVisible();
 
-  userEvent.click(contentWrapper as TargetElement);
+  userEvent.click(card);
 
-  expect(contentWrapper).toBeVisible();
+  expect(card).toBeVisible();
 });

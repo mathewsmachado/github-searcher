@@ -18,11 +18,13 @@ it('should render a version with only one modal', () => {
     'wrapper'
   );
 
-  const overlay = s.getByTestId(/wrapper/i).firstChild?.firstChild;
+  const wrapper = s.getByTestId(/wrapper/i).firstChild?.firstChild;
+  const overlay = wrapper?.firstChild;
   const avatar = s.getByRole('img');
   const status = s.getByText(/following/i);
   const socialMediaIcons = s.getByTitle(/github icon/i);
 
+  expect(wrapper).toBeInTheDocument();
   expect(overlay).toBeInTheDocument();
   expect(avatar).toBeInTheDocument();
   expect(status).toBeInTheDocument();
@@ -51,13 +53,15 @@ it('should render a version with two modals', () => {
     'wrapper'
   );
 
-  const overlay = s.getByTestId(/wrapper/i).firstChild?.firstChild;
+  const wrapper = s.getByTestId(/wrapper/i).firstChild?.firstChild;
+  const overlay = wrapper?.firstChild;
   const avatars = s.getAllByRole('img');
   const statuses = s.getAllByText(/forks/i);
   const socialMediaIcons = s.getAllByTitle(/github icon/i);
   const vsSeparator = s.getByTitle(/vs/i);
 
-  expect(overlay!.childNodes).toHaveLength(3);
+  expect(wrapper!.childNodes).toHaveLength(4);
+  expect(overlay).toBeInTheDocument();
   expect(avatars).toHaveLength(2);
   expect(statuses).toHaveLength(2);
   expect(socialMediaIcons).toHaveLength(2);

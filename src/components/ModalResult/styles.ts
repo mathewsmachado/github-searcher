@@ -1,12 +1,17 @@
 // @ts-nocheck
 import styled, { css } from 'styled-components';
 
-import { ModalWrapper } from 'components/Modal';
+import { ModalContentWrapper } from 'components/Modal';
 
-export const ModalResultWrapper = styled.div`
-  ${ModalWrapper} {
-    max-width: 50rem;
-  }
+type Props = { type: 'single' | 'double' | undefined };
+
+export const ModalResultWrapper = styled.div<Props>`
+  ${({ type }) => css`
+    width: 100%;
+    margin: 0 auto;
+
+    ${type === 'single' && modifiers.single()};
+  `};
 `;
 
 export const ContentWrapper = styled.div`
@@ -40,3 +45,11 @@ export const StatusWrapper = styled.div`
     `};
   `};
 `;
+
+const modifiers = {
+  single: () => css`
+    ${ModalContentWrapper} {
+      max-width: 50rem;
+    }
+  `,
+};

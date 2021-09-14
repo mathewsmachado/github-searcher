@@ -25,7 +25,7 @@ export function ModalResult({
   modalTwoContent,
 }: ModalResultProps) {
   return (
-    <ModalResultWrapper>
+    <ModalResultWrapper type={type}>
       {type === 'single' && (
         <Modal
           type='single'
