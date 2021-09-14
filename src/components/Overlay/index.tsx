@@ -12,6 +12,7 @@ export const Overlay = styled.div<OverlayProps>`
     z-index: ${theme.layer.base};
     background-color: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(0.1rem);
+    pointer-events: auto;
 
     ${!isVisible && modifiers.hide()};
   `};
@@ -20,6 +21,7 @@ export const Overlay = styled.div<OverlayProps>`
 const modifiers = {
   hide: () => css`
     opacity: 0;
+    pointer-events: none;
   `,
 };
 
