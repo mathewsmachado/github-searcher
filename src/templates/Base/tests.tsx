@@ -1,12 +1,12 @@
 import { render, s } from 'utils/tests';
 
-import { PageBase, PageBaseContentHeight } from '.';
+import { Base, BaseContentHeight } from '.';
 
 it('should render correctly all the items', () => {
   render(
-    <PageBase>
+    <Base>
       <h1>Hello, World</h1>
-    </PageBase>,
+    </Base>,
     'wrapper'
   );
 
@@ -17,7 +17,7 @@ it('should render correctly all the items', () => {
 
   expect(wrapper.children).toHaveLength(3);
   expect(menu).toBeInTheDocument();
-  expect(children.parentElement).toHaveStyle({ height: PageBaseContentHeight });
+  expect(children.parentElement).toHaveStyle({ height: BaseContentHeight });
   expect(children).toBeInTheDocument();
   expect(footer).toBeInTheDocument();
 });

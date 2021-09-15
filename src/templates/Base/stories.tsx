@@ -2,17 +2,15 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { theme } from 'styles/theme';
 
-import { PageBase, PageBaseProps } from '.';
+import { Base, BaseProps } from '.';
 
 export default {
-  title: 'PageBase',
-  component: PageBase,
-} as ComponentMeta<typeof PageBase>;
+  title: 'Base',
+  component: Base,
+} as ComponentMeta<typeof Base>;
 
-const Template: ComponentStory<typeof PageBase> = ({
-  children,
-}: PageBaseProps) => (
-  <PageBase>
+const Template: ComponentStory<typeof Base> = ({ children }: BaseProps) => (
+  <Base>
     <h1
       style={{
         position: 'absolute',
@@ -24,7 +22,7 @@ const Template: ComponentStory<typeof PageBase> = ({
     >
       {children}
     </h1>
-  </PageBase>
+  </Base>
 );
 
 export const Default = Template.bind({});
