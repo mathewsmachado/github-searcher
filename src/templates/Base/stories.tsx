@@ -1,8 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { theme } from 'styles/theme';
+import { StoryContainer } from 'utils/storybook';
 
-import { Base, BaseProps } from '.';
+import { Base, BaseProps, BaseContentInnerHeight } from '.';
 
 export default {
   title: 'Base',
@@ -11,17 +12,22 @@ export default {
 
 const Template: ComponentStory<typeof Base> = ({ children }: BaseProps) => (
   <Base>
-    <h1
+    <StoryContainer
       style={{
-        position: 'absolute',
-        top: '50%',
-        right: '50%',
-        transform: 'translate(50%, -50%)',
+        maxWidth: 'unset',
+        width: '100%',
+        height: BaseContentInnerHeight,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+        padding: '0.8rem',
+        border: `1px solid ${theme.color.accent}`,
         color: theme.color.accent,
       }}
     >
-      {children}
-    </h1>
+      <h1>{children}</h1>
+    </StoryContainer>
   </Base>
 );
 
