@@ -8,7 +8,6 @@ export default {
   title: 'Modal',
   component: Modal,
   ...disableArgTypes<ModalProps>([
-    'type',
     'onClose',
     'modalOneContent',
     'modalTwoContent',
@@ -23,12 +22,10 @@ Single.args = {
   isOpen: true,
   onClose: () => window.alert('working'),
   closeButton: true,
-  type: 'single',
 };
 
 export const Double = Template.bind({});
 Double.args = {
   ...Single.args,
   modalTwoContent: Single.args.modalOneContent,
-  type: 'double',
 };

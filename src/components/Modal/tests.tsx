@@ -62,7 +62,6 @@ it('should render a double modal', () => {
     <Modal
       modalOneContent={<h1>The first</h1>}
       modalTwoContent={<h1>The second</h1>}
-      type='double'
       onClose={() => {}}
       isOpen
     />,

@@ -17,7 +17,6 @@ it('should render a single input by default', () => {
 it('should render a double input', () => {
   render(
     <SearchInput
-      type='double'
       inputOne={{ placeholder: 'one' }}
       inputTwo={{ placeholder: 'two' }}
     />,
@@ -36,7 +35,6 @@ it('should render a double input', () => {
 it('should render a double composed input', () => {
   render(
     <SearchInput
-      type='doubleComposed'
       inputOne={{ placeholder: 'one' }}
       inputTwo={{ placeholder: 'two' }}
       inputThree={{ placeholder: 'three' }}
