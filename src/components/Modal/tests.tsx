@@ -1,7 +1,9 @@
+// @ts-nocheck
 import { useState } from 'react';
 import userEvent, { TargetElement } from '@testing-library/user-event';
 
 import { theme } from 'styles/theme';
+import { setModalRoot, unsetModalRoot } from 'utils/dom';
 import { render, s } from 'utils/tests';
 
 import { Modal } from '.';
@@ -23,17 +25,20 @@ const MockedComponent = () => {
   );
 };
 
+beforeAll(() => setModalRoot());
+
+afterAll(() => unsetModalRoot());
+
 it('should render a single modal with a close button by default', () => {
   render(
     <Modal
       modalOneContent={<h1>Github Searcher</h1>}
       onClose={() => {}}
       isOpen
-    />,
-    'wrapper'
+    />
   );
 
-  const wrapper = s.getByTestId(/wrapper/i).firstChild;
+  const wrapper = document.getElementById('modal-root').firstChild;
   const overlay = wrapper?.firstChild;
   const card = wrapper?.lastChild;
   const closeButton = s.getByRole('button');
@@ -64,11 +69,10 @@ it('should render a double modal', () => {
       modalTwoContent={<h1>The second</h1>}
       onClose={() => {}}
       isOpen
-    />,
-    'wrapper'
+    />
   );
 
-  const wrapper = s.getByTestId(/wrapper/i).firstChild;
+  const wrapper = document.getElementById('modal-root').firstChild;
   const overlay = wrapper?.firstChild;
   const closeButtons = s.getAllByRole('button');
   const cardOne = closeButtons[0].parentElement;
@@ -103,8 +107,8 @@ it('should render a version without a close button', () => {
 });
 
 it('should close if the overlay is clicked', () => {
-  render(<MockedComponent />, 'wrapper');
-  const overlay = s.getByTestId('wrapper').firstChild
+  render(<MockedComponent />);
+  const overlay = document.getElementById('modal-root').firstChild
     ?.firstChild as TargetElement;
   const openButton = s.getByRole('button', { name: /open/i });
 

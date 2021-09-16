@@ -1,6 +1,11 @@
+import { setModalRoot, unsetModalRoot } from 'utils/dom';
 import { render, s } from 'utils/tests';
 
 import { ModalResult } from '.';
+
+beforeAll(() => setModalRoot());
+
+afterAll(() => unsetModalRoot());
 
 it('should render a version with only one modal', () => {
   render(
@@ -13,11 +18,10 @@ it('should render a version with only one modal', () => {
         statuses: { followers: 1, following: 1, repositories: 1 },
         username: 'mathewsmachado',
       }}
-    />,
-    'wrapper'
+    />
   );
 
-  const wrapper = s.getByTestId(/wrapper/i).firstChild?.firstChild;
+  const wrapper = document.getElementById('modal-root')!.firstChild;
   const overlay = wrapper?.firstChild;
   const avatar = s.getByRole('img');
   const status = s.getByText(/following/i);
@@ -47,11 +51,10 @@ it('should render a version with two modals', () => {
         statuses: { forks: 1, issues: 1, stars: 1 },
         username: 'facebook',
       }}
-    />,
-    'wrapper'
+    />
   );
 
-  const wrapper = s.getByTestId(/wrapper/i).firstChild?.firstChild;
+  const wrapper = document.getElementById('modal-root')!.firstChild;
   const overlay = wrapper?.firstChild;
   const avatars = s.getAllByRole('img');
   const statuses = s.getAllByText(/forks/i);

@@ -1,3 +1,4 @@
+import { createPortal } from 'react-dom';
 import { useState, useEffect, ReactNode } from 'react';
 
 import { debounce } from 'utils/performance';
@@ -39,7 +40,7 @@ export function Modal({
     return () => window.removeEventListener('resize', updateWindowWidth);
   }, [type]);
 
-  return (
+  return createPortal(
     <S.ModalWrapper isOpen={isOpen} type={type}>
       <Overlay isVisible={isOpen} onClick={onClose} />
       <S.ModalContentWrapper>
@@ -57,7 +58,8 @@ export function Modal({
           </S.ModalContentWrapper>
         </>
       )}
-    </S.ModalWrapper>
+    </S.ModalWrapper>,
+    document.getElementById('modal-root')!
   );
 }
 

@@ -13,16 +13,15 @@ export type Props = {
 
 export const ModalWrapper = styled.div<Props>`
   ${({ theme, isOpen, type }) => css`
-    width: 100%;
-    height: 100%;
-    position: absolute;
+    position: fixed;
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 1;
-    transform: translateX(0rem);
     padding: ${theme.spacing.small};
     transition: all ${theme.transition.default};
+    z-index: ${theme.layer.modal};
 
     ${OverlayWrapper} {
       transition: all ${theme.transition.fast};
@@ -82,6 +81,5 @@ const modifiers = {
   close: () => css`
     opacity: 0;
     pointer-events: none;
-    transform: translateY(-2rem);
   `,
 };

@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { setModalRoot } from 'utils/dom';
 import { StyleProvider } from 'styles/StyleProvider.tsx';
+
+setModalRoot();
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
