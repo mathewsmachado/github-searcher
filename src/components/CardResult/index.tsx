@@ -6,7 +6,9 @@ import { VsButton } from 'components/VsButton';
 
 import * as S from './styles';
 
-export type CardResultProps = Omit<AvatarProps, 'as' | 'href' | 'direction'>;
+export type CardResultProps = Omit<AvatarProps, 'as' | 'href' | 'direction'> & {
+  onArrowClick: () => void;
+};
 
 export function CardResult({
   name,
@@ -14,6 +16,7 @@ export function CardResult({
   username,
   type,
   about,
+  onArrowClick,
 }: CardResultProps) {
   return (
     <S.CardResultWrapper>
@@ -29,13 +32,13 @@ export function CardResult({
         {type === 'repo' && (
           <S.IconsWrapper>
             <VsButton minimal />
-            <S.ArrowIcon>
+            <S.ArrowIcon onClick={onArrowClick}>
               <MdKeyboardArrowRight title='right arrow icon' />
             </S.ArrowIcon>
           </S.IconsWrapper>
         )}
         {type === 'user' && (
-          <S.ArrowIcon>
+          <S.ArrowIcon onClick={onArrowClick}>
             <MdKeyboardArrowRight title='right arrow icon' />
           </S.ArrowIcon>
         )}
