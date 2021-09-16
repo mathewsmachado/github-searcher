@@ -1,5 +1,7 @@
+import userEvent from '@testing-library/user-event';
+
 import { theme } from 'styles/theme';
-import { fireEvent, render, s } from 'utils/tests';
+import { render, s } from 'utils/tests';
 
 import { Menu } from '.';
 
@@ -66,12 +68,12 @@ it('should toggle the open/close icon if it is clicked', () => {
   expect(s.getByTitle(/open menu/i)).toBeInTheDocument();
   expect(s.queryByTitle(/close menu/i)).not.toBeInTheDocument();
 
-  fireEvent.click(s.getByTitle(/open menu/i));
+  userEvent.click(s.getByTitle(/open menu/i));
 
   expect(s.getByTitle(/close menu/i)).toBeInTheDocument();
   expect(s.queryByTitle(/open menu/i)).not.toBeInTheDocument();
 
-  fireEvent.click(s.getByTitle(/close menu/i));
+  userEvent.click(s.getByTitle(/close menu/i));
 
   expect(s.getByTitle(/open menu/i)).toBeInTheDocument();
   expect(s.queryByTitle(/close menu/i)).not.toBeInTheDocument();
@@ -88,7 +90,7 @@ it('should hide nav items if screen is below large and appear with it only after
   expect(rightSide).toHaveStyleRule('transform', 'translateX(100%)', { media });
   expect(rightSide).toHaveStyleRule('opacity', '0', { media });
 
-  fireEvent.click(s.getByTitle(/open menu/i));
+  userEvent.click(s.getByTitle(/open menu/i));
 
   expect(rightSide).toHaveStyle({ transform: 'translateX(0%)' });
   expect(rightSide).toHaveStyle({ opacity: 1 });

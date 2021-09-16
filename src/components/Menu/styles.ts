@@ -45,7 +45,7 @@ export const OpenClose = styled.div`
 
     ${theme.media.below('large')`
       opacity: 1;
-      z-index: ${theme.layer.alwaysOnTop};
+      z-index: ${theme.layer.overlay};
       cursor: pointer;
     `};
 
