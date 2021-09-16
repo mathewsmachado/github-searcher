@@ -10,7 +10,7 @@ export const Overlay = styled.div<OverlayProps>`
     position: fixed;
     inset: 0;
     z-index: ${theme.layer.base};
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(220, 220, 200, 0.3);
     backdrop-filter: blur(0.1rem);
     pointer-events: auto;
 

@@ -12,7 +12,6 @@ it('should render correctly', () => {
   expect(overlay).toHaveStyleRule('position', 'fixed');
   expect(overlay).toHaveStyleRule('inset', '0');
   expect(overlay).toHaveStyleRule('z-index', theme.layer.base.toString());
-  expect(overlay).toHaveStyleRule('background-color', 'rgba(0,0,0,0.2)');
   expect(overlay).toHaveStyleRule('backdrop-filter', 'blur(0.1rem)');
 });
 
