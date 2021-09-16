@@ -2,13 +2,7 @@
   "language": "en",
   "minWordLength": 2,
   "files": ["**/*"],
-  "ignorePaths": [
-    "build",
-    "coverage",
-    "package*",
-    "src/reportWebVitals.ts",
-    "**/*.svg"
-  ],
+  "ignorePaths": ["build", "coverage", "package*", "**/*.svg"],
   "words": [
     "amorim",
     "Cantarell",
