@@ -35,6 +35,7 @@ function getType({
   if (inputTwo) return 'double';
   return 'single';
 }
+
 export function SearchInput({
   inputOne,
   inputTwo,

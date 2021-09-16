@@ -8,6 +8,7 @@ export type Props = {
 
 export const InputWrapper = styled.div<Props>`
   ${({ theme, error }) => css`
+    width: 100%;
     display: flex;
     align-items: center;
     border: 1px solid ${theme.color.primary};

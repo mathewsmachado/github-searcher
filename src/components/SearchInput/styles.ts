@@ -6,9 +6,9 @@ export type Props = {
 
 export const SearchInputWrapper = styled.div<Props>`
   ${({ type }) => css`
+    width: 100%;
     display: flex;
     align-items: center;
-    max-width: 53rem;
 
     ${type === 'doubleComposed' && modifiers.doubleComposed()};
   `};
@@ -30,6 +30,7 @@ const modifiers = {
     flex-direction: column;
 
     ${InputWrapper} {
+      width: 100%;
       display: flex;
       align-items: center;
     }
