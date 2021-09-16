@@ -3,22 +3,20 @@ import { render, s } from 'utils/tests';
 import { SearchInput } from '.';
 
 it('should render a single input by default', () => {
-  render(<SearchInput inputOne={{ placeholder: 'one' }} />, 'wrapper');
+  render(<SearchInput inputsData={[{ placeholder: 'one' }]} />, 'wrapper');
 
   expect(s.getByRole('textbox')).toHaveAttribute('placeholder', 'one');
   expect(s.getByTitle(/search/i)).toBeInTheDocument();
   expect(s.getByTestId(/wrapper/i).firstChild).toHaveStyle({
     display: 'flex',
     alignItems: 'center',
-    maxWidth: '53rem',
   });
 });
 
 it('should render a double input', () => {
   render(
     <SearchInput
-      inputOne={{ placeholder: 'one' }}
-      inputTwo={{ placeholder: 'two' }}
+      inputsData={[{ placeholder: 'one' }, { placeholder: 'two' }]}
     />,
     'wrapper'
   );
@@ -28,17 +26,18 @@ it('should render a double input', () => {
   expect(s.getByTestId(/wrapper/i).firstChild).toHaveStyle({
     display: 'flex',
     alignItems: 'center',
-    maxWidth: '53rem',
   });
 });
 
 it('should render a double composed input', () => {
   render(
     <SearchInput
-      inputOne={{ placeholder: 'one' }}
-      inputTwo={{ placeholder: 'two' }}
-      inputThree={{ placeholder: 'three' }}
-      inputFour={{ placeholder: 'four' }}
+      inputsData={[
+        { placeholder: 'one' },
+        { placeholder: 'two' },
+        { placeholder: 'three' },
+        { placeholder: 'four' },
+      ]}
     />,
     'wrapper'
   );

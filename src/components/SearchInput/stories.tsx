@@ -1,8 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { disableArgTypes } from 'utils/storybook';
-
-import { SearchInput, SearchInputProps } from '.';
+import { SearchInput } from '.';
 
 export default {
   title: 'SearchInput',
@@ -14,25 +12,21 @@ const Template: ComponentStory<typeof SearchInput> = (args) => (
 );
 
 export const Single = Template.bind({});
-Single.argTypes = disableArgTypes<SearchInputProps>(
-  ['inputTwo', 'inputThree', 'inputFour'],
-  false
-);
-Single.args = { inputOne: { placeholder: 'Username' } };
+Single.args = {
+  inputsData: [{ placeholder: 'Username' }],
+};
 
 export const Double = Template.bind({});
-Double.argTypes = disableArgTypes<SearchInputProps>(
-  ['inputThree', 'inputFour'],
-  false
-);
 Double.args = {
-  ...Single.args,
-  inputTwo: { placeholder: 'Repo' },
+  inputsData: [{ placeholder: 'Username' }, { placeholder: 'Repo' }],
 };
 
 export const Composed = Template.bind({});
 Composed.args = {
-  ...Double.args,
-  inputThree: { placeholder: 'Repo' },
-  inputFour: { placeholder: 'Username' },
+  inputsData: [
+    { placeholder: 'Username' },
+    { placeholder: 'Repo' },
+    { placeholder: 'Username' },
+    { placeholder: 'Repo' },
+  ],
 };

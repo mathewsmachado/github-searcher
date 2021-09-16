@@ -3,71 +3,53 @@ import { VsSeparator } from 'components/VsSeparator';
 
 import * as S from './styles';
 
-type Base = {
-  inputOne: InputProps;
+type Single = [InputProps];
+
+type Double = [...Single, ...Single];
+
+type DoubleComposed = [...Double, ...Double];
+
+export type SearchInputProps = {
+  inputsData: Single | Double | DoubleComposed;
 };
 
-type Single = {
-  inputTwo?: undefined;
-  inputThree?: undefined;
-  inputFour?: undefined;
-};
-
-type Double = {
-  inputTwo: InputProps;
-  inputThree?: undefined;
-  inputFour?: undefined;
-};
-
-type DoubleComposed = {
-  inputTwo: InputProps;
-  inputThree: InputProps;
-  inputFour: InputProps;
-};
-
-export type SearchInputProps = Base & (Single | Double | DoubleComposed);
-
-function getType({
-  inputThree,
-  inputTwo,
-}: Omit<SearchInputProps, 'inputOne' | 'inputFour'>): S.Props['type'] {
-  if (inputThree) return 'doubleComposed';
-  if (inputTwo) return 'double';
+function getType(
+  two: InputProps | undefined,
+  three: InputProps | undefined
+): S.Props['type'] {
+  if (three) return 'doubleComposed';
+  if (two) return 'double';
   return 'single';
 }
 
-export function SearchInput({
-  inputOne,
-  inputTwo,
-  inputThree,
-  inputFour,
-}: SearchInputProps) {
-  const type = getType({ inputThree, inputTwo });
+export function SearchInput({ inputsData }: SearchInputProps) {
+  const [one, two, three, four] = inputsData;
+  const type = getType(two, three);
 
   return (
     <S.SearchInputWrapper type={type}>
-      {type === 'single' && <Input icon {...inputOne} />}
+      {type === 'single' && <Input icon {...one} />}
       {type === 'double' && (
         <>
-          <Input {...inputOne} />
+          <Input {...one} />
           <S.Separator>by</S.Separator>
-          <Input {...inputTwo} />
+          <Input {...two} />
         </>
       )}
       {type === 'doubleComposed' && (
         <>
           <S.InputWrapper>
-            <Input {...inputOne} />
+            <Input {...one} />
             <S.Separator>by</S.Separator>
-            <Input {...inputTwo} />
+            <Input {...two} />
           </S.InputWrapper>
 
           <VsSeparator orientation='horizontal' />
 
           <S.InputWrapper>
-            <Input {...inputThree} />
+            <Input {...three} />
             <S.Separator>by</S.Separator>
-            <Input {...inputFour} />
+            <Input {...four} />
           </S.InputWrapper>
         </>
       )}
