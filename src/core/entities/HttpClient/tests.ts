@@ -1,6 +1,6 @@
 import { HttpClient } from '.';
 
-it('should make a request to the passed url', async () => {
+it('should make a request to the base url + the passed path', async () => {
   // @ts-ignore
   global.fetch = jest.fn(() =>
     Promise.resolve({
