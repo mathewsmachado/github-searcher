@@ -1,7 +1,7 @@
 import { createPortal } from 'react-dom';
 import { useState, useEffect, ReactNode } from 'react';
 
-import { debounce } from 'utils/performance';
+import { debounce } from 'app/utils/performance';
 import { CloseButton } from 'components/CloseButton';
 import { VsSeparator } from 'components/VsSeparator';
 import { Overlay } from 'components/Overlay';

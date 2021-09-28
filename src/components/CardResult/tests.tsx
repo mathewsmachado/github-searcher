@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event';
 
-import { render, s } from 'utils/tests';
+import { render, s } from 'app/utils/tests';
 
 import { CardResult } from '.';
 

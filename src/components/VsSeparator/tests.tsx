@@ -1,5 +1,5 @@
 import { theme } from 'app/styles';
-import { render, s } from 'utils/tests';
+import { render, s } from 'app/utils/tests';
 
 import { VsSeparator } from '.';
 

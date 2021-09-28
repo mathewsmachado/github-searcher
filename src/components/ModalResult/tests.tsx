@@ -1,5 +1,5 @@
-import { setModalRoot, unsetModalRoot } from 'utils/dom';
-import { render, s } from 'utils/tests';
+import { setModalRoot, unsetModalRoot } from 'app/utils/dom';
+import { render, s } from 'app/utils/tests';
 
 import { ModalResult } from '.';
 

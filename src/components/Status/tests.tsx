@@ -1,4 +1,4 @@
-import { render, s } from 'utils/tests';
+import { render, s } from 'app/utils/tests';
 
 import { Status } from '.';
 

@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { darkBackground, StoryContainer } from 'utils/storybook';
+import { darkBackground, StoryContainer } from 'app/utils/storybook';
 
 import { Vs } from '.';
 

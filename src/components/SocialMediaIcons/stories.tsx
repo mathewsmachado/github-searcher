@@ -4,7 +4,7 @@ import {
   darkBackground,
   disableArgTypes,
   StoryContainer,
-} from 'utils/storybook';
+} from 'app/utils/storybook';
 
 import { SocialMediaIcons, SocialMediaIconsProps } from '.';
 

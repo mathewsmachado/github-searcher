@@ -3,7 +3,7 @@ import { FiMenu } from 'react-icons/fi';
 import { IoMdClose } from 'react-icons/io';
 
 import { theme } from 'app/styles';
-import { throttle } from 'utils/performance';
+import { throttle } from 'app/utils/performance';
 import { Logo } from 'components/Logo';
 import { SocialMediaIcons } from 'components/SocialMediaIcons';
 import { Overlay } from 'components/Overlay';

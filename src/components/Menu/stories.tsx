@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { darkBackground } from 'utils/storybook';
+import { darkBackground } from 'app/utils/storybook';
 
 import { Menu } from '.';
 

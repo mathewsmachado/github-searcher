@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { disableArgTypes } from 'utils/storybook';
+import { disableArgTypes } from 'app/utils/storybook';
 
 import { LineSeparator } from '.';
 

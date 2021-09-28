@@ -1,4 +1,4 @@
-import { ThrowsError } from 'utils/typescript';
+import { ThrowsError } from 'types';
 
 export class HttpClient {
   constructor(readonly baseUrl: string) {

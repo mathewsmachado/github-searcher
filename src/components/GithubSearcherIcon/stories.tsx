@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { StoryContainer } from 'utils/storybook';
+import { StoryContainer } from 'app/utils/storybook';
 
 import { GithubSearcherIcon } from '.';
 

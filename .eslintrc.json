@@ -34,7 +34,7 @@
         "src/**/stories.tsx",
         "src/**/test?(s).ts?(x)",
         "src/setupTests.ts",
-        "src/utils/tests/*"
+        "src/app/utils/tests/*"
       ],
       "rules": { "import/no-extraneous-dependencies": "off" }
     }

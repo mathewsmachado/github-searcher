@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { darkBackground, disableArgTypes } from 'utils/storybook';
+import { darkBackground, disableArgTypes } from 'app/utils/storybook';
 
 import { Avatar, AvatarProps } from '.';
 

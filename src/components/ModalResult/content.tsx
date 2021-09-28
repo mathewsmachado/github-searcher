@@ -1,4 +1,4 @@
-import { Rename } from 'utils/typescript';
+import { Rename } from 'app/utils/typescript';
 import { Avatar, AvatarProps } from 'components/Avatar';
 import { Status } from 'components/Status';
 import {
