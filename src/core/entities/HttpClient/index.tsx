@@ -1,7 +1,7 @@
 import { ThrowsError } from 'utils/typescript';
 
 export class HttpClient {
-  constructor(private readonly baseUrl: string) {
+  constructor(readonly baseUrl: string) {
     this.baseUrl = baseUrl;
   }
 

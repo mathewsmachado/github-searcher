@@ -1,15 +1,15 @@
 import { UserMapper } from 'core/mappers';
-
 import { UserService } from '.';
 
 it('should fetch an user by username', async () => {
   jest.spyOn(UserService.httpClient, 'get');
-  // @ts-ignore
-  jest.spyOn(UserMapper, 'mapFromGithubUser').mockReturnValue({ mock: true });
+  jest
+    .spyOn(UserMapper, 'mapFromGithubUser')
+    .mockReturnValue({ mock: true } as any);
 
-  expect(await UserService.getByUsername('mathewsmachado')).toStrictEqual({
-    mock: true,
-  });
+  const user = await UserService.getByUsername('mathewsmachado');
 
-  expect(UserService.httpClient.get).toBeCalledWith('/mathewsmachado');
+  expect(user).toStrictEqual({ mock: true });
+  expect(UserService.httpClient.baseUrl).toBe('https://api.github.com/users/');
+  expect(UserService.httpClient.get).toBeCalledWith('mathewsmachado');
 });
