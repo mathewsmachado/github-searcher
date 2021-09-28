@@ -1,6 +1,6 @@
 import { IoMdClose } from 'react-icons/io';
 
-import { theme } from 'styles/theme';
+import { theme } from 'app/styles';
 import { Button, ButtonProps } from 'components/Button';
 
 export type CloseButtonProps = ButtonProps;

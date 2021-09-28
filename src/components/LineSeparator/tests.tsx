@@ -1,4 +1,4 @@
-import { theme } from 'styles/theme';
+import { theme } from 'app/styles';
 import { render, s } from 'utils/tests';
 
 import { LineSeparator } from '.';

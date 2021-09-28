@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { render, RenderOptions } from '@testing-library/react';
 
-import { StyleProvider } from 'styles/StyleProvider';
+import { StyleProvider } from 'app/styles';
 
 function customRender(
   ui: ReactElement,

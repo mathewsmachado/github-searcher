@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event';
 
-import { theme } from 'styles/theme';
+import { theme } from 'app/styles';
 import { render, s } from 'utils/tests';
 
 import { Vs } from 'components/Vs';

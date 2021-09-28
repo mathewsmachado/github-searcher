@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import { IoMdClose } from 'react-icons/io';
 
-import { theme } from 'styles/theme';
+import { theme } from 'app/styles';
 import { throttle } from 'utils/performance';
 import { Logo } from 'components/Logo';
 import { SocialMediaIcons } from 'components/SocialMediaIcons';
@@ -55,6 +55,7 @@ export function Menu() {
             size={30}
             color={theme.color.secondary}
             title='open menu icon'
+            // eslint-disable-next-line react/jsx-no-bind
             onClick={open}
           />
         )}

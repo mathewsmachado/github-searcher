@@ -1,4 +1,4 @@
-import { theme } from 'styles/theme';
+import { theme } from 'app/styles';
 import { PrimaryHeading } from 'components/PrimaryHeading';
 
 import * as S from './styles';

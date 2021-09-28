@@ -1,6 +1,6 @@
 import { builder } from 'styled-query-builder';
 
-import * as mixins from 'styles/mixins';
+import * as mixins from 'app/styles/mixins';
 
 export const theme = {
   mixins,

@@ -1,7 +1,7 @@
 /* eslint-disable */
 import styled, { css } from 'styled-components';
 
-import { theme } from 'styles/theme';
+import { theme } from 'app/styles';
 
 export type VsSeparatorProps = {
   orientation?: 'horizontal' | 'vertical';

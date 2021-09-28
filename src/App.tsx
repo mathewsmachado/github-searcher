@@ -1,4 +1,4 @@
-import { StyleProvider } from 'styles/StyleProvider';
+import { StyleProvider } from 'app/styles';
 
 export function App() {
   return (

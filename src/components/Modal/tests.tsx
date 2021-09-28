@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import userEvent, { TargetElement } from '@testing-library/user-event';
 
-import { theme } from 'styles/theme';
+import { theme } from 'app/styles';
 import { setModalRoot, unsetModalRoot } from 'utils/dom';
 import { render, s } from 'utils/tests';
 

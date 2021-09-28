@@ -1,4 +1,4 @@
-import { theme } from 'styles/theme';
+import { theme } from 'app/styles';
 
 type Theme = typeof theme;
 
