@@ -1,34 +1,32 @@
-import { render, s } from 'utils/tests';
-import { theme } from 'styles/theme';
+import { render, s } from 'app/utils/tests';
+import { theme } from 'app/styles';
 
-import { Base, BaseContentHeight } from '.';
+import { BasePage } from '.';
 
 it('should render correctly all the items', () => {
   render(
-    <Base>
+    <BasePage>
       <h1>Hello, World</h1>
-    </Base>,
+    </BasePage>,
     'wrapper'
   );
 
   const wrapper = s.getByTestId(/wrapper/i);
   const menu = wrapper.firstChild;
   const children = s.getByText(/hello, world/i);
-  const contentWrapper = children.parentElement;
   const footer = s.getByRole('contentinfo');
 
   expect(wrapper.children).toHaveLength(3);
   expect(menu).toBeInTheDocument();
-  expect(contentWrapper).toHaveStyle({ height: BaseContentHeight });
   expect(children).toBeInTheDocument();
   expect(footer).toBeInTheDocument();
 });
 
 it('should change the padding according to the screen size', () => {
   render(
-    <Base>
+    <BasePage>
       <h1>Hello, World</h1>
-    </Base>
+    </BasePage>
   );
 
   const contentWrapper = s.getByText(/hello, world/i).parentElement;

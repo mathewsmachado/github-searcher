@@ -1,5 +1,5 @@
-import { theme } from 'app/styles';
 import { render, s } from 'app/utils/tests';
+import { theme } from 'app/styles';
 
 import { Footer } from '.';
 

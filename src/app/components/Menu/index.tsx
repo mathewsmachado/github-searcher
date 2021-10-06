@@ -2,11 +2,12 @@ import { useCallback, useEffect, useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import { IoMdClose } from 'react-icons/io';
 
+import { CREATOR } from 'core/constants';
 import { theme } from 'app/styles';
 import { throttle } from 'app/utils/performance';
-import { Logo } from 'components/Logo';
-import { SocialMediaIcons } from 'components/SocialMediaIcons';
-import { Overlay } from 'components/Overlay';
+import { Logo } from 'app/components/Logo';
+import { Overlay } from 'app/components/Overlay';
+import { SocialMediaIcons } from 'app/components/SocialMediaIcons';
 
 import * as S from './styles';
 
@@ -30,10 +31,10 @@ export function Menu() {
   const close = useCallback(() => setIsOpen(false), [setIsOpen]);
 
   useEffect(() => {
-    const throttleClose = throttle(close, 4000);
+    const throttledClose = throttle(close, 4000);
 
-    window.addEventListener('resize', throttleClose);
-    return () => window.removeEventListener('resize', throttleClose);
+    window.addEventListener('resize', throttledClose);
+    return () => window.removeEventListener('resize', throttledClose);
   }, [close]);
 
   return (
@@ -70,7 +71,7 @@ export function Menu() {
           ))}
         </S.Nav>
         <SocialMediaIcons
-          usernames={{ github: 'mathewsmachado', linkedin: 'mathewsmachado' }}
+          usernames={{ github: CREATOR.USERNAME, linkedin: CREATOR.USERNAME }}
         />
       </S.RightSide>
     </S.MenuWrapper>

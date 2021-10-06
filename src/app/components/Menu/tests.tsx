@@ -9,10 +9,10 @@ it('should display correctly all the items', () => {
   render(<Menu />, 'wrapper');
 
   const menu = s.getByTestId(/wrapper/i).firstChild;
-  const logo = s.getByTitle(/"github" word/i).parentElement;
   const openIcon = s.getByTitle(/open menu/i).parentElement;
   const openCloseWrapper = openIcon?.parentElement;
-  const navItems = s
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [logo, ...navItems] = s
     .getAllByRole('link')
     .filter((item) => !item?.textContent!.includes('icon'));
   const socialMedia = s
@@ -20,13 +20,11 @@ it('should display correctly all the items', () => {
     .map((item) => item.textContent);
 
   expect(menu).toHaveStyle({ justifyContent: 'space-between' });
-  expect(logo).toHaveAttribute('fill', theme.color.secondary);
   expect(openIcon).toHaveAttribute('color', theme.color.secondary);
   expect(openCloseWrapper).toHaveStyle({
     position: 'absolute',
     right: '4rem',
   });
-  expect(navItems[0]).toHaveStyle({ marginRight: theme.spacing.medium });
   expect(navItems.map((item) => item.textContent)).toStrictEqual([
     'Search User',
     'Search Repo',

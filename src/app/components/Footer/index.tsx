@@ -1,5 +1,8 @@
 import styled, { css } from 'styled-components';
 
+import { CREATOR, DATE } from 'core/constants';
+import { SocialMediaIcons } from 'app/components/SocialMediaIcons';
+
 export const FooterHeight = '4rem';
 
 export const FooterWrapper = styled.footer`
@@ -30,3 +33,19 @@ export const IconsWrapper = styled.div`
   margin-top: 0.6rem;
   width: 9rem;
 `;
+
+export function Footer() {
+  return (
+    <FooterWrapper>
+      <Text>
+        {CREATOR.NAME}, {DATE.CURRENT_YEAR}
+      </Text>
+      <IconsWrapper>
+        <SocialMediaIcons
+          size='medium'
+          usernames={{ github: CREATOR.USERNAME, linkedin: CREATOR.USERNAME }}
+        />
+      </IconsWrapper>
+    </FooterWrapper>
+  );
+}

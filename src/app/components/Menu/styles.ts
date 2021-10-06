@@ -1,8 +1,6 @@
 // @ts-nocheck
 import styled, { css } from 'styled-components';
 
-import { OverlayWrapper } from 'components/Overlay';
-
 export type Props = {
   isOpen: boolean;
 };
@@ -20,14 +18,6 @@ export const MenuWrapper = styled.menu<Props>`
     background-color: ${theme.color.primary};
     border-bottom: 0.2rem solid ${theme.color.accent};
     transition: all ${theme.transition.fast};
-
-    ${theme.media.below('large')`
-      ${OverlayWrapper} {
-        transform: translateX(100%);
-        opacity: 0;
-        transition: transform ${theme.transition.fast}, opacity 0.5s ease-in-out;
-      }
-    `}
 
     ${theme.media.below('small')`
       padding: 1.4rem ${sideSpace.small} 1rem;
@@ -122,11 +112,6 @@ export const NavItem = styled.a`
 
 const modifiers = {
   open: () => css`
-    ${OverlayWrapper} {
-      transform: translateX(0%);
-      opacity: 1;
-    }
-
     ${RightSide} {
       left: unset;
       transform: translateX(0%);

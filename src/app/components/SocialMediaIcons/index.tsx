@@ -2,6 +2,8 @@ import { IconType } from 'react-icons';
 import { FaLinkedinIn } from 'react-icons/fa';
 import { AiFillGithub, AiOutlineTwitter } from 'react-icons/ai';
 
+import { SOCIAL_MEDIAS } from 'core/constants';
+
 import * as S from './styles';
 
 type AllowedSocialMedias = 'github' | 'linkedin' | 'twitter';
@@ -22,9 +24,9 @@ const iconsSizesMapper: Record<S.AllowedSizes, number> = {
 };
 
 const socialMediaMapper: Record<AllowedSocialMedias, SocialMediaMapperItem> = {
-  twitter: { baseUrl: 'https://www.twitter.com', Icon: AiOutlineTwitter },
-  linkedin: { baseUrl: 'https://www.linkedin.com/in', Icon: FaLinkedinIn },
-  github: { baseUrl: 'https://www.github.com', Icon: AiFillGithub },
+  twitter: { baseUrl: SOCIAL_MEDIAS.TWITTER.BASE_URL, Icon: AiOutlineTwitter },
+  linkedin: { baseUrl: SOCIAL_MEDIAS.LINKEDIN.BASE_URL, Icon: FaLinkedinIn },
+  github: { baseUrl: SOCIAL_MEDIAS.GITHUB.BASE_URL, Icon: AiFillGithub },
 };
 
 export function SocialMediaIcons({
@@ -44,13 +46,11 @@ export function SocialMediaIcons({
       };
     }
   );
-  const mostInner = !label;
-  const hasMultipleIcons = SocialMediaData.length > 1;
 
   return (
     <S.SocialMediaIconsWrapper
-      hasMultipleIcons={hasMultipleIcons}
-      mostInner={mostInner}
+      hasMultipleIcons={SocialMediaData.length > 1}
+      mostInner={!label}
       size={size}
     >
       {!!label && (
