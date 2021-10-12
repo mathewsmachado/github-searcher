@@ -5,9 +5,7 @@ import { IoMdClose } from 'react-icons/io';
 import { CREATOR } from 'core/constants';
 import { theme } from 'app/styles';
 import { throttle } from 'app/utils/performance';
-import { Logo } from 'app/components/Logo';
-import { Overlay } from 'app/components/Overlay';
-import { SocialMediaIcons } from 'app/components/SocialMediaIcons';
+import { Logo, Overlay, SocialMediaIcons } from 'app/components';
 
 import * as S from './styles';
 
@@ -61,7 +59,6 @@ export function Menu() {
           />
         )}
       </S.OpenClose>
-
       <S.RightSide>
         <S.Nav>
           {navItems.map(({ text, link }) => (

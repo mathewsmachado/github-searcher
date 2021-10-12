@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { CREATOR, DATE } from 'core/constants';
-import { SocialMediaIcons } from 'app/components/SocialMediaIcons';
+import { SocialMediaIcons } from 'app/components';
 
 export const FooterHeight = '4rem';
 

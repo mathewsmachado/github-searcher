@@ -4,8 +4,7 @@ import { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
 import { theme } from 'app/styles';
-import { Footer, FooterHeight } from 'app/components/Footer';
-import { Menu, MenuHeight } from 'app/components/Menu';
+import { Footer, FooterHeight, Menu, MenuHeight } from 'app/components';
 
 export type BasePageProps = {
   children: ReactNode;
