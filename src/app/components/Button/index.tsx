@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
 import { ButtonHTMLAttributes } from 'react';
 import styled, { css, DefaultTheme } from 'styled-components';
 
