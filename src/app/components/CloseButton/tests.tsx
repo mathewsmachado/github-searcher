@@ -17,17 +17,16 @@ it("should have the children with the same color if it's minimal and white other
   const [pinkButton, pinkMinimalButton, blackButton, blackMinimalButton] =
     s.getAllByRole('button');
 
-  expect(pinkButton.firstChild).toHaveAttribute('color', theme.color.secondary);
-  expect(pinkMinimalButton.firstChild).toHaveAttribute(
-    'color',
-    theme.color.accent
-  );
-  expect(blackButton.firstChild).toHaveAttribute(
-    'color',
-    theme.color.secondary
-  );
-  expect(blackMinimalButton.firstChild).toHaveAttribute(
-    'color',
-    theme.color.primary
-  );
+  expect(pinkButton.firstChild).toHaveStyle({
+    color: theme.color.secondary,
+  });
+  expect(pinkMinimalButton.firstChild).toHaveStyle({
+    color: theme.color.accent,
+  });
+  expect(blackButton.firstChild).toHaveStyle({
+    color: theme.color.secondary,
+  });
+  expect(blackMinimalButton.firstChild).toHaveStyle({
+    color: theme.color.primary,
+  });
 });
