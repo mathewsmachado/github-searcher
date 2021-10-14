@@ -5,7 +5,7 @@ export class UserMapper {
     return new User({
       username: u.login,
       name: u.name,
-      about: u.bio,
+      bio: u.bio,
       pictureUrl: u.avatar_url,
       socialMediaUsernames: {
         github: u.html_url,

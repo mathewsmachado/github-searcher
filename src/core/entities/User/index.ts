@@ -18,7 +18,7 @@ export class User {
   readonly socialMediaUsernames!: SocialMediaUsernames;
   readonly fetchedAt: number;
   readonly name?: string | undefined;
-  readonly about?: string | undefined;
+  readonly bio?: string | undefined;
 
   constructor(props: Omit<User, 'fetchedAt'>) {
     Object.assign(this, props);
@@ -30,8 +30,8 @@ export class User {
         .toUpperCase()}${props.username.substring(1)}`;
     }
 
-    if (!props.about) {
-      this.about = 'A passionate developer.';
+    if (!props.bio) {
+      this.bio = 'A passionate developer.';
     }
   }
 }

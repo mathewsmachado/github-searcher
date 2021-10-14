@@ -3,7 +3,7 @@ import { User } from '.';
 const props = {
   name: 'Mathews Machado',
   username: 'mathewsmachado',
-  about: 'React programmer',
+  bio: 'React programmer',
   pictureUrl: './',
   statuses: { followers: 1, following: 1, repositories: 1 },
   socialMediaUsernames: {
@@ -18,7 +18,7 @@ it('should instantiate a new User', () => {
 
   expect(user).toHaveProperty('name', 'Mathews Machado');
   expect(user).toHaveProperty('username', 'mathewsmachado');
-  expect(user).toHaveProperty('about', 'React programmer');
+  expect(user).toHaveProperty('bio', 'React programmer');
   expect(user).toHaveProperty('fetchedAt', expect.any(Number));
   expect(user).toHaveProperty('pictureUrl', './');
   expect(user).toHaveProperty('statuses', {
@@ -33,9 +33,9 @@ it('should instantiate a new User', () => {
   });
 });
 
-it("should assign a default name and an about if the user don't provide", () => {
-  const user = new User({ ...props, name: '', about: '' });
+it("should assign a default name and a bio if the user don't provide", () => {
+  const user = new User({ ...props, name: '', bio: '' });
 
   expect(user).toHaveProperty('name', 'Mathewsmachado');
-  expect(user).toHaveProperty('about', 'A passionate developer.');
+  expect(user).toHaveProperty('bio', 'A passionate developer.');
 });

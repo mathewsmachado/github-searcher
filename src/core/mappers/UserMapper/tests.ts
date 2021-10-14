@@ -18,7 +18,7 @@ it('should map a Github user to a User', () => {
   const user = new User({
     username: 'mathewsmachado',
     name: 'Mathews Machado',
-    about: 'React developer',
+    bio: 'React developer',
     pictureUrl: './',
     socialMediaUsernames: {
       github: 'github.com/mathewsmachado',
