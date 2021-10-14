@@ -9,7 +9,6 @@ import {
 
 export const EmptyWrapper = styled.section`
   ${({ theme }) => css`
-    max-width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;

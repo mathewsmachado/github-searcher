@@ -16,6 +16,7 @@ it('should render correctly', () => {
       min-height: 10rem;
       padding: 1.6rem;
       background-color: #000000;
+      box-shadow: 0.5rem 1rem 1rem -0.5rem rgba(255,0,127,0.3);
       border-radius: 1.2rem;
       -webkit-transition: all 0.1s ease-in-out;
       transition: all 0.1s ease-in-out;
@@ -23,10 +24,6 @@ it('should render correctly', () => {
 
     .c0 > * {
       word-wrap: break-word;
-    }
-
-    .c0:hover {
-      box-shadow: 0rem 1rem 1rem -0.5rem rgba(255,0,127,0.3);
     }
 
     .c0:active {

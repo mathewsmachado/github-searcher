@@ -4,7 +4,10 @@ import { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
 import { theme } from 'app/styles';
-import { Footer, FooterHeight, Menu, MenuHeight } from 'app/components';
+import { Footer, Menu } from 'app/components';
+// it was giving error if not imported directly
+import { FooterHeight } from 'app/components/Footer';
+import { MenuHeight } from 'app/components/Menu';
 
 export type BasePageProps = {
   children: ReactNode;
@@ -15,7 +18,10 @@ export const BasePageContentInnerHeight = `calc(${BasePageContentHeight} - (${th
 
 export const BasePageContentWrapper = styled.div`
   ${({ theme }) => css`
+    display: block;
+    margin: 0 auto;
     min-height: ${BasePageContentHeight};
+    max-width: 1400px;
     padding: ${theme.spacing.medium} ${theme.spacing.xlarge};
     background-color: ${theme.color.secondary};
 

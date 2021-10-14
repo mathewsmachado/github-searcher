@@ -21,7 +21,7 @@ export const FooterWrapper = styled.footer`
   `};
 `;
 
-export const Text = styled.span`
+const Text = styled.span`
   ${({ theme }) => css`
     font-size: ${theme.font.size.xsmall};
     font-weight: ${theme.font.weight.medium};
@@ -29,7 +29,7 @@ export const Text = styled.span`
   `};
 `;
 
-export const IconsWrapper = styled.div`
+const IconsWrapper = styled.div`
   margin-top: 0.6rem;
   width: 9rem;
 `;

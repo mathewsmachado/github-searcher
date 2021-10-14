@@ -26,7 +26,7 @@
       }
     },
     {
-      "files": ["src/app/components/**"],
+      "files": ["src/app/components/**", "src/components/**"],
       "rules": { "@typescript-eslint/no-use-before-define": "off" }
     },
     {
