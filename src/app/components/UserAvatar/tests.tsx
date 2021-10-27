@@ -2,11 +2,15 @@ import { render, s } from 'app/utils/tests';
 
 import { UserAvatar } from '.';
 
+const mockUser = {
+  name: 'Mathews',
+  username: 'machado',
+  pictureUrl: 'some-url',
+  bio: 'GitHub Searcher Creator',
+};
+
 it('should render the a large version by default', () => {
-  render(
-    <UserAvatar name='Mathews' username='machado' pictureUrl='some-url' />,
-    'wrapper'
-  );
+  render(<UserAvatar {...mockUser} />, 'wrapper');
 
   expect(s.getByTestId('wrapper').firstChild).toHaveStyle({
     flexDirection: 'column',
@@ -14,15 +18,7 @@ it('should render the a large version by default', () => {
 });
 
 it('should render a small version ', () => {
-  render(
-    <UserAvatar
-      name='Mathews'
-      username='machado'
-      pictureUrl='some-url'
-      size='small'
-    />,
-    'wrapper'
-  );
+  render(<UserAvatar {...mockUser} size='small' />, 'wrapper');
 
   expect(s.getByTestId('wrapper').firstChild).toHaveStyle({
     flexDirection: 'row',
@@ -30,14 +26,7 @@ it('should render a small version ', () => {
 });
 
 it('should render the passed name, username, picture and bio', () => {
-  render(
-    <UserAvatar
-      name='Mathews'
-      username='machado'
-      pictureUrl='some-url'
-      bio='Github Searcher Creator'
-    />
-  );
+  render(<UserAvatar {...mockUser} />);
 
   expect(s.getByText(/mathews/i)).toBeInTheDocument();
   expect(s.getByText(/machado/i)).toBeInTheDocument();

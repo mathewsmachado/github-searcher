@@ -16,7 +16,7 @@ it('should render correctly all the items', () => {
   const children = s.getByText(/hello, world/i);
   const footer = s.getByRole('contentinfo');
 
-  expect(wrapper.children).toHaveLength(3);
+  expect(wrapper.children).toHaveLength(4);
   expect(menu).toBeInTheDocument();
   expect(children).toBeInTheDocument();
   expect(footer).toBeInTheDocument();

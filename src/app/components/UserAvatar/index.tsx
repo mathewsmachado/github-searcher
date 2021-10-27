@@ -27,7 +27,7 @@ export function UserAvatar({
         <S.TextWrapper>
           <S.Name>{`${name?.split(' ')[0]}`}</S.Name>
           <S.Bio>
-            {bio!.length > BIO_MAX_SIZE
+            {bio?.length > BIO_MAX_SIZE
               ? `${bio!.substring(0, BIO_MAX_SIZE).trim()}...`
               : bio}
           </S.Bio>
