@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
 import { theme } from 'app/styles';
-import { Footer, Menu } from 'app/components';
+import { BannerNote, Footer, Menu } from 'app/components';
 // error if importing them from 'app/components'
 import { MenuHeight } from 'app/components/Menu';
 import { FooterHeight } from 'app/components/Footer';
@@ -38,6 +38,7 @@ export const BasePageContentWrapper = styled.div`
 export function BasePage({ children }: BasePageProps) {
   return (
     <>
+      <BannerNote text='This site is under development, new features and bug corrections coming soon ✨' />
       <Menu />
       <BasePageContentWrapper>{children}</BasePageContentWrapper>
       <Footer />

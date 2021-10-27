@@ -1,3 +1,4 @@
+export * from './BannerNote';
 export * from './BasePage';
 export * from './Button';
 export * from './ButtonSearch';

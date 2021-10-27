@@ -22,10 +22,7 @@ const navItems: NavItem[] = [
 export function Menu() {
   const [isOpen, setIsOpen] = useState(false);
 
-  function open() {
-    setIsOpen(true);
-  }
-
+  const open = useCallback(() => setIsOpen(true), [setIsOpen]);
   const close = useCallback(() => setIsOpen(false), [setIsOpen]);
 
   useEffect(() => {
@@ -54,7 +51,6 @@ export function Menu() {
             size={30}
             color={theme.color.secondary}
             title='open menu icon'
-            // eslint-disable-next-line react/jsx-no-bind
             onClick={open}
           />
         )}

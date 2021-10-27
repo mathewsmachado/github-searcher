@@ -32,11 +32,13 @@ export const OpenClose = styled.div`
     position: absolute;
     right: ${sideSpace.large};
     opacity: 0;
+    pointer-events: none;
 
     ${theme.media.below('large')`
       opacity: 1;
       z-index: ${theme.layer.overlay};
       cursor: pointer;
+      pointer-events: auto;
     `};
 
     ${theme.media.below('small')`
@@ -57,7 +59,7 @@ export const RightSide = styled.div`
       z-index: ${theme.layer.menu};
       flex-direction: column;
       justify-content: space-between;
-      position: absolute;
+      position: fixed;
       top: 0;
       right: 0;
       left: -999rem;
