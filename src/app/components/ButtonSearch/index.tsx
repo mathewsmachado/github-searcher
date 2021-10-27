@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import { BiSearch } from 'react-icons/bi';
 
-import { Button, ButtonProps } from 'app/components';
+import { Button, ButtonProps, Spinner } from 'app/components';
 
-export type ButtonSearchProps = ButtonProps;
+export type ButtonSearchProps = ButtonProps & {
+  loading?: boolean;
+};
 
 const ButtonWrapper = styled(Button)`
   flex-shrink: 0;
@@ -14,10 +16,11 @@ const ButtonWrapper = styled(Button)`
   }
 `;
 
-export function ButtonSearch({ ...props }: ButtonSearchProps) {
+export function ButtonSearch({ loading = false, ...props }: ButtonSearchProps) {
   return (
-    <ButtonWrapper color='accent' size='small' {...props}>
-      <BiSearch size='20' title='magnifying glass icon' />
+    <ButtonWrapper color='accent' size='small' disabled={loading} {...props}>
+      {!loading && <BiSearch size='20' title='magnifying glass icon' />}
+      {!!loading && <Spinner color='secondary' size='xsmall' />}
     </ButtonWrapper>
   );
 }

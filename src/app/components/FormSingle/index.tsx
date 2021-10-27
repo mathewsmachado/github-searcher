@@ -1,9 +1,14 @@
 import { FormEvent } from 'react';
 import styled from 'styled-components';
 
-import { ButtonSearch, Input, InputProps } from 'app/components';
+import {
+  ButtonSearch,
+  ButtonSearchProps,
+  Input,
+  InputProps,
+} from 'app/components';
 
-export type FormSingleProps = {
+export type FormSingleProps = Pick<ButtonSearchProps, 'loading'> & {
   inputData: InputProps;
   onSubmit: (e: FormEvent) => void;
 };
@@ -14,11 +19,11 @@ export const FormSingleWrapper = styled.form`
   align-items: flex-start;
 `;
 
-export function FormSingle({ onSubmit, inputData }: FormSingleProps) {
+export function FormSingle({ loading, onSubmit, inputData }: FormSingleProps) {
   return (
     <FormSingleWrapper role='form' onSubmit={onSubmit}>
       <Input {...inputData} />
-      <ButtonSearch type='submit' />
+      <ButtonSearch type='submit' loading={loading} />
     </FormSingleWrapper>
   );
 }
