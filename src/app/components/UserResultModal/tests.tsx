@@ -13,13 +13,15 @@ it('should render all the items correctly', () => {
     <UserResultModal
       isOpen
       onClose={() => {}}
-      name='mathews'
-      username='mathewsmachado'
-      statuses={{ followers: 1, following: 1, repositories: 1 }}
-      pictureUrl={mock}
-      socialMediaUsernames={{
-        linkedin: 'mathewsmachado',
-        github: 'mathewsmachado',
+      user={{
+        name: 'mathews',
+        username: 'mathewsmachado',
+        statuses: { followers: 1, following: 1, repositories: 1 },
+        pictureUrl: mock,
+        socialMediaUsernames: {
+          linkedin: 'mathewsmachado',
+          github: 'mathewsmachado',
+        },
       }}
     />,
     'wrapper'
