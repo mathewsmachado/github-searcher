@@ -68,7 +68,7 @@ const modifiers = {
     }
 
     ${Bio} {
-      margin-top: 0;
+      margin-top: 0.5rem;
     }
   `,
   large: (theme: DefaultTheme) => css`
