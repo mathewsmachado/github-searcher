@@ -1,11 +1,10 @@
 import { StyleProvider } from 'app/styles';
+import { Home } from 'app/pages';
 
 export function App() {
   return (
     <StyleProvider>
-      <span>
-        <a href='https://github.com/MathewsMachado'>React</a> App
-      </span>
+      <Home />
     </StyleProvider>
   );
 }

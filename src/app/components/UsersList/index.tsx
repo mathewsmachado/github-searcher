@@ -1,26 +1,26 @@
-import { UserAvatar, UserAvatarProps } from 'app/components';
+import { User } from 'core/entities';
+import { UserAvatar } from 'app/components';
 
 import * as S from './styles';
 
 export type UsersListProps = {
-  users: Omit<UserAvatarProps, 'size'>[];
-  onArrowClick: () => void;
+  users: User[];
+  onArrowClick: (user: User) => () => void;
 };
 
 export function UsersList({ users, onArrowClick }: UsersListProps) {
   return (
     <S.UsersListWrapper>
-      {users.map(({ pictureUrl, username, bio, href, name }) => (
-        <S.UserWrapper key={username}>
+      {users.map((u) => (
+        <S.UserWrapper key={u.username}>
           <UserAvatar
             size='small'
-            name={name}
-            pictureUrl={pictureUrl}
-            username={username}
-            bio={bio}
-            href={href}
+            name={u.name}
+            pictureUrl={u.pictureUrl}
+            username={u.username}
+            bio={u.bio}
           />
-          <S.ArrowIcon onClick={onArrowClick} title='right arrow icon' />
+          <S.ArrowIcon onClick={onArrowClick(u)} title='right arrow icon' />
         </S.UserWrapper>
       ))}
     </S.UsersListWrapper>

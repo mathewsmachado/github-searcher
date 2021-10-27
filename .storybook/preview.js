@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { setModalRoot } from 'utils/dom';
-import { StyleProvider } from 'styles/StyleProvider.tsx';
+import { setModalRoot } from 'app/utils/dom';
+import { StyleProvider } from 'app/styles';
 
 setModalRoot();
 

@@ -9,3 +9,7 @@ export const SOCIAL_MEDIAS = {
   LINKEDIN: { BASE_URL: 'https://www.linkedin.com/in' },
   TWITTER: { BASE_URL: 'https://www.twitter.com' },
 };
+
+export const LOCAL_STORAGE_KEYS = {
+  HOME: 'users',
+};

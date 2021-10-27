@@ -6,7 +6,7 @@ export type Props = {
 };
 
 export const MenuHeight = '5.8rem';
-const sideSpace = { large: '4rem', small: '2rem' };
+const sideSpace = { large: '4rem', small: '1rem' };
 
 export const MenuWrapper = styled.menu<Props>`
   ${({ theme, isOpen }) => css`
