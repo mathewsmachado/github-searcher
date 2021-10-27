@@ -34,8 +34,9 @@ export function SocialMediaIcons({
   label,
   size = 'xlarge',
 }: SocialMediaIconsProps) {
-  const SocialMediaData = Object.entries(usernames).map(
-    ([socialMediaName, username]) => {
+  const SocialMediaData = Object.entries(usernames || {})
+    .filter(([, username]) => !!username)
+    .map(([socialMediaName, username]) => {
       const { baseUrl, Icon } =
         socialMediaMapper[socialMediaName as AllowedSocialMedias];
 
@@ -44,8 +45,7 @@ export function SocialMediaIcons({
         href: `${baseUrl}/${username}`,
         title: `${socialMediaName} icon`,
       };
-    }
-  );
+    });
 
   return (
     <S.SocialMediaIconsWrapper
