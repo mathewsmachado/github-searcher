@@ -1,11 +1,7 @@
 // @ts-nocheck
 import styled, { css } from 'styled-components';
 
-import { GithubSearcherIcon } from 'components/GithubSearcherIcon';
-import {
-  SecondaryHeading,
-  SecondaryHeadingWrapper,
-} from 'components/SecondaryHeading';
+import { GithubSearcherIcon } from 'app/components';
 
 export const EmptyWrapper = styled.section`
   ${({ theme }) => css`
@@ -16,16 +12,22 @@ export const EmptyWrapper = styled.section`
     ${theme.media.below('small')`
       justify-content: center;
     `};
+  `};
+`;
 
-    ${SecondaryHeadingWrapper} {
-      ${theme.media.below('medium')`
-        font-size: 3.2rem;
-      `};
+const Text = styled.h2`
+  ${({ theme }) => css`
+    color: ${theme.color.primary};
+    font-size: ${theme.font.size.huge};
+    font-weight: ${theme.font.weight.bold};
 
-      ${theme.media.below('small')`
-        display: none;
-      `};
-    }
+    ${theme.media.below('medium')`
+      font-size: 3.2rem;
+    `};
+
+    ${theme.media.below('small')`
+      display: none;
+    `};
   `};
 `;
 
@@ -41,7 +43,7 @@ export type EmptyProps = {
 export function Empty({ text }: EmptyProps) {
   return (
     <EmptyWrapper>
-      <SecondaryHeading>{text}</SecondaryHeading>
+      <Text>{text}</Text>
       <IconWrapper>
         <GithubSearcherIcon />
       </IconWrapper>

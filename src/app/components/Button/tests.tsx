@@ -3,18 +3,18 @@ import userEvent from '@testing-library/user-event';
 import { theme } from 'app/styles';
 import { render, s } from 'app/utils/tests';
 
-import { Vs } from 'components/Vs';
+import { FiActivity } from 'react-icons/fi';
 
 import { Button } from '.';
 
 it('should render the passed children', () => {
   render(
     <Button>
-      <Vs color='secondary' />
+      <FiActivity title='icon' />
     </Button>
   );
 
-  expect(s.getByRole('button')).toBeInTheDocument();
+  expect(s.getByTitle('icon')).toBeInTheDocument();
 
   render(<Button>Search user</Button>);
 

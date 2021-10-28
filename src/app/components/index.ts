@@ -16,7 +16,6 @@ export * from './PageTitle';
 export * from './SocialMediaIcons';
 export * from './Spinner';
 export * from './Status';
-export * from './TextButton';
 export * from './UserAvatar';
 export * from './UsersList';
 export * from './UserResultModal';
