@@ -7,6 +7,7 @@ export * from './CloseButton';
 export * from './Empty';
 export * from './Footer';
 export * from './FormSingle';
+export * from './GithubSearcherIcon';
 export * from './Input';
 export * from './Logo';
 export * from './Menu';

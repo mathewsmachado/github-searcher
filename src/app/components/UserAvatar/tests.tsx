@@ -35,14 +35,7 @@ it('should render the passed name, username, picture and bio', () => {
 });
 
 it('should render the UserAvatar as a link', () => {
-  render(
-    <UserAvatar
-      name='Mathews'
-      username='machado'
-      pictureUrl='some-url'
-      href='https://github.com/mathewsmachado'
-    />
-  );
+  render(<UserAvatar {...mockUser} href='https://github.com/mathewsmachado' />);
 
   expect(s.getByRole('link')).toHaveAttribute(
     'href',
@@ -51,14 +44,7 @@ it('should render the UserAvatar as a link', () => {
 });
 
 it('should not render the username if the size is "small"', () => {
-  render(
-    <UserAvatar
-      name='Mathews'
-      username='machado'
-      pictureUrl='some-url'
-      size='small'
-    />
-  );
+  render(<UserAvatar {...mockUser} size='small' />);
 
   expect(s.queryByText(/mathews/i)).toBeInTheDocument();
   expect(s.queryByText(/machado/i)).not.toBeInTheDocument();
